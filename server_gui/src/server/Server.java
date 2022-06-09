@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server_java;
+package server;
 
 /**
  *
  * @author asus
  */
-public class Server_Java {
+public class Server {
 
     /**
      * @param args the command line arguments
