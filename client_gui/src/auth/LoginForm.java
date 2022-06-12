@@ -34,7 +34,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblLogin = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         lblUsername = new javax.swing.JLabel();
@@ -51,23 +51,23 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(80, 310, 310, 30);
+        txtPassword.setBounds(80, 270, 310, 30);
 
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         getContentPane().add(txtUsername);
         txtUsername.setBounds(80, 180, 310, 30);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("LOGIN");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 30, 80, 30);
+        lblLogin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogin.setText("LOGIN");
+        getContentPane().add(lblLogin);
+        lblLogin.setBounds(190, 30, 80, 30);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(80, 280, 90, 20);
+        lblPassword.setBounds(80, 240, 90, 20);
 
         btnLogin.setText("LOGIN");
         getContentPane().add(btnLogin);
@@ -141,11 +141,11 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblAccount;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRegister;
     private javax.swing.JLabel lblUsername;
