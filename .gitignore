@@ -8,5 +8,10 @@
 /client_gui/nbproject/private/
 /server_gui/nbproject/private/
 /admin_ws/nbproject/private/
+<<<<<<< Updated upstream
 /Client_GUI/build/
 /Client_GUI/dist/
+=======
+/server_ws/nbproject/private/
+/client_gui/build/
+>>>>>>> Stashed changes
