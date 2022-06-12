@@ -32,19 +32,30 @@ public class LoginForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        btnLogin = new javax.swing.JButton();
         lblUsername = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        lblRegister = new javax.swing.JLabel();
+        lblAccount = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
+
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(80, 310, 310, 30);
+
+        txtUsername.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        getContentPane().add(txtUsername);
+        txtUsername.setBounds(80, 180, 310, 30);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -58,9 +69,9 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(lblPassword);
         lblPassword.setBounds(80, 280, 90, 20);
 
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(80, 340, 310, 10);
+        btnLogin.setText("LOGIN");
+        getContentPane().add(btnLogin);
+        btnLogin.setBounds(160, 380, 140, 30);
 
         lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,18 +79,26 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(lblUsername);
         lblUsername.setBounds(80, 150, 90, 20);
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(80, 210, 310, 10);
+        lblRegister.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblRegister.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegister.setText("Register Here");
+        getContentPane().add(lblRegister);
+        lblRegister.setBounds(270, 430, 80, 14);
+
+        lblAccount.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblAccount.setForeground(new java.awt.Color(255, 255, 255));
+        lblAccount.setText("Don't have an account yet?");
+        getContentPane().add(lblAccount);
+        lblAccount.setBounds(120, 430, 160, 16);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/separator.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(160, 70, 140, 10);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 10, 450, 490);
+        lblBackground.setForeground(new java.awt.Color(255, 255, 255));
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(10, 10, 450, 490);
 
         setSize(new java.awt.Dimension(470, 509));
         setLocationRelativeTo(null);
@@ -121,13 +140,16 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblAccount;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblRegister;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
