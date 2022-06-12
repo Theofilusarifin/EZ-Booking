@@ -33,6 +33,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblUsername = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -46,18 +50,38 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LOGIN");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 30, 80, 30);
+        jLabel1.setBounds(190, 30, 80, 30);
+
+        lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
+        lblPassword.setText("Password");
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(80, 280, 90, 20);
+
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(80, 340, 310, 10);
+
+        lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername.setText("Username");
+        getContentPane().add(lblUsername);
+        lblUsername.setBounds(80, 150, 90, 20);
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(80, 210, 310, 10);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/separator.png"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(190, 70, 140, 10);
+        jLabel4.setBounds(160, 70, 140, 10);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 10, 500, 650);
+        jLabel2.setBounds(10, 10, 450, 490);
 
-        setSize(new java.awt.Dimension(520, 670));
+        setSize(new java.awt.Dimension(470, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,5 +125,9 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUsername;
     // End of variables declaration//GEN-END:variables
 }
