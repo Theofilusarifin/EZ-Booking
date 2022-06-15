@@ -27,7 +27,6 @@ public class ReservationForm extends javax.swing.JFrame {
     private void initComponents() {
 
         txtHour = new javax.swing.JTextField();
-        txtName1 = new javax.swing.JTextField();
         BookingDate = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,15 +36,14 @@ public class ReservationForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblLogin = new javax.swing.JLabel();
         btnLetsgo = new javax.swing.JButton();
-        cbTableaaa = new javax.swing.JComboBox<>();
+        cbDuration = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        cbTable = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtHour.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        txtName1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         BookingDate.setDateFormatString("yyyy-MM-dd");
         BookingDate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -74,14 +72,17 @@ public class ReservationForm extends javax.swing.JFrame {
         btnLetsgo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnLetsgo.setText("LET'S GO");
 
-        cbTableaaa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbTableaaa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30 minutes", "1 hour", "2 hour", "3 hour" }));
+        cbDuration.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbDuration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30 minutes", "1 hour", "1 hour 30 minutes", "2 hour", "2 hour 30 minutes", "3 hour", "4 hour" }));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Table");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Time");
+
+        cbTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbTable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,18 +106,18 @@ public class ReservationForm extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtName1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbTableaaa, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)))
+                    .addComponent(cbDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTable, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLetsgo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLogin)
-                .addGap(213, 213, 213))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblLogin)
+                        .addGap(213, 213, 213))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLetsgo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,14 +141,14 @@ public class ReservationForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cbTableaaa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                    .addComponent(cbTable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(btnLetsgo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,8 +192,9 @@ public class ReservationForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser BookingDate;
     private javax.swing.JButton btnLetsgo;
+    private javax.swing.JComboBox<String> cbDuration;
     private javax.swing.JComboBox<String> cbRestaurant;
-    private javax.swing.JComboBox<String> cbTableaaa;
+    private javax.swing.JComboBox<String> cbTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -202,6 +204,5 @@ public class ReservationForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JTextField txtHour;
     private javax.swing.JTextField txtMinute;
-    private javax.swing.JTextField txtName1;
     // End of variables declaration//GEN-END:variables
 }

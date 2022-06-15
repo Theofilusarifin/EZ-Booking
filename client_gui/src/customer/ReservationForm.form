@@ -43,22 +43,23 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtMinute" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="txtName1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cbTableaaa" alignment="0" pref="160" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="cbDuration" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="cbTable" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="151" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btnLetsgo" min="-2" pref="145" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnLetsgo" min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,29 +88,22 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbTableaaa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cbDuration" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbTable" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="btnLetsgo" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtHour">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtName1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="0"/>
@@ -200,17 +194,20 @@
         <Property name="text" type="java.lang.String" value="LET&apos;S GO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbTableaaa">
+    <Component class="javax.swing.JComboBox" name="cbDuration">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="7">
             <StringItem index="0" value="30 minutes"/>
             <StringItem index="1" value="1 hour"/>
-            <StringItem index="2" value="2 hour"/>
-            <StringItem index="3" value="3 hour"/>
+            <StringItem index="2" value="1 hour 30 minutes"/>
+            <StringItem index="3" value="2 hour"/>
+            <StringItem index="4" value="2 hour 30 minutes"/>
+            <StringItem index="5" value="3 hour"/>
+            <StringItem index="6" value="4 hour"/>
           </StringArray>
         </Property>
       </Properties>
@@ -233,6 +230,25 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Time"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbTable">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="1"/>
+            <StringItem index="1" value="2"/>
+            <StringItem index="2" value="3"/>
+            <StringItem index="3" value="4"/>
+            <StringItem index="4" value="5"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
