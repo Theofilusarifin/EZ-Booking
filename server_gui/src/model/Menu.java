@@ -4,11 +4,41 @@
  */
 package model;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jabeshnehemiah
  */
-public class Menu extends MyConnection{
+public class Menu extends MyConnection {
+
+    private int id;
+    private String name;
+    private double price;
+    private int restaurant_id;
+
+    public Menu(int id, String name, double price, int restaurant_id) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.restaurant_id = restaurant_id;
+        getConnection();
+    }
+
+    public Menu(String name, double price, int restaurant_id) {
+        this.name = name;
+        this.price = price;
+        this.restaurant_id = restaurant_id;
+        getConnection();
+    }
+
+    public Menu() {
+        getConnection();
+    }
 
     public int getId() {
         return id;
@@ -41,8 +71,19 @@ public class Menu extends MyConnection{
     public void setRestaurant_id(int restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
-    private int id;
-    private String name;
-    private double price;
-    private int restaurant_id;
+
+    public void insert() {
+        try {
+            stat = (Statement) connect.createStatement();
+            if (!connect.isClosed()) {
+                PreparedStatement sql = (PreparedStatement) connect.prepareStatement("insert into menus(name,price,restaurant_id) values(?,?,?)");
+                sql.setString(1, name);
+                sql.setDouble(2, price);
+                sql.setInt(3, restaurant_id);
+                sql.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
