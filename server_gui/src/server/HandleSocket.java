@@ -36,7 +36,7 @@ public class HandleSocket extends Thread {
         }
     }
     
-    public void ActionMessage(String command,String value){
+    public void CommandProcess(String command,String value){
         switch(command)
         {
 //            Logic fitur reservation
@@ -60,7 +60,7 @@ public class HandleSocket extends Thread {
                 String command = msgs[0];
 //                Value adalah string lain yang berada pada command untuk di proses
                 String value = msgs[1];
-                this.ActionMessage(command, value);
+                this.CommandProcess(command, value);
 
             } catch (Exception e) {
                 System.out.println(e);
