@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package server;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.User;
 
-/**
- *
- * @author jabeshnehemiah
- */
-public class HandleSocket extends Thread implements Runnable {
+public class HandleSocket extends Thread {
 
     private Server parent;
     private Socket client;
@@ -26,51 +18,32 @@ public class HandleSocket extends Thread implements Runnable {
     public HandleSocket(Server parent, Socket client) {
         this.parent = parent;
         this.client = client;
-        String message;
         try {
             out = new DataOutputStream(client.getOutputStream());
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
-            while (true) {
-                message = in.readLine();
-
-                String[] messages = null;
-                messages = message.split(";-;");
-
-                String cmd = "";
-                cmd = messages[0];
-
-                User _user = new User();
-                if (cmd.equals("LOGIN")) {
-                    boolean tmp;
-                    tmp = _user.CheckLogin(messages[1], messages[2]);
-                    // kalau ketemu username yang sama
-                    if (tmp) {
-                        out.writeBytes("TRUE" + "\n");
-                    } // kalau tidak ketemu username yang sama
-                    else {
-                        out.writeBytes("FALSE" + "\n");
-                    }
-                } else if (cmd.equals("ROLE")) {
-                    String role = _user.CheckRole(messages[1], messages[2]);
-                    out.writeBytes(role + "\n");
-                } else if (cmd.equals("REGISTER")) {
-                    String status = _user.Register(messages[1], messages[2], messages[3], messages[4]);
-                    out.writeBytes(status + ";-;" + messages[1] + "\n");
-                }
-            }
         } catch (Exception e) {
-            System.out.println("Error HandleSocket Constructor, Error: " + e);
-            Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(e);
         }
     }
-
-    public void sendChat(String tmp) {
+    
+//    Function untuk mengirimkan response ke client
+    public void SendMessage(String s)
+    {
         try {
-            out.writeBytes(tmp + "\n");
-        } catch (Exception e) {
-            Logger.getLogger(Server.class
-                    .getName()).log(Level.SEVERE, null, e);
+            out.writeBytes(s + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void CommandProcess(String command,String value){
+        switch(command)
+        {
+//            Logic fitur reservation
+            case "RESERVATION":
+                System.out.println("Masuk");
+                break;
+//            Logic lain dibawah sini
         }
     }
 
@@ -78,8 +51,17 @@ public class HandleSocket extends Thread implements Runnable {
     public void run() {
         while (true) {
             try {
+//                Baca apapun yang masuk ke server
                 String msg = in.readLine();
+//                Pemisahan command disini
                 String[] msgs = msg.split("//");
+                
+//                Command merupakan perintah apa yang masuk ke server 
+                String command = msgs[0];
+//                Value adalah string lain yang berada pada command untuk di proses
+                String value = msgs[1];
+                this.CommandProcess(command, value);
+
             } catch (Exception e) {
                 System.out.println(e);
             }

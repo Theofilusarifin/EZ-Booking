@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -10,17 +6,16 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author jabeshnehemiah
- */
 public class Menu extends MyConnection {
-
+    
+    // <editor-fold defaultstate="collapsed" desc="Fields">
     private int id;
     private String name;
     private double price;
     private int restaurant_id;
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
     public Menu(int id, String name, double price, int restaurant_id) {
         this.id = id;
         this.name = name;
@@ -39,7 +34,9 @@ public class Menu extends MyConnection {
     public Menu() {
         getConnection();
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Properties">
     public int getId() {
         return id;
     }
@@ -71,7 +68,9 @@ public class Menu extends MyConnection {
     public void setRestaurant_id(int restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Methods">
     public void insert() {
         try {
             stat = (Statement) connect.createStatement();
@@ -86,4 +85,6 @@ public class Menu extends MyConnection {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    // </editor-fold>
+
 }

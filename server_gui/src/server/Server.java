@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server;
 
 import java.io.IOException;
@@ -11,42 +6,29 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author asus
- */
-public class Server implements Runnable {
+public class Server{
 
-    String chatClient, chatServer = "";
     ServerSocket ss;
-    Thread t;
     Socket s;
-    ArrayList<HandleSocket> clients = new ArrayList<HandleSocket>();
-
-    public static void main(String[] args) {
+    String message;
+    ArrayList<HandleSocket> _clients;
+    
+    public Server() {
         try {
-            Server server = new Server();
-            server.run();
-        } catch (Exception e) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                ss = new ServerSocket(6000);
+            ss = new ServerSocket(6000);
+            _clients = new ArrayList<HandleSocket>();
+            
+            while(true)
+            {
                 s = ss.accept();
-                System.out.println("Masuk Server run");
                 HandleSocket hs = new HandleSocket(this, s);
                 hs.start();
-            } catch (IOException ex) {
-                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                _clients.add(hs);
             }
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
-
 }
