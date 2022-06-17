@@ -43,7 +43,7 @@ public class HandleSocket extends Thread {
             case "RESERVATION":
                 System.out.println("Masuk");
                 break;
-//            Login lain dibawah sini
+//            Logic lain dibawah sini
         }
     }
 
