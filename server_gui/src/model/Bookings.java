@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Bookings extends MyConnection{
 
+    // <editor-fold defaultstate="collapsed" desc="Fields">
     private int id;
     private Timestamp startHour;
     private Timestamp endHour;
@@ -14,8 +15,18 @@ public class Bookings extends MyConnection{
     private int user_id;
     private int restaurant_id;    
     private String customerName;
-
+    // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Bookings (String _user, Timestamp _start, Timestamp _end, int _tables) {
+        this.customerName = _user;
+        this.startHour = _start;
+        this.endHour = _end;
+        this.tablesCount = _tables;
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Properties">
     public int getId() {
         return id;
     }
@@ -71,15 +82,9 @@ public class Bookings extends MyConnection{
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
-    
-    public Bookings (String _user, Timestamp _start, Timestamp _end, int _tables) {
-        this.customerName = _user;
-        this.startHour = _start;
-        this.endHour = _end;
-        this.tablesCount = _tables;
-        
-    }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Methods">
     public ArrayList<Object> display() { //menampilkan data bookings untuk restaurant
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
@@ -103,4 +108,6 @@ public class Bookings extends MyConnection{
         }
         return collections;
     }
+    // </editor-fold>
+
 }
