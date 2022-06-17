@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package server;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author jabeshnehemiah
- */
-public class HandleSocket extends Thread implements Runnable {
+public class HandleSocket extends Thread {
 
     private Server parent;
     private Socket client;
@@ -32,13 +25,25 @@ public class HandleSocket extends Thread implements Runnable {
             System.out.println(e);
         }
     }
-
-    public void sendChat(String tmp) {
+    
+//    Function untuk mengirimkan response ke client
+    public void SendMessage(String s)
+    {
         try {
-            out.writeBytes(tmp + "\n");
-        } catch (Exception e) {
-            Logger.getLogger(Server.class.getName())
-                    .log(Level.SEVERE, null, e);
+            out.writeBytes(s + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void ActionMessage(String command,String value){
+        switch(command)
+        {
+//            Logic fitur reservation
+            case "RESERVATION":
+                System.out.println("Masuk");
+                break;
+//            Login lain dibawah sini
         }
     }
 
@@ -46,8 +51,17 @@ public class HandleSocket extends Thread implements Runnable {
     public void run() {
         while (true) {
             try {
+//                Baca apapun yang masuk ke server
                 String msg = in.readLine();
+//                Pemisahan command disini
                 String[] msgs = msg.split("//");
+                
+//                Command merupakan perintah apa yang masuk ke server 
+                String command = msgs[0];
+//                Value adalah string lain yang berada pada command untuk di proses
+                String value = msgs[1];
+                this.ActionMessage(command, value);
+
             } catch (Exception e) {
                 System.out.println(e);
             }

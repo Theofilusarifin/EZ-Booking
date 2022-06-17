@@ -22,7 +22,7 @@ public class ReservationForm extends javax.swing.JFrame {
     public ReservationForm() {
         try {
             initComponents();
-            s = new Socket("localhost",8000);
+            s = new Socket("localhost", 6000);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
         } catch (IOException ex) {
@@ -231,22 +231,29 @@ public class ReservationForm extends javax.swing.JFrame {
 //         Table Count
             int tableCount = Integer.parseInt(cbTable.getSelectedItem().toString());
 //            Kirim ke server
-            out.writeBytes("RESERVATION;" + 
-                    startHour + "&" + 
-                    endHour + "&" + 
-                    String.valueOf(tableCount) + "&" + 
-                    String.valueOf(user_id) + "&" +  
-                    String.valueOf(restaurant_id) + "&" +  
+            out.writeBytes("RESERVATION//" + 
+                    startHour + ";" + 
+                    endHour + ";" + 
+                    String.valueOf(tableCount) + ";" + 
+                    String.valueOf(user_id) + ";" +  
+                    String.valueOf(restaurant_id) + ";" +  
                     "\n");
             
 //            Hasil dari server
             String response = in.readLine();
             String[] msg = response.split(";");
             String hasil = msg[0];
-            String pesan = msg[1];
+            String preorder_availability = msg[1];
+            String pesan = msg[2];
             
             if (hasil.equals("True")) {
-                JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
+                if (preorder_availability.equals("True")){
+                    JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
+                else if (preorder_availability.equals("False")){
+                    JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
+                }
             } else if (hasil.equals("False")) {
                 JOptionPane.showMessageDialog(this, pesan, "Reservation Failed", JOptionPane.INFORMATION_MESSAGE);
             }

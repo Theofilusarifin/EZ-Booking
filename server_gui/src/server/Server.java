@@ -1,37 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author asus
- */
-public class Server implements Runnable {
+public class Server{
 
-    String chatClient, chatServer = "";
-    Socket s;
     ServerSocket ss;
-    Thread t;
-    ArrayList<HandleSocket> clients = new ArrayList<HandleSocket>();
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    Socket s;
+    String message;
+    ArrayList<HandleSocket> _clients;
+    
+    public Server() {
+        try {
+            ss = new ServerSocket(6000);
+            _clients = new ArrayList<HandleSocket>();
+            
+            while(true)
+            {
+                s = ss.accept();
+                HandleSocket hs = new HandleSocket(this, s);
+                hs.start();
+                _clients.add(hs);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }
