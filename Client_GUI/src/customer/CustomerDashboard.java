@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurant;
+package customer;
 
 /**
  *
  * @author asus
  */
-public class DashboardForm extends javax.swing.JFrame {
+public class CustomerDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form DashboardForm
      */
-    public DashboardForm() {
+    public CustomerDashboard() {
         initComponents();
+    }
+    
+    public CustomerDashboard(String customerName) {
+        initComponents();
+        lblCustName.setText(customerName);
     }
 
     /**
@@ -28,28 +33,25 @@ public class DashboardForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblAbout = new javax.swing.JLabel();
-        lblMenu = new javax.swing.JLabel();
+        lblContact = new javax.swing.JLabel();
+        lblReservation = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
-        lblOwner = new javax.swing.JLabel();
-        lblRestaurantName1 = new javax.swing.JLabel();
-        lblTelp = new javax.swing.JLabel();
+        lblCustName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblAbout.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblAbout.setForeground(new java.awt.Color(255, 255, 255));
-        lblAbout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAbout.setText("About");
+        lblContact.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblContact.setForeground(new java.awt.Color(255, 255, 255));
+        lblContact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblContact.setText("Contact");
 
-        lblMenu.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
-        lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMenu.setText("Menu");
+        lblReservation.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblReservation.setForeground(new java.awt.Color(255, 255, 255));
+        lblReservation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReservation.setText("Reservation");
 
         lblDashboard.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,8 +70,8 @@ public class DashboardForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(lblAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblReservation, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(lblContact, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -86,10 +88,10 @@ public class DashboardForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(171, 171, 171)
-                .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(126, 126, 126)
@@ -102,25 +104,10 @@ public class DashboardForm extends javax.swing.JFrame {
                     .addContainerGap(483, Short.MAX_VALUE)))
         );
 
-        lblAddress.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddress.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblAddress.setText("address");
-
-        lblOwner.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblOwner.setForeground(new java.awt.Color(255, 255, 255));
-        lblOwner.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblOwner.setText("Owner Name");
-
-        lblRestaurantName1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblRestaurantName1.setForeground(new java.awt.Color(255, 255, 255));
-        lblRestaurantName1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblRestaurantName1.setText("Restaurant Name");
-
-        lblTelp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblTelp.setForeground(new java.awt.Color(255, 255, 255));
-        lblTelp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblTelp.setText("telp");
+        lblCustName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblCustName.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCustName.setText("Cust Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,31 +115,16 @@ public class DashboardForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRestaurantName1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(346, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                .addGap(401, 401, 401)
+                .addComponent(lblCustName, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(lblOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(lblRestaurantName1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCustName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -176,20 +148,21 @@ public class DashboardForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardForm().setVisible(true);
+                new CustomerDashboard().setVisible(true);
             }
         });
     }
@@ -197,12 +170,9 @@ public class DashboardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAbout;
-    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblCustName;
     private javax.swing.JLabel lblDashboard;
-    private javax.swing.JLabel lblMenu;
-    private javax.swing.JLabel lblOwner;
-    private javax.swing.JLabel lblRestaurantName1;
-    private javax.swing.JLabel lblTelp;
+    private javax.swing.JLabel lblReservation;
     // End of variables declaration//GEN-END:variables
 }

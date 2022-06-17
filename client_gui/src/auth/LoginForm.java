@@ -5,7 +5,16 @@
  */
 package auth;
 
+import customer.CustomerDashboard;
+import restaurant.RestaurantDashboard;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,13 +22,34 @@ import java.awt.Color;
  */
 public class LoginForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginForm
-     */
+    Socket s;
+    BufferedReader msgFromServer;
+    DataOutputStream msgToServer;
+
     public LoginForm() {
         initComponents();
-        this.setBackground(new Color(0,0,0,0));
-        
+        this.setBackground(new Color(0, 0, 0, 0));
+        try {
+            s = new Socket("localhost", 6000);
+            //buat penerima dan pengirim dari socket
+            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            msgToServer = new DataOutputStream(s.getOutputStream());
+        } catch (Exception e) {
+            System.out.println("Error LoginForm Constructor1, Error: " + e);
+        }
+    }
+    
+    public LoginForm(Socket clientSocket) {
+        initComponents();
+        this.setBackground(new Color(0, 0, 0, 0));
+        try {
+            s = clientSocket;
+            //buat penerima dan pengirim dari socket
+            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            msgToServer = new DataOutputStream(s.getOutputStream());
+        } catch (Exception e) {
+            System.out.println("Error LoginForm Constructor2, Error: " + e);
+        }
     }
 
     /**
@@ -70,6 +100,11 @@ public class LoginForm extends javax.swing.JFrame {
         lblPassword.setBounds(80, 240, 90, 20);
 
         btnLogin.setText("LOGIN");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin);
         btnLogin.setBounds(160, 380, 140, 30);
 
@@ -82,6 +117,12 @@ public class LoginForm extends javax.swing.JFrame {
         lblRegister.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblRegister.setText("Register Here");
+        lblRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegisterMouseClicked(evt);
+            }
+        });
         getContentPane().add(lblRegister);
         lblRegister.setBounds(270, 430, 80, 14);
 
@@ -103,6 +144,59 @@ public class LoginForm extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(470, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        try {
+            // buat koneksi TCP ke server
+            // kirim Request Data (LOGIN;;<username>;;<password>)
+            msgToServer.writeBytes("LOGIN;-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+
+            String result;
+            result = msgFromServer.readLine();
+
+            String[] messages = null;
+            messages = result.split(";-;");
+
+            String cmd = "";
+            cmd = messages[0];
+
+            // kalau ada username yang sama
+            if (cmd.equals("TRUE")) {
+                msgToServer.writeBytes("ROLE;-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+
+                String answer = "";
+                answer = msgFromServer.readLine();
+
+                String[] words = null;
+                words = answer.split(";-;");
+
+                String word = "";
+                word = words[0];
+
+                // kalau role customer
+                if (word.equals("customer")) {
+                    new CustomerDashboard(words[1]).setVisible(true);
+                    this.dispose();
+                } // kalau role restaurant
+                else if (word.equals("restaurant")) {
+                    new RestaurantDashboard(words[1]).setVisible(true);
+                    this.dispose();
+                }
+            } // kalau tidak ada username yang sama
+            else if (cmd.equals("FALSE")) {
+                JOptionPane.showMessageDialog(this, "Incorrect Username or Password");
+            }
+
+        } catch (Exception e) {
+            System.out.println("LoginForm btnLogin, Error; " + e);
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
+        new RegisterForm(s).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblRegisterMouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,11 +5,13 @@
  */
 package server;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,20 +20,33 @@ import java.util.logging.Logger;
 public class Server implements Runnable {
 
     String chatClient, chatServer = "";
-    Socket s;
     ServerSocket ss;
     Thread t;
+    Socket s;
     ArrayList<HandleSocket> clients = new ArrayList<HandleSocket>();
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        try {
+            Server server = new Server();
+            server.run();
+        } catch (Exception e) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        while (true) {
+            try {
+                ss = new ServerSocket(6000);
+                s = ss.accept();
+                System.out.println("Masuk Server run");
+                HandleSocket hs = new HandleSocket(this, s);
+                hs.start();
+            } catch (IOException ex) {
+                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
 }
