@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.User;
 
 public class HandleSocket extends Thread {
 
@@ -25,24 +26,65 @@ public class HandleSocket extends Thread {
             System.out.println(e);
         }
     }
-    
+
 //    Function untuk mengirimkan response ke client
-    public void SendMessage(String s)
-    {
+    public void SendMessage(String s) {
         try {
             out.writeBytes(s + "\n");
         } catch (IOException ex) {
             Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void CommandProcess(String command,String value){
-        switch(command)
-        {
+
+    public void CommandProcess(String command, String value) throws IOException {
+        String message;
+        String[] messages = null;
+
+        User _user = new User();
+
+        switch (command) {
 //            Logic fitur reservation
             case "RESERVATION":
                 System.out.println("Masuk");
                 break;
+
+//            Logic Fitur Login
+            case "LOGIN":
+                message = value;
+
+                messages = message.split(";-;");
+
+                boolean tmp;
+                tmp = _user.CheckLogin(messages[0], messages[1]);
+                // kalau ketemu username yang sama
+                if (tmp) {
+                    SendMessage("TRUE");
+                } // kalau tidak ketemu username yang sama
+                else {
+                    SendMessage("FALSE");
+                }
+                break;
+
+//            Cari Role Buat Login
+            case "ROLE":
+                message = value;
+
+                messages = message.split(";-;");
+
+                String role = _user.CheckRole(messages[0], messages[1]);
+                SendMessage(role);
+                break;
+
+//            Ya Register
+            case "REGISTER":
+                message = value;
+
+                messages = message.split(";-;");
+                
+                String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
+                SendMessage(status + ";-;" + messages[0]);
+                break;
+
 //            Logic lain dibawah sini
         }
     }
@@ -55,7 +97,7 @@ public class HandleSocket extends Thread {
                 String msg = in.readLine();
 //                Pemisahan command disini
                 String[] msgs = msg.split("//");
-                
+
 //                Command merupakan perintah apa yang masuk ke server 
                 String command = msgs[0];
 //                Value adalah string lain yang berada pada command untuk di proses

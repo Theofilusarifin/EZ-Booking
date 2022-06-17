@@ -149,7 +149,7 @@ public class LoginForm extends javax.swing.JFrame {
         try {
             // buat koneksi TCP ke server
             // kirim Request Data (LOGIN;;<username>;;<password>)
-            msgToServer.writeBytes("LOGIN;-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+            msgToServer.writeBytes("LOGIN//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
 
             String result;
             result = msgFromServer.readLine();
@@ -162,7 +162,7 @@ public class LoginForm extends javax.swing.JFrame {
 
             // kalau ada username yang sama
             if (cmd.equals("TRUE")) {
-                msgToServer.writeBytes("ROLE;-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+                msgToServer.writeBytes("ROLE//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
 
                 String answer = "";
                 answer = msgFromServer.readLine();

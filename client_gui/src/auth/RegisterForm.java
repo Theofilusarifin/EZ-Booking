@@ -180,7 +180,7 @@ public class RegisterForm extends javax.swing.JFrame {
         try {
             if (txtPassword.getText().equals(txtRePassword.getText())) {
                 // kirim Request Data (REGISTER <username> <password> <role>)
-                msgToServer.writeBytes("REGISTER;-;" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;" + cmbRole.getSelectedItem().toString() + "\n");
+                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;" + cmbRole.getSelectedItem().toString() + "\n");
 
                 String result;
                 result = msgFromServer.readLine();

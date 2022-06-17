@@ -22,7 +22,7 @@ public class User extends MyConnection {
     private String password;
     private String role;
 
-    //<editor-fold defaultstate="collapse" desc="Getter & Setter">
+    //<editor-fold defaultstate="collapsed" desc="Getter & Setter">
     public String getName() {
         return name;
     }
