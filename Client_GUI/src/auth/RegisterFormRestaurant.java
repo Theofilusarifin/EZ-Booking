@@ -197,32 +197,32 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRestaurantActionPerformed
-        try {
-            if (txtPassword.getText().equals(txtRePassword.getText())) {
-                // kirim Request Data (REGISTER <username> <password> <role>)
-                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n");
-
-                String result;
-                result = msgFromServer.readLine();
-
-                String[] messages = null;
-                messages = result.split(";-;");
-
-                String status = "";
-                status = messages[0];
-
-                if (status.equals("RegSuccess")) {
-                    JOptionPane.showMessageDialog(this, "Registration Successful, Welcome to ezbooking Owner " + messages[1]);
-                } else if (status.equals("RegFailed")) {
-                    JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
-            }
-        } catch (Exception e) {
-            System.out.println("RegisterForm btnRegister, Error; " + e);
-            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, e);
-        }
+//        try {
+//            if (txtPassword.getText().equals(txtRePassword.getText())) {
+//                // kirim Request Data (REGISTER <username> <password> <role>)
+//                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n");
+//
+//                String result;
+//                result = msgFromServer.readLine();
+//
+//                String[] messages = null;
+//                messages = result.split(";-;");
+//
+//                String status = "";
+//                status = messages[0];
+//
+//                if (status.equals("RegSuccess")) {
+//                    JOptionPane.showMessageDialog(this, "Registration Successful, Welcome to ezbooking Owner " + messages[1]);
+//                } else if (status.equals("RegFailed")) {
+//                    JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
+//            }
+//        } catch (Exception e) {
+//            System.out.println("RegisterForm btnRegister, Error; " + e);
+//            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, e);
+//        }
     }//GEN-LAST:event_btnRegisterRestaurantActionPerformed
 
     private void lblBackToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLoginMouseClicked
