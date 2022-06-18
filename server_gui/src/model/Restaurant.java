@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Restaurant extends MyConnection{
     
@@ -12,8 +13,8 @@ public class Restaurant extends MyConnection{
     private String name;
     private String address;
     private String phoneNumber;
-    private Timestamp openHour;
-    private Timestamp closeHour;
+    private Date openHour;
+    private Date closeHour;
     private int tablesCount;    
     private int peoplePerTable;
     private int user_id;    
@@ -52,19 +53,19 @@ public class Restaurant extends MyConnection{
         this.phoneNumber = phoneNumber;
     }
 
-    public Timestamp getOpenHour() {
+    public Date getOpenHour() {
         return openHour;
     }
 
-    public void setOpenHour(Timestamp openHour) {
+    public void setOpenHour(Date openHour) {
         this.openHour = openHour;
     }
 
-    public Timestamp getCloseHour() {
+    public Date getCloseHour() {
         return closeHour;
     }
 
-    public void setCloseHour(Timestamp closeHour) {
+    public void setCloseHour(Date closeHour) {
         this.closeHour = closeHour;
     }
 
@@ -105,7 +106,7 @@ public class Restaurant extends MyConnection{
         getConnection();
     }
     
-    public Restaurant(int id, String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
+    public Restaurant(int id, String name, String address, String phoneNumber, Date openHour, Date closeHour, int tablesCount, int peoplePerTable, int user_id) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -118,7 +119,7 @@ public class Restaurant extends MyConnection{
         getConnection();
     }
 
-    public Restaurant(String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
+    public Restaurant(String name, String address, String phoneNumber, Date openHour, Date closeHour, int tablesCount, int peoplePerTable, int user_id) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;

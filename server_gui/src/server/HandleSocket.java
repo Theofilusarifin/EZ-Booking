@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -15,7 +17,6 @@ import model.Bookings;
 import model.Menu;
 import model.Restaurant;
 import model.User;
-
 
 public class HandleSocket extends Thread {
 
@@ -45,79 +46,95 @@ public class HandleSocket extends Thread {
     }
 
     public void CommandProcess(String command, String value) throws IOException {
-        String message;
-        String[] messages = null;
+        try {
+            String message;
+            String[] messages = null;
 
-        User _user = new User();
-        ArrayList<Object> collection = new ArrayList<Object>();
-        switch (command) {
+            User _user = new User();
+            ArrayList<Object> collection = new ArrayList<Object>();
+            switch (command) {
 //            Logic fitur reservation
-            case "DATARESTAURANT":
+                case "DATARESTAURANT":
 //                Inisiasi class restaurant untuk dapat array data restaurant
-                Restaurant rest = new Restaurant();
-                collection = rest.getDataRestaurant();
+                    Restaurant rest = new Restaurant();
+                    collection = rest.getDataRestaurant();
 //                String untuk response
-                String temp = "";
+                    String temp = "";
 //                Looping untuk kirim data sebagai string
-                for (Object object : collection) {
+                    for (Object object : collection) {
 //                    Type casting object ke restaurant
-                    Restaurant restaurant = (Restaurant)object;
+                        Restaurant restaurant = (Restaurant) object;
 //                    Inisiasi data yang dikirim
-                    int id = restaurant.getId();
-                    String name = restaurant.getName();
-                    int peoplePerTable = restaurant.getPeoplePerTable();
+                        int id = restaurant.getId();
+                        String name = restaurant.getName();
+                        int peoplePerTable = restaurant.getPeoplePerTable();
 //                    Tambahkan data
-                    temp = temp +
-                            String.valueOf(id) + "&" +
-                            name + "&" +
-                            String.valueOf(peoplePerTable) + ";";
-                }
+                        temp = temp
+                                + String.valueOf(id) + "&"
+                                + name + "&"
+                                + String.valueOf(peoplePerTable) + ";";
+                    }
 //                Kirim seluruh data ke client
-                SendMessage(temp);
-                break;
-                
-            case "RESERVATION":
-                System.out.println(value);
-                break;
+                    SendMessage(temp);
+                    break;
+
+                case "RESERVATION":
+                    String requests[] = value.split(";");
+
+//                    Inisiasi tiap data yang didapat untuk dimasukkan ke constructor
+                    Date startHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[0]);
+                    Date endHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[1]);
+                    int tablesCount = Integer.valueOf(requests[2]);
+                    int user_id = Integer.valueOf(requests[3]);
+                    int restaurant_id = Integer.valueOf(requests[4]);
+
+//                    Inisiasi constructor
+                    Bookings booking = new Bookings(startHour, endHour, tablesCount, user_id, restaurant_id);
+//                    Panggil method insert untuk memasukkan data booking baru ke database
+                    booking.insert();
+                    break;
 
 //            Logic Fitur Login
-            case "LOGIN":
-                message = value;
+                case "LOGIN":
+                    message = value;
 
-                messages = message.split(";-;");
+                    messages = message.split(";-;");
 
-                boolean tmp;
-                tmp = _user.CheckLogin(messages[0], messages[1]);
-                // kalau ketemu username yang sama
-                if (tmp) {
-                    SendMessage("TRUE");
-                } // kalau tidak ketemu username yang sama
-                else {
-                    SendMessage("FALSE");
-                }
-                break;
+                    boolean tmp;
+                    tmp = _user.CheckLogin(messages[0], messages[1]);
+                    // kalau ketemu username yang sama
+                    if (tmp) {
+                        SendMessage("TRUE");
+                    } // kalau tidak ketemu username yang sama
+                    else {
+                        SendMessage("FALSE");
+                    }
+                    break;
 
 //            Cari Role Buat Login
-            case "ROLE":
-                message = value;
+                case "ROLE":
+                    message = value;
 
-                messages = message.split(";-;");
+                    messages = message.split(";-;");
 
-                String role = _user.CheckRole(messages[0], messages[1]);
-                SendMessage(role);
-                break;
+                    String role = _user.CheckRole(messages[0], messages[1]);
+                    SendMessage(role);
+                    break;
 
 //            Ya Register
-            case "REGISTER":
-                message = value;
+                case "REGISTER":
+                    message = value;
 
-                messages = message.split(";-;");
-                
-                String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
-                SendMessage(status + ";-;" + messages[0]);
-                break;
+                    messages = message.split(";-;");
+
+                    String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
+                    SendMessage(status + ";-;" + messages[0]);
+                    break;
 
 //            Logic lain dibawah sini
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

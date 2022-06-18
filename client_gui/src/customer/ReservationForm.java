@@ -204,8 +204,8 @@ public class ReservationForm extends javax.swing.JFrame {
                 return;
             }
 //        Pastikan waktu tidak kosong
-            if (txtHour.getText() == null || txtMinute.getText() == null) {
-                JOptionPane.showMessageDialog(this, "Please fill in the time section", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (txtHour.getText() == null || txtMinute.getText() == null || Integer.parseInt(txtHour.getText()) > 23 || Integer.parseInt(txtMinute.getText()) > 59) {
+                JOptionPane.showMessageDialog(this, "Please fill in the time section correctly", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 //        Pastikan durasi tidak kosong
