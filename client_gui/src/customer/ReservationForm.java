@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,10 @@ public class ReservationForm extends javax.swing.JFrame {
     BufferedReader in;
     DataOutputStream out;
     String message;
-    
+    ArrayList<String> ids;
+    ArrayList<String> names;
+    ArrayList<String> tableCounts;
+
     public ReservationForm() {
         try {
             initComponents();
@@ -26,9 +30,26 @@ public class ReservationForm extends javax.swing.JFrame {
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
             
-            out.writeBytes("DATARESTAURANT//" + "\n");
+            out.writeBytes("DATARESTAURANT//" + " " + "\n");
             String response = in.readLine();
-            System.out.println(response);
+            String[] responses = response.split(";");
+            System.out.println(responses);
+            ids = new ArrayList<String>();
+            names = new ArrayList<String>();
+            tableCounts = new ArrayList<String>();
+            
+            for (int i = 0; i < responses.length; i++) {
+//                Tambahkan id ke arraylist
+                ids.add(responses[i].split("&")[0]);
+//                Tambahkan name ke arraylist
+                String _name = responses[i].split("&")[1];
+                System.out.println(_name);
+                names.add(_name);
+//                Tambahkan name ke combobox
+                cbRestaurant.addItem(_name);
+//                Tambahkan table counts ke arraylist
+                tableCounts.add(responses[i].split("&")[2]);
+            }
         } catch (IOException ex) {
             Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,7 +90,6 @@ public class ReservationForm extends javax.swing.JFrame {
         txtMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         cbRestaurant.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbRestaurant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d" }));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Duration");
@@ -203,8 +223,7 @@ public class ReservationForm extends javax.swing.JFrame {
 //        User ID
             int user_id = 1;
 //        Restaurant ID
-            int restaurant_id = cbRestaurant.getSelectedIndex();
-
+            int restaurant_id = Integer.parseInt(ids.get(cbRestaurant.getSelectedIndex()));
 //        startHour
             Date reservation_date = BookingDate.getDate();
             SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd");

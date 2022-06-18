@@ -94,6 +94,10 @@ public class Restaurant extends MyConnection{
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Restaurant() {
+        getConnection();
+    }
+    
     public Restaurant(int id, String name, int peoplePerTable) {
         this.id = id;
         this.name = name;
@@ -132,7 +136,7 @@ public class Restaurant extends MyConnection{
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
             this.stat = (Statement)connect.createStatement();
-            this.result = this.stat.executeQuery("SELECT * form restaurants;");
+            this.result = this.stat.executeQuery("SELECT * FROM restaurants;");
             
             while(this.result.next()) {
                 Restaurant restaurant = new Restaurant(
@@ -143,7 +147,7 @@ public class Restaurant extends MyConnection{
                 collections.add(restaurant);
             }
         } catch (Exception ex) {
-            System.out.println("Error di display : " + ex); 
+            System.out.println("Error di method getDataRestaurant : " + ex); 
         }
         return collections;
     }

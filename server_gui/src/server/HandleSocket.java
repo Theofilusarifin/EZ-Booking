@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +31,7 @@ public class HandleSocket extends Thread {
             out = new DataOutputStream(client.getOutputStream());
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error di handdle socket constructor" + e);
         }
     }
 
@@ -48,14 +49,35 @@ public class HandleSocket extends Thread {
         String[] messages = null;
 
         User _user = new User();
-
+        ArrayList<Object> collection = new ArrayList<Object>();
         switch (command) {
 //            Logic fitur reservation
-            case "GETDATARESTAURANT":
-                ArrayList<Object> restaurant = Res
+            case "DATARESTAURANT":
+//                Inisiasi class restaurant untuk dapat array data restaurant
+                Restaurant rest = new Restaurant();
+                collection = rest.getDataRestaurant();
+//                String untuk response
+                String temp = "";
+//                Looping untuk kirim data sebagai string
+                for (Object object : collection) {
+//                    Type casting object ke restaurant
+                    Restaurant restaurant = (Restaurant)object;
+//                    Inisiasi data yang dikirim
+                    int id = restaurant.getId();
+                    String name = restaurant.getName();
+                    int peoplePerTable = restaurant.getPeoplePerTable();
+//                    Tambahkan data
+                    temp = temp +
+                            String.valueOf(id) + "&" +
+                            name + "&" +
+                            String.valueOf(peoplePerTable) + ";";
+                }
+//                Kirim seluruh data ke client
+                SendMessage(temp);
                 break;
+                
             case "RESERVATION":
-                System.out.println("Masuk");
+                System.out.println(value);
                 break;
 
 //            Logic Fitur Login
