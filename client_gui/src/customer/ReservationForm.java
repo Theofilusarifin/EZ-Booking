@@ -203,8 +203,13 @@ public class ReservationForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please choose a date", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-//        Pastikan waktu tidak kosong
-            if (txtHour.getText() == null || txtMinute.getText() == null || Integer.parseInt(txtHour.getText()) > 23 || Integer.parseInt(txtMinute.getText()) > 59) {
+            
+            if (!txtMinute.getText().matches("-?\\d+(\\.\\d+)?")){
+                JOptionPane.showMessageDialog(this, "Please fill in the time section with numbers", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+//        Pastikan waktu tidak kosong dan waktu dalam range yang benar
+            if (txtHour.getText() == null || txtMinute.getText() == null || Integer.parseInt(txtHour.getText()) > 23 || Integer.parseInt(txtMinute.getText()) > 59 ) {
                 JOptionPane.showMessageDialog(this, "Please fill in the time section correctly", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }

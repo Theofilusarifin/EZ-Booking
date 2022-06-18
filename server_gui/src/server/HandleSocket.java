@@ -53,6 +53,43 @@ public class HandleSocket extends Thread {
             User _user = new User();
             ArrayList<Object> collection = new ArrayList<Object>();
             switch (command) {
+//            Logic Fitur Login
+                case "LOGIN":
+                    message = value;
+
+                    messages = message.split(";-;");
+
+                    boolean tmp;
+                    tmp = _user.CheckLogin(messages[0], messages[1]);
+                    // kalau ketemu username yang sama
+                    if (tmp) {
+                        SendMessage("TRUE");
+                    } // kalau tidak ketemu username yang sama
+                    else {
+                        SendMessage("FALSE");
+                    }
+                    break;
+
+//            Cari Role Buat Login
+                case "ROLE":
+                    message = value;
+
+                    messages = message.split(";-;");
+
+                    String role = _user.CheckRole(messages[0], messages[1]);
+                    SendMessage(role);
+                    break;
+
+//            Ya Register
+                case "REGISTER":
+                    message = value;
+
+                    messages = message.split(";-;");
+
+                    String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
+                    SendMessage(status + ";-;" + messages[0]);
+                    break;
+
 //            Logic fitur reservation
                 case "DATARESTAURANT":
 //                Inisiasi class restaurant untuk dapat array data restaurant
@@ -92,43 +129,6 @@ public class HandleSocket extends Thread {
                     Bookings booking = new Bookings(startHour, endHour, tablesCount, user_id, restaurant_id);
 //                    Panggil method insert untuk memasukkan data booking baru ke database
                     booking.insert();
-                    break;
-
-//            Logic Fitur Login
-                case "LOGIN":
-                    message = value;
-
-                    messages = message.split(";-;");
-
-                    boolean tmp;
-                    tmp = _user.CheckLogin(messages[0], messages[1]);
-                    // kalau ketemu username yang sama
-                    if (tmp) {
-                        SendMessage("TRUE");
-                    } // kalau tidak ketemu username yang sama
-                    else {
-                        SendMessage("FALSE");
-                    }
-                    break;
-
-//            Cari Role Buat Login
-                case "ROLE":
-                    message = value;
-
-                    messages = message.split(";-;");
-
-                    String role = _user.CheckRole(messages[0], messages[1]);
-                    SendMessage(role);
-                    break;
-
-//            Ya Register
-                case "REGISTER":
-                    message = value;
-
-                    messages = message.split(";-;");
-
-                    String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
-                    SendMessage(status + ";-;" + messages[0]);
                     break;
 
 //            Logic lain dibawah sini
