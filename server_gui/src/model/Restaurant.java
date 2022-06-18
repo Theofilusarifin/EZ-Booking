@@ -94,6 +94,13 @@ public class Restaurant extends MyConnection{
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Restaurant(int id, String name, int peoplePerTable) {
+        this.id = id;
+        this.name = name;
+        this.peoplePerTable = peoplePerTable;
+        getConnection();
+    }
+    
     public Restaurant(int id, String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
         this.id = id;
         this.name = name;
@@ -129,15 +136,9 @@ public class Restaurant extends MyConnection{
             
             while(this.result.next()) {
                 Restaurant restaurant = new Restaurant(
+                        this.result.getInt("id"),
                         this.result.getString("name"),
-                        this.result.getString("address"),
-                        this.result.getString("phoneNumber"),
-                        this.result.getTimestamp("openHour"),
-                        this.result.getTimestamp("closeHour"),
-                        this.result.getInt("tablesCount"),
-                        this.result.getInt("peoplePerTable"),
-                        this.result.getInt("user_id")
-                        
+                        this.result.getInt("peoplePerTable")      
                 );
                 collections.add(restaurant);
             }

@@ -5,9 +5,16 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//Import model
+import model.Bookings;
+import model.Menu;
+import model.Restaurant;
 import model.User;
+
 
 public class HandleSocket extends Thread {
 
@@ -44,6 +51,9 @@ public class HandleSocket extends Thread {
 
         switch (command) {
 //            Logic fitur reservation
+            case "GETDATARESTAURANT":
+                ArrayList<Object> restaurant = Res
+                break;
             case "RESERVATION":
                 System.out.println("Masuk");
                 break;
