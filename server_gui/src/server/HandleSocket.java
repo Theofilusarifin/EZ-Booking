@@ -82,13 +82,13 @@ public class HandleSocket extends Thread {
                     SendMessage(role);
                     break;
 
-//            Ya Register
+//            Ya RegisterCustomer
                 case "REGISTER":
                     message = value;
 
                     messages = message.split(";-;");
 
-                    String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
+                    String status = _user.RegisterCustomer(messages[0], messages[1], messages[2], messages[3]);
                     SendMessage(status + ";-;" + messages[0]);
                     break;
 

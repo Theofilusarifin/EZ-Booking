@@ -69,7 +69,7 @@ public class User extends MyConnection {
         this.role = role;
         getConnection();
     }
-        // </editor-fold>
+    // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
@@ -141,7 +141,7 @@ public class User extends MyConnection {
         return false;
     }
 
-    public String Register(String name, String username, String password, String role) {
+    public String RegisterCustomer(String name, String username, String password, String role) {
         String status = "";
         try {
             if (!connect.isClosed()) {
@@ -176,6 +176,41 @@ public class User extends MyConnection {
         }
         return status;
     }
-        // </editor-fold>
 
+    public String RegisterRestaurant(String name, String username, String password, String role, String address, String phoneNumber) {
+        String status = "";
+        try {
+            if (!connect.isClosed()) {
+                this.statement = (Statement) connect.createStatement();
+                PreparedStatement sqlCheck = (PreparedStatement) connect.prepareStatement("select * from users"
+                        + " where username = ?;");
+                sqlCheck.setString(1, username);
+                result = sqlCheck.executeQuery();
+
+                int count = 0;
+                while (this.result.next()) {
+                    count++;
+                    //System.out.println("count: " + count);
+                }
+
+                if (count == 0) {
+                    PreparedStatement sqlInsert = (PreparedStatement) connect.prepareStatement("insert into users(name, username, password, role) values(?,?,?,?)");
+                    sqlInsert.setString(1, name);
+                    sqlInsert.setString(2, username);
+                    sqlInsert.setString(3, password);
+                    sqlInsert.setString(4, role);
+
+                    sqlInsert.executeUpdate();
+                    sqlInsert.close();
+                    status = "RegSuccess";
+                } else {
+                    status = "RegFailed";
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error User Register, Error: " + e.getMessage());
+        }
+        return status;
+    }
+// </editor-fold>
 }

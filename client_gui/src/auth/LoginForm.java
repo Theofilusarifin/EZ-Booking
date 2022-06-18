@@ -29,7 +29,7 @@ public class LoginForm extends javax.swing.JFrame {
             System.out.println("Error LoginForm Constructor1, Error: " + e);
         }
     }
-    
+
     public LoginForm(Socket clientSocket) {
         initComponents();
         this.setBackground(new Color(0, 0, 0, 0));
@@ -176,8 +176,17 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
-        new RegisterForm(s).setVisible(true);
-        this.dispose();
+        String[] options = new String[2];
+        options[0] = "customer";
+        options[1] = "restaurant";
+        int response = JOptionPane.showOptionDialog(this, "Register as?", "Choose Role", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+        if (response == 0) {
+            new RegisterFormCustomer(s).setVisible(true);
+            this.dispose();
+        } else if (response == 1) {
+            new RegisterFormRestaurant(s).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_lblRegisterMouseClicked
 
     /**

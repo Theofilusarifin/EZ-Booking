@@ -9,13 +9,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class RegisterForm extends javax.swing.JFrame {
+public class RegisterFormCustomer extends javax.swing.JFrame {
 
     Socket s;
     BufferedReader msgFromServer;
     DataOutputStream msgToServer;
 
-    public RegisterForm(Socket clientSocket) {
+    public RegisterFormCustomer(Socket clientSocket) {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
@@ -24,7 +24,7 @@ public class RegisterForm extends javax.swing.JFrame {
             msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
             msgToServer = new DataOutputStream(s.getOutputStream());
         } catch (Exception ex) {
-            System.out.println("FormRegister Constructor, Error: " + ex.getMessage());
+            System.out.println("FormRegisterCustomer Constructor, Error: " + ex.getMessage());
         }
     }
 
@@ -170,7 +170,7 @@ public class RegisterForm extends javax.swing.JFrame {
         try {
             if (txtPassword.getText().equals(txtRePassword.getText())) {
                 // kirim Request Data (REGISTER <username> <password> <role>)
-                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;" + cmbRole.getSelectedItem().toString() + "\n");
+                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;customer" + "\n");
 
                 String result;
                 result = msgFromServer.readLine();
@@ -218,20 +218,20 @@ public class RegisterForm extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RegisterFormCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RegisterFormCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RegisterFormCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RegisterFormCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new RegisterForm().setVisible(true);
+//                new RegisterFormCustomer().setVisible(true);
 //            }
 //        });
 //    }
