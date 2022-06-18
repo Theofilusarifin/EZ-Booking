@@ -25,6 +25,10 @@ public class ReservationForm extends javax.swing.JFrame {
             s = new Socket("localhost", 6000);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
+            
+            out.writeBytes("DATARESTAURANT//" + "\n");
+            String response = in.readLine();
+            System.out.println(response);
         } catch (IOException ex) {
             Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex);
         }

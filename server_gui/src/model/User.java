@@ -1,19 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- *
- * @author henri
- */
 public class User extends MyConnection {
 
+    //<editor-fold defaultstate="collapsed" desc="Fields">
     protected Statement statement;
     protected ResultSet result;
 
@@ -21,8 +14,9 @@ public class User extends MyConnection {
     private String username;
     private String password;
     private String role;
+    // </editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Getter & Setter">
+    //<editor-fold defaultstate="collapsed" desc="Properties">
     public String getName() {
         return name;
     }
@@ -56,6 +50,7 @@ public class User extends MyConnection {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     public User() {
         getConnection();
     }
@@ -74,7 +69,9 @@ public class User extends MyConnection {
         this.role = role;
         getConnection();
     }
+        // </editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
         try {
             if (!connect.isClosed()) {
@@ -179,4 +176,6 @@ public class User extends MyConnection {
         }
         return status;
     }
+        // </editor-fold>
+
 }

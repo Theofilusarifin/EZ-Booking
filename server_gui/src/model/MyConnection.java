@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 
 public class MyConnection {
+    
     // <editor-fold defaultstate="collapsed" desc="Fields">
     Connection connect;
     Statement stat;
