@@ -33,7 +33,6 @@ public class ReservationForm extends javax.swing.JFrame {
             out.writeBytes("DATARESTAURANT//" + " " + "\n");
             String response = in.readLine();
             String[] responses = response.split(";");
-            System.out.println(responses);
             ids = new ArrayList<String>();
             names = new ArrayList<String>();
             tableCounts = new ArrayList<String>();
@@ -43,7 +42,6 @@ public class ReservationForm extends javax.swing.JFrame {
                 ids.add(responses[i].split("&")[0]);
 //                Tambahkan name ke arraylist
                 String _name = responses[i].split("&")[1];
-                System.out.println(_name);
                 names.add(_name);
 //                Tambahkan name ke combobox
                 cbRestaurant.addItem(_name);

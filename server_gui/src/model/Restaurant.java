@@ -3,6 +3,7 @@ package model;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -118,6 +119,18 @@ public class Restaurant extends MyConnection{
         this.user_id = user_id;
         getConnection();
     }
+    
+    public Restaurant(int id, String name, String address, String phoneNumber, Date openHour, Date closeHour, int tablesCount, int peoplePerTable) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.openHour = openHour;
+        this.closeHour = closeHour;
+        this.tablesCount = tablesCount;
+        this.peoplePerTable = peoplePerTable;
+        getConnection();
+    }
 
     public Restaurant(String name, String address, String phoneNumber, Date openHour, Date closeHour, int tablesCount, int peoplePerTable, int user_id) {
         this.name = name;
@@ -133,6 +146,32 @@ public class Restaurant extends MyConnection{
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Methods">
+    public Restaurant getSelectedRestaurant(int restaurant_id) { //Ambil data restaurant untuk combobox di form reservation
+        ArrayList<Object> collections = new ArrayList<Object>();
+        try {
+            this.stat = (Statement)connect.createStatement();
+            this.result = this.stat.executeQuery("SELECT * FROM restaurants where id = "+ restaurant_id +";");
+
+            while(this.result.next()) {
+                Restaurant restaurant = new Restaurant(
+                        this.result.getInt("id"),
+                        this.result.getString("name"),
+                        this.result.getString("address"),
+                        this.result.getString("phoneNumber"),
+                        new SimpleDateFormat("HH:mm:ss").parse(this.result.getString("openHour")),
+                        new SimpleDateFormat("HH:mm:ss").parse(this.result.getString("closeHour")),
+                        this.result.getInt("tablesCount"),
+                        this.result.getInt("peoplePerTable")      
+                );
+                collections.add(restaurant);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error di method getSelectedRestaurant : " + ex); 
+        }
+        Restaurant restaurant = (Restaurant)collections.get(0);
+        return restaurant;
+    }
+        
     public ArrayList<Object> getDataRestaurant() { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
         try {

@@ -49,6 +49,7 @@ public class HandleSocket extends Thread {
         try {
             String message;
             String[] messages = null;
+            String response;
 
             User _user = new User();
             ArrayList<Object> collection = new ArrayList<Object>();
@@ -96,7 +97,7 @@ public class HandleSocket extends Thread {
                     Restaurant rest = new Restaurant();
                     collection = rest.getDataRestaurant();
 //                String untuk response
-                    String temp = "";
+                    response = "";
 //                Looping untuk kirim data sebagai string
                     for (Object object : collection) {
 //                    Type casting object ke restaurant
@@ -106,29 +107,69 @@ public class HandleSocket extends Thread {
                         String name = restaurant.getName();
                         int peoplePerTable = restaurant.getPeoplePerTable();
 //                    Tambahkan data
-                        temp = temp
+                        response = response
                                 + String.valueOf(id) + "&"
                                 + name + "&"
                                 + String.valueOf(peoplePerTable) + ";";
                     }
 //                Kirim seluruh data ke client
-                    SendMessage(temp);
+                    SendMessage(response);
                     break;
 
                 case "RESERVATION":
                     String requests[] = value.split(";");
-
+//                    String untuk response
+                    response = "";
 //                    Inisiasi tiap data yang didapat untuk dimasukkan ke constructor
                     Date startHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[0]);
                     Date endHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[1]);
                     int tablesCount = Integer.valueOf(requests[2]);
                     int user_id = Integer.valueOf(requests[3]);
                     int restaurant_id = Integer.valueOf(requests[4]);
-
-//                    Inisiasi constructor
+                    
+//                    Inisiasi restaurant yang dipilih
+                    Restaurant res = new Restaurant();
+                    Restaurant selected_restaurant = res.getSelectedRestaurant(restaurant_id);
+                    
+//                    Inisiasi booking
                     Bookings booking = new Bookings(startHour, endHour, tablesCount, user_id, restaurant_id);
+
+//                    VALIDASI BOOKING
+//                    Ambil time (jam, menit, second) saja pada startHour dan EndHour
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                    String strStartTime = requests[0].split(" ")[1];
+                    String strEndTime = requests[1].split(" ")[1];
+
+                    Date startTime = sdf.parse(strStartTime);
+                    Date endTime = sdf.parse(strEndTime);
+
+//                    Apabila restaurant belum buka atau sudah tutup
+                    if (startTime.before(selected_restaurant.getOpenHour()) || endTime.after(selected_restaurant.getCloseHour())){
+                        response = "False;False;Reservasi gagal dilakukan. Restaurant tidak buka pada waktu yang diinginkan.";
+                        SendMessage(response);
+                        break;
+                    }
+                    
+//                    Apabila jadwal tidak tersedia karena sudah di booking orang lain
+                    boolean bookingIsAvailable = booking.checkSchedule();
+                    if (!bookingIsAvailable){
+                        response = "False;False;Reservasi gagal dilakukan. Jadwal pada pemesanan yang diinginkan sudah dipesan.";
+                        SendMessage(response);
+                        break;
+                    }
 //                    Panggil method insert untuk memasukkan data booking baru ke database
-                    booking.insert();
+                    booking.insert();  
+//                    Check apakah restaurant menyediakan pre order?
+                    boolean preOrderIsAvailable = booking.checkPreOrder();
+//                    Jika ya, kirimkan True dua kali yang menandakan reservasi berhasil dan pre order dapat dilakukan
+                    if (preOrderIsAvailable){
+                        response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
+                    }
+//                    Jika tidak, kirimkan True satu kali dan false satu kali yang menandakan reservasi berhasil dan pre order tidak dapat dilakukan
+                    else{
+                        response = "True;False;Reservasi berhasil dilakukan.";
+                    }
+                    SendMessage(response);
                     break;
 
 //            Logic lain dibawah sini
