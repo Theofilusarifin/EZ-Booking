@@ -151,24 +151,25 @@ public class HandleSocket extends Thread {
                     }
                     
 //                    Apabila jadwal tidak tersedia karena sudah di booking orang lain
-                    boolean bookingIsAvailable = booking.checkSchedule();
-                    if (!bookingIsAvailable){
-                        response = "False;False;Reservasi gagal dilakukan. Jadwal pada pemesanan yang diinginkan sudah dipesan.";
+                    boolean tableCountIsAvailable = booking.checkTableAvailability();
+                    if (!tableCountIsAvailable){
+                        response = "False;False;Reservasi gagal dilakukan. Banyak meja yang diinginkan tidak tersedia.";
                         SendMessage(response);
                         break;
                     }
+                    
 //                    Panggil method insert untuk memasukkan data booking baru ke database
                     booking.insert();  
 //                    Check apakah restaurant menyediakan pre order?
                     boolean preOrderIsAvailable = booking.checkPreOrder();
 //                    Jika ya, kirimkan True dua kali yang menandakan reservasi berhasil dan pre order dapat dilakukan
-                    if (preOrderIsAvailable){
+                    if (!preOrderIsAvailable){
                         response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
+                        SendMessage(response);
+                        break;
                     }
 //                    Jika tidak, kirimkan True satu kali dan false satu kali yang menandakan reservasi berhasil dan pre order tidak dapat dilakukan
-                    else{
-                        response = "True;False;Reservasi berhasil dilakukan.";
-                    }
+                    response = "True;False;Reservasi berhasil dilakukan.";
                     SendMessage(response);
                     break;
 
