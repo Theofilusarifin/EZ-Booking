@@ -78,6 +78,10 @@ public class Bookings extends MyConnection {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Bookings() {
+        getConnection();
+    }
+    
     public Bookings(Date startHour, Date endHour, int tablesCount, int user_id, int restaurant_id) {
         this.startHour = startHour;
         this.endHour = endHour;
@@ -211,6 +215,21 @@ public class Bookings extends MyConnection {
             return true;
         }
         return false;
+    }
+    
+    public int getLastIndex(){
+        int last_id = 1;
+        try {
+            this.stat = (Statement) connect.createStatement();
+
+            this.result = this.stat.executeQuery("SELECT id FROM bookings ORDER BY id DESC LIMIT 1;");
+            if (result.next()) {
+                last_id = this.result.getInt("id");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error di booking checkPreOrder : " + ex);
+        }
+        return last_id;
     }
     // </editor-fold>
 

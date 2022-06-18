@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 //Import model
 import model.Bookings;
 import model.Menu;
+import model.Preorder;
 import model.Restaurant;
 import model.User;
 
@@ -95,7 +96,7 @@ public class HandleSocket extends Thread {
                 case "DATARESTAURANT":
 //                Inisiasi class restaurant untuk dapat array data restaurant
                     Restaurant rest = new Restaurant();
-                    collection = rest.getDataRestaurant();
+                    collection = rest.getData();
 //                String untuk response
                     response = "";
 //                Looping untuk kirim data sebagai string
@@ -117,15 +118,15 @@ public class HandleSocket extends Thread {
                     break;
 
                 case "RESERVATION":
-                    String requests[] = value.split(";");
+                    messages = value.split(";");
 //                    String untuk response
                     response = "";
 //                    Inisiasi tiap data yang didapat untuk dimasukkan ke constructor
-                    Date startHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[0]);
-                    Date endHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(requests[1]);
-                    int tablesCount = Integer.valueOf(requests[2]);
-                    int user_id = Integer.valueOf(requests[3]);
-                    int restaurant_id = Integer.valueOf(requests[4]);
+                    Date startHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[0]);
+                    Date endHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[1]);
+                    int tablesCount = Integer.valueOf(messages[2]);
+                    int user_id = Integer.valueOf(messages[3]);
+                    int restaurant_id = Integer.valueOf(messages[4]);
 
 //                    Inisiasi restaurant yang dipilih
                     Restaurant res = new Restaurant();
@@ -137,8 +138,8 @@ public class HandleSocket extends Thread {
 //                    VALIDASI BOOKING
 //                    Ambil time (jam, menit, second) saja pada startHour dan EndHour
                     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-                    String strStartTime = requests[0].split(" ")[1];
-                    String strEndTime = requests[1].split(" ")[1];
+                    String strStartTime = messages[0].split(" ")[1];
+                    String strEndTime = messages[1].split(" ")[1];
 
                     Date startTime = sdf.parse(strStartTime);
                     Date endTime = sdf.parse(strEndTime);
@@ -172,7 +173,52 @@ public class HandleSocket extends Thread {
                     response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
                     SendMessage(response);
                     break;
-
+                case "GETBOOKINGINDEX":
+                    Bookings b = new Bookings();
+//                    Ambil booking terakhir
+                    int last_id = b.getLastIndex();
+//                    Kirim id dari booking yang sekarang untuk melakukan pre order
+                    SendMessage(String.valueOf(last_id));
+                    break;
+//                Logic PreOrder
+                case "DATAMENU":
+//                Inisiasi class menu untuk dapat array data untuk
+                    Menu menu = new Menu();
+                    collection = menu.getData(Integer.parseInt(value));
+//                String untuk response
+                    response = "";
+//                Looping untuk kirim data sebagai string
+                    for (Object object : collection) {
+//                    Type casting object ke menu
+                        Menu _menu = (Menu) object;
+//                    Inisiasi data yang dikirim
+                        int id = _menu.getId();
+                        String name = _menu.getName();
+                        double price = _menu.getPrice();
+//                    Tambahkan data
+                        response = response
+                                + String.valueOf(id) + "&"
+                                + name + "&"
+                                + String.valueOf(price) + ";";
+                    }
+//                Kirim seluruh data ke client
+                    SendMessage(response);
+                    break;
+                case "PREORDER":
+                    messages = value.split(";");
+//                    String untuk response
+                    response = "";
+//                    Inisiasi tiap data yang didapat untuk dimasukkan ke constructor
+                    int booking_id = Integer.valueOf(messages[0]);
+                    int menu_id = Integer.valueOf(messages[1]);
+                    int amount = Integer.valueOf(messages[2]);
+                    double subtotal = Double.valueOf(messages[3]);
+                    
+                    Preorder po = new Preorder(booking_id, menu_id, amount, subtotal);
+                    po.insert();
+                    
+                    SendMessage("True;Preorder berhasil dilakukan. Apakah anda ingin melakukan Preorder lagi?");
+                    break;
 //            Logic lain dibawah sini
             }
         } catch (ParseException ex) {

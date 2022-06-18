@@ -172,7 +172,7 @@ public class Restaurant extends MyConnection{
         return restaurant;
     }
         
-    public ArrayList<Object> getDataRestaurant() { //Ambil data restaurant untuk combobox di form reservation
+    public ArrayList<Object> getData() { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
             this.stat = (Statement)connect.createStatement();

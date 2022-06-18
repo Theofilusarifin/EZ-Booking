@@ -3,6 +3,7 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -84,6 +85,28 @@ public class Menu extends MyConnection {
         } catch (SQLException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public ArrayList<Object> getData(int restaurant_id) { //Ambil data menu untuk combobox di form pre order
+        ArrayList<Object> collections = new ArrayList<Object>();
+        try {
+            this.stat = (Statement)connect.createStatement();
+            this.result = this.stat.executeQuery("SELECT * FROM menus where restaurant_id = "+restaurant_id+";");
+            
+            while(this.result.next()) {
+                Menu menu = new Menu(
+                        this.result.getInt("id"),
+                        this.result.getString("name"),
+                        this.result.getInt("price"),
+                        this.result.getInt("restaurant_id")
+
+                );
+                collections.add(menu);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error di method getDataMenu : " + ex); 
+        }
+        return collections;
     }
     // </editor-fold>
 

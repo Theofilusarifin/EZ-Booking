@@ -26,6 +26,7 @@ public class ReservationForm extends javax.swing.JFrame {
     public ReservationForm() {
         try {
             initComponents();
+            this.setLocationRelativeTo(null);
             s = new Socket("localhost", 6000);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
@@ -286,9 +287,14 @@ public class ReservationForm extends javax.swing.JFrame {
                     int dialogResult = JOptionPane.showConfirmDialog(this, pesan, "Reservation Successful", dialogButton);
 //                    Apabila user memilih yes (ingin melakukan pre order)
                     if (dialogResult == 0) {
+//                      Kirim ke server
+                        out.writeBytes("GETBOOKINGINDEX//" + " " + "\n");
+                        response = in.readLine();
+//                      Hasil dari server
+                        int booking_id = Integer.parseInt(response);
                         this.setVisible(false);
-                        new PreOrderForm(s).setVisible(true); // Tampilkan Pre Order
-                    } 
+                        new PreOrderForm(s, restaurant_id, booking_id).setVisible(true); // Tampilkan Pre Order
+                    }
 
                 } else if (preorder_availability.equals("False")) {
                     JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
