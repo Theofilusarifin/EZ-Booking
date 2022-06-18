@@ -148,42 +148,6 @@ public class Bookings extends MyConnection {
         return collections;
     }
 
-    public boolean checkSchedule() {
-        ArrayList<Object> collections = new ArrayList<Object>();
-        try {
-            this.stat = (Statement) connect.createStatement();
-
-//          Konversi datetime ke string dengan format yang benar
-            SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String startDate = strFormatter.format(this.getStartHour());
-            String endDate = strFormatter.format(this.getEndHour());
-
-            this.result = this.stat.executeQuery("SELECT * FROM bookings "
-                    + "WHERE (('" + startDate + "' BETWEEN startHour AND endHour) "
-                    + "OR ('" + endDate + "' BETWEEN startHour AND endHour)) "
-                    + "AND restaurant_id = " + this.getRestaurant_id() + ";");
-
-            while (this.result.next()) {
-                Bookings book = new Bookings(
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.result.getString("startHour")),
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.result.getString("endHour")),
-                        this.result.getInt("tablesCount"),
-                        this.result.getInt("user_id"),
-                        this.result.getInt("restaurant_id")
-                );
-                collections.add(book);
-            }
-        } catch (Exception ex) {
-            System.out.println("Error di booking checkShedule : " + ex);
-        }
-
-//        Apabila tidak ada jadwal booking pada waktu booking yang di pesan, maka return true
-        if (collections.isEmpty()) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean checkTableAvailability() {
         ArrayList<Object> collections = new ArrayList<Object>();
         int table_reserved = 0;
@@ -205,17 +169,7 @@ public class Bookings extends MyConnection {
                     + "where b.startHour >= '" + startDate + "' "
                     + "and b.endHour <= '" + endDate + "' and "
                     + "r.id = " + this.getRestaurant_id() + ";");
-            
-            System.out.println("select "
-                    + "sum(b.tablesCount) as table_reserved, "
-                    + "r.tablesCount as max_table "
-                    + "from bookings b INNER JOIN "
-                    + "restaurants r on "
-                    + "b.restaurant_id = r.id "
-                    + "where b.startHour >= '" + startDate + "' "
-                    + "and b.endHour <= '" + endDate + "' and "
-                    + "r.id = " + this.getRestaurant_id() + ";");
-            
+
             if (result.next()) {
                 table_reserved = this.result.getInt("table_reserved");
                 max_table = this.result.getInt("max_table");

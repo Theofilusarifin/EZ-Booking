@@ -29,14 +29,14 @@ public class ReservationForm extends javax.swing.JFrame {
             s = new Socket("localhost", 6000);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
-            
+
             out.writeBytes("DATARESTAURANT//" + " " + "\n");
             String response = in.readLine();
             String[] responses = response.split(";");
             ids = new ArrayList<String>();
             names = new ArrayList<String>();
             tableCounts = new ArrayList<String>();
-            
+
             for (int i = 0; i < responses.length; i++) {
 //                Tambahkan id ke arraylist
                 ids.add(responses[i].split("&")[0]);
@@ -52,7 +52,7 @@ public class ReservationForm extends javax.swing.JFrame {
             Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -201,13 +201,13 @@ public class ReservationForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please choose a date", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
-            if (!txtMinute.getText().matches("-?\\d+(\\.\\d+)?")){
+
+            if (!txtMinute.getText().matches("-?\\d+(\\.\\d+)?")) {
                 JOptionPane.showMessageDialog(this, "Please fill in the time section with numbers", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 //        Pastikan waktu tidak kosong dan waktu dalam range yang benar
-            if (txtHour.getText() == null || txtMinute.getText() == null || Integer.parseInt(txtHour.getText()) > 23 || Integer.parseInt(txtMinute.getText()) > 59 ) {
+            if (txtHour.getText() == null || txtMinute.getText() == null || Integer.parseInt(txtHour.getText()) > 23 || Integer.parseInt(txtMinute.getText()) > 59) {
                 JOptionPane.showMessageDialog(this, "Please fill in the time section correctly", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -239,45 +239,58 @@ public class ReservationForm extends javax.swing.JFrame {
             Date startDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startHour);
 //        Caculation for endHour
             long timeInSecs = startDate.getTime();
-            
+
 //        Specify the added minutes
             int addedMinutes = 0;
-            if (cbDuration.getSelectedItem().toString().equals("30 minutes")) addedMinutes = 30;
-            else if (cbDuration.getSelectedItem().toString().equals("1 hour")) addedMinutes = 60;
-            else if (cbDuration.getSelectedItem().toString().equals("1 hour 30 minutes")) addedMinutes = 90;
-            else if (cbDuration.getSelectedItem().toString().equals("2 hour")) addedMinutes = 120;
-            else if (cbDuration.getSelectedItem().toString().equals("2 hour 30 minutes")) addedMinutes = 150;
-            else if (cbDuration.getSelectedItem().toString().equals("3 hour")) addedMinutes = 180;
-            else if (cbDuration.getSelectedItem().toString().equals("4 hour")) addedMinutes = 240;
+            if (cbDuration.getSelectedItem().toString().equals("30 minutes")) {
+                addedMinutes = 30;
+            } else if (cbDuration.getSelectedItem().toString().equals("1 hour")) {
+                addedMinutes = 60;
+            } else if (cbDuration.getSelectedItem().toString().equals("1 hour 30 minutes")) {
+                addedMinutes = 90;
+            } else if (cbDuration.getSelectedItem().toString().equals("2 hour")) {
+                addedMinutes = 120;
+            } else if (cbDuration.getSelectedItem().toString().equals("2 hour 30 minutes")) {
+                addedMinutes = 150;
+            } else if (cbDuration.getSelectedItem().toString().equals("3 hour")) {
+                addedMinutes = 180;
+            } else if (cbDuration.getSelectedItem().toString().equals("4 hour")) {
+                addedMinutes = 240;
+            }
 
             Date endDate = new Date(timeInSecs + (addedMinutes * 60 * 1000));
             SimpleDateFormat endFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String endHour = endFormatter.format(endDate);
-            
+
 //         Table Count
             int tableCount = Integer.parseInt(cbTable.getSelectedItem().toString());
 //            Kirim ke server
-            out.writeBytes("RESERVATION//" + 
-                    startHour + ";" + 
-                    endHour + ";" + 
-                    String.valueOf(tableCount) + ";" + 
-                    String.valueOf(user_id) + ";" +  
-                    String.valueOf(restaurant_id) + ";" +  
-                    "\n");
-            
+            out.writeBytes("RESERVATION//"
+                    + startHour + ";"
+                    + endHour + ";"
+                    + String.valueOf(tableCount) + ";"
+                    + String.valueOf(user_id) + ";"
+                    + String.valueOf(restaurant_id) + ";"
+                    + "\n");
+
 //            Hasil dari server
             String response = in.readLine();
             String[] msg = response.split(";");
             String hasil = msg[0];
             String preorder_availability = msg[1];
             String pesan = msg[2];
-            
+
             if (hasil.equals("True")) {
-                if (preorder_availability.equals("True")){
-                    JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
-                    
-                }
-                else if (preorder_availability.equals("False")){
+                if (preorder_availability.equals("True")) {
+                    int dialogButton = JOptionPane.YES_NO_OPTION;
+                    int dialogResult = JOptionPane.showConfirmDialog(this, pesan, "Reservation Successful", dialogButton);
+//                    Apabila user memilih yes (ingin melakukan pre order)
+                    if (dialogResult == 0) {
+                        this.setVisible(false);
+                        new PreOrderForm(s).setVisible(true); // Tampilkan Pre Order
+                    } 
+
+                } else if (preorder_availability.equals("False")) {
                     JOptionPane.showMessageDialog(this, pesan, "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else if (hasil.equals("False")) {
@@ -285,7 +298,7 @@ public class ReservationForm extends javax.swing.JFrame {
             }
 
         } catch (ParseException ex) {
-            Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex); 
+            Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ReservationForm.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -126,11 +126,11 @@ public class HandleSocket extends Thread {
                     int tablesCount = Integer.valueOf(requests[2]);
                     int user_id = Integer.valueOf(requests[3]);
                     int restaurant_id = Integer.valueOf(requests[4]);
-                    
+
 //                    Inisiasi restaurant yang dipilih
                     Restaurant res = new Restaurant();
                     Restaurant selected_restaurant = res.getSelectedRestaurant(restaurant_id);
-                    
+
 //                    Inisiasi booking
                     Bookings booking = new Bookings(startHour, endHour, tablesCount, user_id, restaurant_id);
 
@@ -144,32 +144,32 @@ public class HandleSocket extends Thread {
                     Date endTime = sdf.parse(strEndTime);
 
 //                    Apabila restaurant belum buka atau sudah tutup
-                    if (startTime.before(selected_restaurant.getOpenHour()) || endTime.after(selected_restaurant.getCloseHour())){
+                    if (startTime.before(selected_restaurant.getOpenHour()) || endTime.after(selected_restaurant.getCloseHour())) {
                         response = "False;False;Reservasi gagal dilakukan. Restaurant tidak buka pada waktu yang diinginkan.";
                         SendMessage(response);
                         break;
                     }
-                    
+
 //                    Apabila jadwal tidak tersedia karena sudah di booking orang lain
                     boolean tableCountIsAvailable = booking.checkTableAvailability();
-                    if (!tableCountIsAvailable){
+                    if (!tableCountIsAvailable) {
                         response = "False;False;Reservasi gagal dilakukan. Banyak meja yang diinginkan tidak tersedia.";
                         SendMessage(response);
                         break;
                     }
-                    
+
 //                    Panggil method insert untuk memasukkan data booking baru ke database
-                    booking.insert();  
+                    booking.insert();
 //                    Check apakah restaurant menyediakan pre order?
                     boolean preOrderIsAvailable = booking.checkPreOrder();
-//                    Jika ya, kirimkan True dua kali yang menandakan reservasi berhasil dan pre order dapat dilakukan
-                    if (!preOrderIsAvailable){
-                        response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
+//                    Jika tidak, kirimkan True satu kali dan false satu kali yang menandakan reservasi berhasil dan pre order tidak dapat dilakukan
+                    if (!preOrderIsAvailable) {
+                        response = "True;False;Reservasi berhasil dilakukan.";
                         SendMessage(response);
                         break;
                     }
-//                    Jika tidak, kirimkan True satu kali dan false satu kali yang menandakan reservasi berhasil dan pre order tidak dapat dilakukan
-                    response = "True;False;Reservasi berhasil dilakukan.";
+//                    Jika ya, kirimkan True dua kali yang menandakan reservasi berhasil dan pre order dapat dilakukan
+                    response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
                     SendMessage(response);
                     break;
 
