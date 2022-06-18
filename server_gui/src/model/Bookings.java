@@ -17,15 +17,6 @@ public class Bookings extends MyConnection{
     private String customerName;
     // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="Constructors">
-    public Bookings (String _user, Timestamp _start, Timestamp _end, int _tables) {
-        this.customerName = _user;
-        this.startHour = _start;
-        this.endHour = _end;
-        this.tablesCount = _tables;
-    }
-    // </editor-fold>
-
     // <editor-fold defaultstate="collapsed" desc="Properties">
     public int getId() {
         return id;
@@ -81,6 +72,15 @@ public class Bookings extends MyConnection{
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Bookings (String _user, Timestamp _start, Timestamp _end, int _tables) {
+        this.customerName = _user;
+        this.startHour = _start;
+        this.endHour = _end;
+        this.tablesCount = _tables;
     }
     // </editor-fold>
 

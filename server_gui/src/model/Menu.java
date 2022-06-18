@@ -15,27 +15,6 @@ public class Menu extends MyConnection {
     private int restaurant_id;
     // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="Constructors">
-    public Menu(int id, String name, double price, int restaurant_id) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.restaurant_id = restaurant_id;
-        getConnection();
-    }
-
-    public Menu(String name, double price, int restaurant_id) {
-        this.name = name;
-        this.price = price;
-        this.restaurant_id = restaurant_id;
-        getConnection();
-    }
-
-    public Menu() {
-        getConnection();
-    }
-    // </editor-fold>
-
     // <editor-fold defaultstate="collapsed" desc="Properties">
     public int getId() {
         return id;
@@ -67,6 +46,27 @@ public class Menu extends MyConnection {
 
     public void setRestaurant_id(int restaurant_id) {
         this.restaurant_id = restaurant_id;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Menu(int id, String name, double price, int restaurant_id) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.restaurant_id = restaurant_id;
+        getConnection();
+    }
+
+    public Menu(String name, double price, int restaurant_id) {
+        this.name = name;
+        this.price = price;
+        this.restaurant_id = restaurant_id;
+        getConnection();
+    }
+
+    public Menu() {
+        getConnection();
     }
     // </editor-fold>
 

@@ -19,33 +19,6 @@ public class Restaurant extends MyConnection{
     private int user_id;    
     // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="Constructors">
-    public Restaurant(int id, String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.openHour = openHour;
-        this.closeHour = closeHour;
-        this.tablesCount = tablesCount;
-        this.peoplePerTable = peoplePerTable;
-        this.user_id = user_id;
-        getConnection();
-    }
-
-    public Restaurant(String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.openHour = openHour;
-        this.closeHour = closeHour;
-        this.tablesCount = tablesCount;
-        this.peoplePerTable = peoplePerTable;
-        this.user_id = user_id;
-        getConnection();
-    }
-    // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="Properties">
     public int getId() {
         return id;
@@ -119,7 +92,34 @@ public class Restaurant extends MyConnection{
         this.user_id = user_id;
     }
     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
+    public Restaurant(int id, String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.openHour = openHour;
+        this.closeHour = closeHour;
+        this.tablesCount = tablesCount;
+        this.peoplePerTable = peoplePerTable;
+        this.user_id = user_id;
+        getConnection();
+    }
 
+    public Restaurant(String name, String address, String phoneNumber, Timestamp openHour, Timestamp closeHour, int tablesCount, int peoplePerTable, int user_id) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.openHour = openHour;
+        this.closeHour = closeHour;
+        this.tablesCount = tablesCount;
+        this.peoplePerTable = peoplePerTable;
+        this.user_id = user_id;
+        getConnection();
+    }
+    // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="Methods">
     public ArrayList<Object> getDataRestaurant() { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
