@@ -52,7 +52,7 @@ public class HandleSocket extends Thread {
         switch (command) {
 //            Logic fitur reservation
             case "GETDATARESTAURANT":
-                ArrayList<Object> restaurant = Res
+//                ArrayList<Object> restaurant = Res
                 break;
             case "RESERVATION":
                 System.out.println("Masuk");
