@@ -14,8 +14,8 @@ public class ChatForm extends javax.swing.JFrame {
         txtAreaChat = new javax.swing.JTextArea();
         btnSend = new javax.swing.JButton();
         txtMessage = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        btnSend1 = new javax.swing.JButton();
+        lblName = new javax.swing.JLabel();
+        btnCall = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,12 +30,12 @@ public class ChatForm extends javax.swing.JFrame {
 
         txtMessage.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setText("People Name");
+        lblName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblName.setText("People Name");
 
-        btnSend1.setBackground(new java.awt.Color(255, 255, 204));
-        btnSend1.setForeground(new java.awt.Color(51, 51, 51));
-        btnSend1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/call.png"))); // NOI18N
+        btnCall.setBackground(new java.awt.Color(255, 255, 204));
+        btnCall.setForeground(new java.awt.Color(51, 51, 51));
+        btnCall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/call.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -45,9 +45,9 @@ public class ChatForm extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSend1))
+                        .addComponent(btnCall))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtMessage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -60,15 +60,15 @@ public class ChatForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSend1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -107,10 +107,10 @@ public class ChatForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCall;
     private javax.swing.JButton btnSend;
-    private javax.swing.JButton btnSend1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblName;
     private javax.swing.JTextArea txtAreaChat;
     private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
