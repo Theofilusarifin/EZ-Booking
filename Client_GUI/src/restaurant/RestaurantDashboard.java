@@ -1,14 +1,18 @@
 package restaurant;
 
+//import restaurant.DisplayBookings;
+
 public class RestaurantDashboard extends javax.swing.JFrame {
 
+    String kode = "";
     public RestaurantDashboard() {
         initComponents();
     }
     
-    public RestaurantDashboard(String owner) {
+    public RestaurantDashboard(String owner, String id) {
         initComponents();
         lblOwner.setText(owner);
+        kode = id;
     }
     
     @SuppressWarnings("unchecked")
@@ -17,9 +21,11 @@ public class RestaurantDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblAbout = new javax.swing.JLabel();
-        lblMenu = new javax.swing.JLabel();
+        lblBooking = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        lblMenu1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         lblAddress = new javax.swing.JLabel();
         lblOwner = new javax.swing.JLabel();
         lblRestaurantName1 = new javax.swing.JLabel();
@@ -34,10 +40,15 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         lblAbout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAbout.setText("About");
 
-        lblMenu.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
-        lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMenu.setText("Menu");
+        lblBooking.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblBooking.setForeground(new java.awt.Color(255, 255, 255));
+        lblBooking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBooking.setText("Booking(s) Data");
+        lblBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBookingMouseClicked(evt);
+            }
+        });
 
         lblDashboard.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
@@ -49,6 +60,18 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ezbooking");
 
+        lblMenu1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        lblMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenu1.setText("Menu");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -56,9 +79,13 @@ public class RestaurantDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(lblAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(lblBooking, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -69,15 +96,22 @@ public class RestaurantDashboard extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(218, 218, 218)
                 .addComponent(lblAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(211, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(126, 126, 126)
@@ -88,6 +122,11 @@ public class RestaurantDashboard extends javax.swing.JFrame {
                     .addGap(33, 33, 33)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(483, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(181, 181, 181)
+                    .addComponent(lblMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(335, Short.MAX_VALUE)))
         );
 
         lblAddress.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -147,6 +186,15 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookingMouseClicked
+        new DisplayBookings().setVisible(true);
+    }//GEN-LAST:event_lblBookingMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new DisplayBookings().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -181,12 +229,14 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAbout;
     private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblBooking;
     private javax.swing.JLabel lblDashboard;
-    private javax.swing.JLabel lblMenu;
+    private javax.swing.JLabel lblMenu1;
     private javax.swing.JLabel lblOwner;
     private javax.swing.JLabel lblRestaurantName1;
     private javax.swing.JLabel lblTelp;

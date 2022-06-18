@@ -219,6 +219,34 @@ public class HandleSocket extends Thread {
                     
                     SendMessage("True;Preorder berhasil dilakukan. Apakah anda ingin melakukan Preorder lagi?");
                     break;
+                //  Logic Display Bookings
+                case "DISPLAYBOOKINGS":
+//                Inisiasi class booking untuk dapat array data untuk
+                    Bookings book = new Bookings();
+                    message = value;
+                    collection = book.display("6");
+//                String untuk response
+                    response = "";
+//                Looping untuk kirim data sebagai string
+                    for (Object object : collection) {
+//                    Type casting object ke bookings
+                        Bookings books = (Bookings) object;
+//                    Inisiasi data yang dikirim
+                        String nama = books.getCustomerName();
+                        Date start = books.getStartHour();
+                        Date end = books.getEndHour();
+                        int table = books.getTablesCount();
+//                    Tambahkan data
+                        response = response
+                                + nama + "&"
+                                + String.valueOf(start) + "&"
+                                + String.valueOf(end) + "&"
+                                + String.valueOf(table) + ";";
+                    }
+                    System.out.println("testing");
+//                Kirim seluruh data ke client
+                    SendMessage(response);
+                    break;
 //            Logic lain dibawah sini
             }
         } catch (ParseException ex) {

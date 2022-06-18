@@ -6,7 +6,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CustomerDashboard(String customerName) {
+    public CustomerDashboard(String customerName, String id) {
         initComponents();
         lblCustName.setText(customerName);
     }

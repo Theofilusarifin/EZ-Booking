@@ -64,12 +64,8 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
-
-        txtPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         getContentPane().add(txtPassword);
         txtPassword.setBounds(80, 270, 310, 30);
-
-        txtUsername.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         getContentPane().add(txtUsername);
         txtUsername.setBounds(80, 180, 310, 30);
 
@@ -100,7 +96,6 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(lblUsername);
         lblUsername.setBounds(80, 150, 90, 20);
 
-        lblRegister.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblRegister.setText("Register Here");
         lblRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -155,17 +150,18 @@ public class LoginForm extends javax.swing.JFrame {
 
                 String[] words = null;
                 words = answer.split(";-;");
+                System.out.println(words);
 
                 String word = "";
                 word = words[0];
 
                 // kalau role customer
                 if (word.equals("customer")) {
-                    new CustomerDashboard(words[1]).setVisible(true);
+                    new CustomerDashboard(words[1], words[2]).setVisible(true);
                     this.dispose();
                 } // kalau role restaurant
                 else if (word.equals("restaurant")) {
-                    new RestaurantDashboard(words[1]).setVisible(true);
+                    new RestaurantDashboard(words[1], "6").setVisible(true);
                     this.dispose();
                 }
             } // kalau tidak ada username yang sama

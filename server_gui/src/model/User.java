@@ -117,7 +117,7 @@ public class User extends MyConnection {
             sql.setString(2, password);
             result = sql.executeQuery();
             if (this.result.next()) {
-                role = result.getString("role") + ";-;" + result.getString("name");
+                role = result.getString("role") + ";-;" + result.getString("name") + ";-;" + result.getInt("id");
             }
         } catch (Exception e) {
             System.out.println("Error User CheckLogin, Error: " + e.getMessage());
