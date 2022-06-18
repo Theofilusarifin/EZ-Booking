@@ -80,10 +80,14 @@ public class RegisterForm extends javax.swing.JFrame {
         });
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "customer", "restaurant" }));
+        cmbRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRoleActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Role :");
 
-        lblBackToLogin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblBackToLogin.setText("Back To Login");
         lblBackToLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -195,6 +199,10 @@ public class RegisterForm extends javax.swing.JFrame {
         new LoginForm(s).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
+
+    private void cmbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRoleActionPerformed
 
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
