@@ -136,7 +136,7 @@ public class Bookings extends MyConnection {
             this.stat = (Statement) connect.createStatement();
             this.result = this.stat.executeQuery("SELECT u.name, b.startHour, b.endHour, b.tablesCount "
                     + "FROM bookings b inner join users u on b.user_id = u.id "
-                    + "WHERE restaurant_id='" + 2 + "';");
+                    + "WHERE restaurant_id='" + Integer.parseInt(kode) + "';");
 
             while (this.result.next()) {
                 Bookings book = new Bookings(

@@ -224,7 +224,7 @@ public class HandleSocket extends Thread {
 //                Inisiasi class booking untuk dapat array data untuk
                     Bookings book = new Bookings();
                     message = value;
-                    collection = book.display("6");
+                    collection = book.display(message);
 //                String untuk response
                     response = "";
 //                Looping untuk kirim data sebagai string

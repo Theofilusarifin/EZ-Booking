@@ -161,7 +161,7 @@ public class LoginForm extends javax.swing.JFrame {
                     this.dispose();
                 } // kalau role restaurant
                 else if (word.equals("restaurant")) {
-                    new RestaurantDashboard(words[1], "6").setVisible(true);
+                    new RestaurantDashboard(words[1], words[2]).setVisible(true);
                     this.dispose();
                 }
             } // kalau tidak ada username yang sama

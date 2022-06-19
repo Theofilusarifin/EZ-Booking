@@ -83,50 +83,39 @@ public class DisplayBookings extends javax.swing.JFrame {
     }
     public DisplayBookings(String kode) {
         initComponents();
-//        try {
-//            
-//            this.setLocationRelativeTo(null);
-//            s = new Socket("localhost", 6000);
-//            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-//            out = new DataOutputStream(s.getOutputStream());
-//            
-//            out.writeBytes("DATABOOKINGS//" + kode + " " + "\n");
-//            String response = in.readLine();
-//            String[] responses = response.split(";");
-//            nama = new ArrayList<String>();            
-//            start = new ArrayList<String>();
-//            end = new ArrayList<String>();
-//            table = new ArrayList<String>();
-//            
-////            for (int i = 0; i < responses.length; i++) {
-//////                Tambahkan nama customer ke arraylist
-////                String _nama = responses[i].split("&")[0];
-////                nama.add(_nama);
-//////                Tambahkan start hour ke arraylist
-////                start.add(responses[i].split("&")[1]);
-//////                Tambahkan end hour ke arraylist
-////                end.add(responses[i].split("&")[2]);
-//////                Tambahkan table counts ke arraylist
-////                table.add(responses[i].split("&")[3]);
-////            }
-//            
-//            DefaultTableModel dpt = (DefaultTableModel) tableData.getModel();
-//            dpt.setRowCount(0);
-//            Object[] rowData = new Object[4];
-//            for (int i = 0; i < responses.length; i++) {
-//                String _nama = responses[i].split("&")[0];
-//                rowData[0] = _nama;
-//                rowData[1] = responses[i].split("&")[1];
-//                rowData[2] = responses[i].split("&")[2];
-//                rowData[3] = responses[i].split("&")[3];
-//                dpt.addRow(rowData);
-//            }
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(DisplayBookings.class.getName()).log(Level.SEVERE, null, ex);
-//        }  
-    }
+        try {
+            
+            this.setLocationRelativeTo(null);
+            s = new Socket("localhost", 6000);
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            out = new DataOutputStream(s.getOutputStream());
+            
+            out.writeBytes("DATABOOKINGS//" + kode + " " + "\n");
+            String response = in.readLine();
+            String[] responses = response.split(";");
+            txtarea.append(response);
+            nama = new ArrayList<String>();            
+            start = new ArrayList<String>();
+            end = new ArrayList<String>();
+            table = new ArrayList<String>();
+            
+            
+            DefaultTableModel dpt = (DefaultTableModel) tableData.getModel();
+            dpt.setRowCount(0);
+            Object[] rowData = new Object[4];
+            for (int i = 0; i < responses.length; i++) {
+                String _nama = responses[i].split("&")[0];
+                rowData[0] = _nama;
+                rowData[1] = responses[i].split("&")[1];
+                rowData[2] = responses[i].split("&")[2];
+                rowData[3] = responses[i].split("&")[3];
+                dpt.addRow(rowData);
+            }
 
+        } catch (Exception ex) {
+            Logger.getLogger(DisplayBookings.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
