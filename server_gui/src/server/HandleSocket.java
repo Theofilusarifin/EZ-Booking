@@ -213,10 +213,10 @@ public class HandleSocket extends Thread {
                     int menu_id = Integer.valueOf(messages[1]);
                     int amount = Integer.valueOf(messages[2]);
                     double subtotal = Double.valueOf(messages[3]);
-                    
+
                     Preorder po = new Preorder(booking_id, menu_id, amount, subtotal);
                     po.insert();
-                    
+
                     SendMessage("True;Preorder berhasil dilakukan. Apakah anda ingin melakukan Preorder lagi?");
                     break;
                 //  Logic Display Bookings

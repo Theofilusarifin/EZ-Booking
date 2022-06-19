@@ -1,20 +1,20 @@
 package restaurant;
 
 //import restaurant.DisplayBookings;
-
 public class RestaurantDashboard extends javax.swing.JFrame {
 
     String kode = "";
+
     public RestaurantDashboard() {
         initComponents();
     }
-    
+
     public RestaurantDashboard(String owner, String id) {
         initComponents();
         lblOwner.setText(owner);
         kode = id;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,6 +64,11 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         lblMenu1.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenu1.setText("Menu");
+        lblMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenu1MouseClicked(evt);
+            }
+        });
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +199,10 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         new DisplayBookings().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lblMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenu1MouseClicked
+        new MenuForm().setVisible(true);
+    }//GEN-LAST:event_lblMenu1MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

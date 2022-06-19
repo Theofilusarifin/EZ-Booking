@@ -1,9 +1,66 @@
 package restaurant;
 
+import customer.PreOrderForm;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 public class MenuForm extends javax.swing.JFrame {
 
+    Socket s;
+    BufferedReader in;
+    DataOutputStream out;
+    String[][] values;
+
     public MenuForm() {
-        initComponents();
+        try {
+            initComponents();
+            this.setLocationRelativeTo(null);
+            s = new Socket("localhost", 6000);
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            out = new DataOutputStream(s.getOutputStream());
+
+//            ambil menu dari server lalu jadikan array string
+            out.writeBytes("DATAMENU//1" + "\n");
+            String response = in.readLine();
+            String[] responses = response.split(";");
+
+//            buat array 2d untuk menampung data dari responses
+            values = new String[responses.length][3];
+
+//            isi array values sesuai dengan hasil responses yang sudah displit
+            String[] splitResponses;
+            for (int i = 0; i < responses.length; i++) {
+                splitResponses = responses[i].split("&");
+                for (int j = 0; j < 3; j++) {
+                    values[i][j] = splitResponses[j];
+                }
+            }
+
+//            isi tabel
+            refreshTable();
+        } catch (IOException ex) {
+            Logger.getLogger(PreOrderForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void refreshTable() {
+//        ambil model tabel
+        DefaultTableModel model = (DefaultTableModel) tableMenu.getModel();
+        model.setRowCount(0);
+
+//        buat object untuk setiap row dan masukkan ke tabel
+        Object[] rowData = new Object[2];
+        for (int i = 0; i < values.length; i++) {
+            rowData[0] = values[i][1];
+            rowData[1] = Double.parseDouble(values[i][2]);
+            model.addRow(rowData);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -59,7 +116,6 @@ public class MenuForm extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBack.setText("BACK");
         btnBack.setToolTipText("");
-        btnBack.setActionCommand("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -115,7 +171,7 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMenuActionPerformed
-        // TODO add your handling code here:
+        new AddMenuForm(s).setVisible(true);
     }//GEN-LAST:event_btnAddMenuActionPerformed
 
     public static void main(String args[]) {
