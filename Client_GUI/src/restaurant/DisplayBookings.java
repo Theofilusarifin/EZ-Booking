@@ -20,85 +20,18 @@ public class DisplayBookings extends javax.swing.JFrame {
     BufferedReader in;
     DataOutputStream out;
     String message;
-    ArrayList<String> nama;    
-    ArrayList<String> start;
-    ArrayList<String> end;
-    ArrayList<String> table;
 
-    public DisplayBookings() {
-        initComponents();
-                try {
-            
-            this.setLocationRelativeTo(null);
-            s = new Socket("localhost", 6000);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
-            
-            out.writeBytes("DISPLAYBOOKINGS//" + "6" + " " + "\n");
-            String response = in.readLine();
-            txtarea.append(response);
-            String[] responses = response.split(";");
-            nama = new ArrayList<String>();            
-            start = new ArrayList<String>();
-            end = new ArrayList<String>();
-            table = new ArrayList<String>();
-            
-//            for (int i = 0; i < responses.length; i++) {
-////                Tambahkan nama customer ke arraylist
-//                String _nama = responses[i].split("&")[0];
-//                nama.add(_nama);
-////                Tambahkan start hour ke arraylist
-//                start.add(responses[i].split("&")[1]);
-////                Tambahkan end hour ke arraylist
-//                end.add(responses[i].split("&")[2]);
-////                Tambahkan table counts ke arraylist
-//                table.add(responses[i].split("&")[3]);
-//            }
-//            for (int i = 0; i < responses.length; i++) {
-//                String _nama = responses[i].split("&")[0];
-//                txtarea.append("aaa");
-//                txtarea.append(responses[i].split("&")[0]);                
-//                txtarea.append(responses[i].split("&")[1]);                
-//                
-//                txtarea.append(responses[i].split("&")[2]);
-//                txtarea.append(responses[i].split("&")[3]);
-//
-//            }
-//            
-//            DefaultTableModel dpt = (DefaultTableModel) tableData.getModel();
-//            dpt.setRowCount(0);
-//            Object[] rowData = new Object[4];
-//            for (int i = 0; i < responses.length; i++) {
-//                String _nama = responses[i].split("&")[0];
-//                rowData[0] = _nama;
-//                rowData[1] = responses[i].split("&")[1];
-//                rowData[2] = responses[i].split("&")[2];
-//                rowData[3] = responses[i].split("&")[3];
-//                dpt.addRow(rowData);
-//            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(DisplayBookings.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-    }
-    public DisplayBookings(String kode) {
-        initComponents();
+    public DisplayBookings() { 
         try {
-            
+            initComponents();
             this.setLocationRelativeTo(null);
             s = new Socket("localhost", 6000);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             out = new DataOutputStream(s.getOutputStream());
             
-            out.writeBytes("DATABOOKINGS//" + kode + " " + "\n");
+            out.writeBytes("DISPLAYBOOKINGS//2" + " " + "\n");
             String response = in.readLine();
             String[] responses = response.split(";");
-            txtarea.append(response);
-            nama = new ArrayList<String>();            
-            start = new ArrayList<String>();
-            end = new ArrayList<String>();
-            table = new ArrayList<String>();
-            
             
             DefaultTableModel dpt = (DefaultTableModel) tableData.getModel();
             dpt.setRowCount(0);
@@ -127,8 +60,6 @@ public class DisplayBookings extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtarea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,29 +91,21 @@ public class DisplayBookings extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableData);
 
-        txtarea.setColumns(20);
-        txtarea.setRows(5);
-        jScrollPane2.setViewportView(txtarea);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -225,8 +148,6 @@ public class DisplayBookings extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableData;
-    private javax.swing.JTextArea txtarea;
     // End of variables declaration//GEN-END:variables
 }

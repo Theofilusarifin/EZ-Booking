@@ -131,18 +131,17 @@ public class Bookings extends MyConnection {
 
     public ArrayList<Object> display(String kode) { //menampilkan data bookings untuk restaurant
         ArrayList<Object> collections = new ArrayList<Object>();
-        SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             this.stat = (Statement) connect.createStatement();
             this.result = this.stat.executeQuery("SELECT u.name, b.startHour, b.endHour, b.tablesCount "
                     + "FROM bookings b inner join users u on b.user_id = u.id "
-                    + "WHERE restaurant_id='" + Integer.parseInt(kode) + "';");
+                    + "WHERE b.restaurant_id=" + kode + ";");
 
             while (this.result.next()) {
                 Bookings book = new Bookings(
                         this.result.getString("name"),
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.result.getString("startHour")),
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.result.getString("endHour")),
+                        this.result.getTimestamp("startHour"),
+                        this.result.getTimestamp("endHour"),
                         this.result.getInt("tablesCount")
                 );
                 collections.add(book);

@@ -232,18 +232,18 @@ public class HandleSocket extends Thread {
 //                    Type casting object ke bookings
                         Bookings books = (Bookings) object;
 //                    Inisiasi data yang dikirim
+                        SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String nama = books.getCustomerName();
-                        Date start = books.getStartHour();
-                        Date end = books.getEndHour();
+                        String start = strFormatter.format(books.getStartHour());
+                        String end = strFormatter.format(books.getEndHour());
                         int table = books.getTablesCount();
 //                    Tambahkan data
                         response = response
                                 + nama + "&"
-                                + String.valueOf(start) + "&"
-                                + String.valueOf(end) + "&"
+                                + start + "&"
+                                + end + "&"
                                 + String.valueOf(table) + ";";
                     }
-                    System.out.println("testing");
 //                Kirim seluruh data ke client
                     SendMessage(response);
                     break;
