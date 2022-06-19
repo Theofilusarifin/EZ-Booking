@@ -89,6 +89,26 @@ public class User extends MyConnection {
         }
     }
 
+    public int selectIdUser(String username, String role, String name) {
+        int id = 0;
+        try {
+            this.statement = (Statement) connect.createStatement();
+            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
+                    + " where username = ? and role = ? and name = ?;");
+            sql.setString(1, username);
+            sql.setString(2, role);
+            sql.setString(3, name);
+
+            result = sql.executeQuery();
+            if (this.result.next()) {
+                id = result.getInt("id");
+            }
+        } catch (Exception e) {
+            System.out.println("Error User selectIdUser, Error: " + e.getMessage());
+        }
+        return id;
+    }
+
     public boolean CheckLogin(String username, String password) {
         try {
             this.statement = (Statement) connect.createStatement();
@@ -141,43 +161,7 @@ public class User extends MyConnection {
         return false;
     }
 
-    public String RegisterCustomer(String name, String username, String password, String role) {
-        String status = "";
-        try {
-            if (!connect.isClosed()) {
-                this.statement = (Statement) connect.createStatement();
-                PreparedStatement sqlCheck = (PreparedStatement) connect.prepareStatement("select * from users"
-                        + " where username = ?;");
-                sqlCheck.setString(1, username);
-                result = sqlCheck.executeQuery();
-
-                int count = 0;
-                while (this.result.next()) {
-                    count++;
-                    //System.out.println("count: " + count);
-                }
-
-                if (count == 0) {
-                    PreparedStatement sqlInsert = (PreparedStatement) connect.prepareStatement("insert into users(name, username, password, role) values(?,?,?,?)");
-                    sqlInsert.setString(1, name);
-                    sqlInsert.setString(2, username);
-                    sqlInsert.setString(3, password);
-                    sqlInsert.setString(4, role);
-
-                    sqlInsert.executeUpdate();
-                    sqlInsert.close();
-                    status = "RegSuccess";
-                } else {
-                    status = "RegFailed";
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error User Register, Error: " + e.getMessage());
-        }
-        return status;
-    }
-
-    public String RegisterRestaurant(String name, String username, String password, String role, String address, String phoneNumber) {
+    public String Register(String name, String username, String password, String role) {
         String status = "";
         try {
             if (!connect.isClosed()) {

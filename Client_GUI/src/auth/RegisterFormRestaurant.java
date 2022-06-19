@@ -6,6 +6,7 @@ package auth;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -21,8 +22,14 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
     Socket s;
     BufferedReader msgFromServer;
     DataOutputStream msgToServer;
+    String ownerData;
 
-    public RegisterFormRestaurant(Socket clientSocket) {
+    public RegisterFormRestaurant() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public RegisterFormRestaurant(Socket clientSocket, String _ownerData) {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
@@ -30,6 +37,9 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
             //buat penerima dan pengirim dari socket
             msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
             msgToServer = new DataOutputStream(s.getOutputStream());
+
+            // tangkap data owner yang dikirim dari registrasi owner
+            ownerData = _ownerData;
         } catch (Exception ex) {
             System.out.println("FormRegisterRestaurant Constructor, Error: " + ex.getMessage());
         }
@@ -47,42 +57,27 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         lblResgisterRest = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        lblPassword = new javax.swing.JLabel();
-        lblRePass = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
-        txtRePassword = new javax.swing.JTextField();
+        txtRestaurantName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaAddress = new javax.swing.JTextArea();
         lblPhone = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         btnRegisterRestaurant = new javax.swing.JButton();
-        lblUsername = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
         lblBackToLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblResgisterRest.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblResgisterRest.setText("REGISTER as RESTAURANT");
+        lblResgisterRest.setText("Register Restaurant Data");
 
         lblName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblName.setText("Name");
+        lblName.setText("Restaurant Name");
 
         lblAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblAddress.setText("Address:");
+        lblAddress.setText("Address");
 
-        txtName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        lblPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblPassword.setText("Password:");
-
-        lblRePass.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblRePass.setText("Re-type Password:");
-
-        txtPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        txtRePassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtRestaurantName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         txtAreaAddress.setColumns(20);
         txtAreaAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -90,22 +85,25 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtAreaAddress);
 
         lblPhone.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblPhone.setText("Phone Number:");
+        lblPhone.setText("Phone Number");
 
         txtPhone.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnRegisterRestaurant.setText("REGISTER");
+        btnRegisterRestaurant.setText("Register");
         btnRegisterRestaurant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterRestaurantActionPerformed(evt);
             }
         });
 
-        lblUsername.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblUsername.setText("Username");
-
-        txtUsername.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblBackToLogin.setText("Back To Login");
@@ -121,64 +119,45 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(lblResgisterRest, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204)
+                .addComponent(lblResgisterRest)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegisterRestaurant))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPhone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblRePass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                        .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(80, 80, 80))
+                        .addComponent(lblName)
+                        .addGap(126, 126, 126)
+                        .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 77, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAddress)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPhone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblBackToLogin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBack)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRegisterRestaurant)))
+                        .addGap(77, 77, 77))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(24, 24, 24)
                 .addComponent(lblResgisterRest)
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRePass)
-                    .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAddress)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,44 +165,63 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegisterRestaurant)
-                    .addComponent(lblBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(btnBack)
+                    .addComponent(lblBackToLogin))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRestaurantActionPerformed
-//        try {
-//            if (txtPassword.getText().equals(txtRePassword.getText())) {
-//                // kirim Request Data (REGISTER <username> <password> <role>)
-//                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n");
-//
-//                String result;
-//                result = msgFromServer.readLine();
-//
-//                String[] messages = null;
-//                messages = result.split(";-;");
-//
-//                String status = "";
-//                status = messages[0];
-//
-//                if (status.equals("RegSuccess")) {
-//                    JOptionPane.showMessageDialog(this, "Registration Successful, Welcome to ezbooking Owner " + messages[1]);
-//                } else if (status.equals("RegFailed")) {
-//                    JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
-//            }
-//        } catch (Exception e) {
-//            System.out.println("RegisterForm btnRegister, Error; " + e);
-//            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, e);
-//        }
+        try {
+            msgToServer.writeBytes("REGISTER//" + ownerData + "\n");
+
+            String result;
+            result = msgFromServer.readLine();
+
+            String[] messages = null;
+            messages = result.split(";-;");
+
+            String status = "";
+            status = messages[0];
+
+            if (status.equals("RegSuccess")) {
+                msgToServer.writeBytes("REGISTER_RESTAURANT//" + txtRestaurantName.getText() + ";-;" + txtAreaAddress.getText() + ";-;" + txtPhone.getText() + ";-;" + ownerData + "\n");
+
+                String answer;
+                answer = msgFromServer.readLine();
+
+                String[] msgs = null;
+                msgs = answer.split(";-;");
+
+                String msg = "";
+                msg = msgs[0];
+
+                if (msg.equals("RegSuccess")) {
+                    JOptionPane.showMessageDialog(this, "Congratulations!!!, Your Restaurant " + msgs[1] + " has been successfully registered.");
+
+                } else if (msg.equals("RegFailed")) {
+                    JOptionPane.showMessageDialog(this, "Sorry, your Registration Failed, Restaurant with name " + msgs[1] + " has been taken.");
+                }
+
+            } else if (status.equals("RegFailed")) {
+                JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("RegisterForm btnRegister, Error; " + e);
+            Logger.getLogger(RegisterFormRestaurant.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_btnRegisterRestaurantActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        new RegisterFormOwner(s, ownerData).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void lblBackToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLoginMouseClicked
         new LoginForm(s).setVisible(true);
@@ -266,21 +264,16 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterRestaurant;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBackToLogin;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
-    private javax.swing.JLabel lblRePass;
     private javax.swing.JLabel lblResgisterRest;
-    private javax.swing.JLabel lblUsername;
     private javax.swing.JTextArea txtAreaAddress;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtRePassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtRestaurantName;
     // End of variables declaration//GEN-END:variables
 }

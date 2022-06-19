@@ -53,6 +53,8 @@ public class HandleSocket extends Thread {
             String response;
 
             User _user = new User();
+            Restaurant _restaurant = new Restaurant();
+
             ArrayList<Object> collection = new ArrayList<Object>();
             switch (command) {
 //            Logic Fitur Login
@@ -82,14 +84,38 @@ public class HandleSocket extends Thread {
                     SendMessage(role);
                     break;
 
-//            Ya RegisterCustomer
+//            Logic egister User
                 case "REGISTER":
                     message = value;
 
                     messages = message.split(";-;");
 
-                    String status = _user.RegisterCustomer(messages[0], messages[1], messages[2], messages[3]);
+                    String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
                     SendMessage(status + ";-;" + messages[0]);
+                    break;
+
+//            Logic Check Same Username
+                case "CHECK_SAME_USERNAME":
+                    message = value;
+
+                    boolean bool = _user.CheckSameUsername(message);
+                    if (bool) {
+                        SendMessage("TRUE");
+                    } else {
+                        SendMessage("FALSE");
+                    }
+                    break;
+
+//            Logic Register Restaurant
+                case "REGISTER_RESTAURANT":
+                    message = value;
+
+                    messages = message.split(";-;");
+
+                    int idUser = _user.selectIdUser(messages[4], messages[6], messages[3]);
+                    
+                    String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2], idUser);
+                    SendMessage(statusRR + ";-;" + messages[0]);
                     break;
 
 //            Logic fitur reservation
@@ -159,7 +185,7 @@ public class HandleSocket extends Thread {
                         break;
                     }
 
-//                    Panggil method insert untuk memasukkan data booking baru ke database
+//                    Panggil method insertRestaurant untuk memasukkan data booking baru ke database
                     booking.insert();
 //                    Check apakah restaurant menyediakan pre order?
                     boolean preOrderIsAvailable = booking.checkPreOrder();
@@ -249,8 +275,8 @@ public class HandleSocket extends Thread {
                     break;
 //              Logic add menu
                 case "ADDMENU":
-                    messages=value.split(";");
-                    menu = new Menu(messages[1],Double.parseDouble(messages[2]),Integer.parseInt(messages[0]));
+                    messages = value.split(";");
+                    menu = new Menu(messages[1], Double.parseDouble(messages[2]), Integer.parseInt(messages[0]));
                     menu.insert();
                     break;
 //            Logic lain dibawah sini

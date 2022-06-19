@@ -184,7 +184,7 @@ public class LoginForm extends javax.swing.JFrame {
             new RegisterFormCustomer(s).setVisible(true);
             this.dispose();
         } else if (response == 1) {
-            new RegisterFormRestaurant(s).setVisible(true);
+            new RegisterFormOwner(s).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_lblRegisterMouseClicked
