@@ -7,13 +7,14 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AddMenuForm extends javax.swing.JFrame {
-
+    
     Socket s;
     BufferedReader in;
     DataOutputStream out;
-
+    
     public AddMenuForm(Socket socket) {
         try {
             initComponents();
@@ -25,7 +26,7 @@ public class AddMenuForm extends javax.swing.JFrame {
             Logger.getLogger(AddMenuForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -107,8 +108,17 @@ public class AddMenuForm extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
-
+            if (txtName.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please fill in the name", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!txtPrice.getText().matches("-?\\d+(\\.\\d+)?")) {
+                JOptionPane.showMessageDialog(this, "Please fill in price with numbers", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            out.writeBytes("ADDMENU//1;" + txtName.getText() + ";" + txtPrice.getText() + "\n");
         } catch (Exception e) {
+            System.out.println("Error di tambah menu. Error: " + e);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 

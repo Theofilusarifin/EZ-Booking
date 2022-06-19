@@ -247,6 +247,12 @@ public class HandleSocket extends Thread {
 //                Kirim seluruh data ke client
                     SendMessage(response);
                     break;
+//              Logic add menu
+                case "ADDMENU":
+                    messages=value.split(";");
+                    menu = new Menu(messages[1],Double.parseDouble(messages[2]),Integer.parseInt(messages[0]));
+                    menu.insert();
+                    break;
 //            Logic lain dibawah sini
             }
         } catch (ParseException ex) {
