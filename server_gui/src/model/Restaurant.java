@@ -174,7 +174,7 @@ public class Restaurant extends MyConnection {
             System.out.println("Error User insert, Error: " + e);
         }
     }
-    
+
     public String RegisterRestaurant(String restaurantName, String address, String phoneNumber, int user_id) {
         String status = "";
         try {
@@ -211,8 +211,8 @@ public class Restaurant extends MyConnection {
         return status;
     }
 
-    public int selectIdResto(String username, String password){
-        int id = 0;
+    public int selectIdResto(String username, String password) {
+        int data = 0;
         try {
             this.statement = (Statement) connect.createStatement();
             PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users as u inner join restaurants as r on u.id = r.user_id where role = ? and username = ? and password = ?;");
@@ -222,13 +222,39 @@ public class Restaurant extends MyConnection {
 
             result = sql.executeQuery();
             if (this.result.next()) {
-                id = result.getInt("r.id");
+                data = result.getInt("r.id");
             }
         } catch (Exception e) {
-            System.out.println("Error User selectIdUser, Error: " + e.getMessage());
+            System.out.println("Error Restaurant selectIdResto, Error: " + e.getMessage());
         }
-        return id;
+        return data;
     }
+
+    public String selectResto(int idResto) {
+        String data = "";
+        try {
+            this.statement = (Statement) connect.createStatement();
+            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from restaurants where id = ?");
+            sql.setInt(1, idResto);
+
+            result = sql.executeQuery();
+            if (this.result.next()) {
+                data = result.getInt("id") + ";-;"
+                        + result.getString("name") + ";-;"
+                        + result.getString("address") + ";-;"
+                        + result.getString("phoneNumber") + ";-;"
+                        + result.getTime("openHour") + ";-;"
+                        + result.getTime("closeHour") + ";-;"
+                        + result.getInt("tablesCount") + ";-;"
+                        + result.getInt("peoplePerTable") + ";-;"
+                        + result.getInt("user_id");
+            }
+        } catch (Exception e) {
+            System.out.println("Error Restaurant selectResto, Error: " + e.getMessage());
+        }
+        return data;
+    }
+
     public Restaurant getSelectedRestaurant(int restaurant_id) { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
         try {

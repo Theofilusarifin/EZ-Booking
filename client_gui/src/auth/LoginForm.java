@@ -157,15 +157,19 @@ public class LoginForm extends javax.swing.JFrame {
 
                 // kalau role customer
                 if (word.equals("customer")) {
-                    new CustomerDashboard(words[1], words[2]).setVisible(true);
+                    msgToServer.writeBytes("USER//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+                    String userData;
+                    userData = msgFromServer.readLine();
+                    
+                    new CustomerDashboard(words[1], words[2], userData).setVisible(true);
                     this.dispose();
                 } // kalau role restaurant
                 else if (word.equals("restaurant")) {
-                    msgToServer.writeBytes("RESTAURANT_ID//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
-                    String idResto = "";
-                    idResto = msgFromServer.readLine();
+                    msgToServer.writeBytes("RESTAURANT//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+                    String restoData;
+                    restoData = msgFromServer.readLine();
 
-                    new RestaurantDashboard(words[1], words[2], idResto).setVisible(true);
+                    new RestaurantDashboard(words[1], words[2], restoData).setVisible(true);
                     this.dispose();
                 }
             } // kalau tidak ada username yang sama

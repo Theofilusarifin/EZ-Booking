@@ -1,6 +1,8 @@
 package restaurant;
 
 //import restaurant.DisplayBookings;
+
+
 public class RestaurantDashboard extends javax.swing.JFrame {
 
     String kode = "";
@@ -9,12 +11,11 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         initComponents();
     }
 
-    public RestaurantDashboard(String owner, String idOwner, String idResto) {
+    public RestaurantDashboard(String owner, String idOwner, String restaurantData) {
         initComponents();
         lblOwner.setText(owner);
         System.out.println("Owner Id = " + idOwner);
-        System.out.println("Restaurant Id = " + idResto);
-
+        System.out.println(restaurantData);
     }
 
     @SuppressWarnings("unchecked")

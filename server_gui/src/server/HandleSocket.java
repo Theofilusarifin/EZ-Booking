@@ -117,15 +117,27 @@ public class HandleSocket extends Thread {
                     String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2], idUser);
                     SendMessage(statusRR + ";-;" + messages[0]);
                     break;
+                    
+//            Logic ngambil restaurant
+                case "USER":
+                    message = value;
 
-//            Logic ngambil id restaurant
-                case "RESTAURANT_ID":
+                    messages = message.split(";-;");
+
+                    int idU = _user.selectIdUser(messages[0], "customer", messages[1]);
+                    String userData = _user.selectUser(idU);
+                    SendMessage(userData);
+                    break;
+                    
+//            Logic ngambil restaurant
+                case "RESTAURANT":
                     message = value;
 
                     messages = message.split(";-;");
 
                     int idResto = _restaurant.selectIdResto(messages[0], messages[1]);
-                    SendMessage(Integer.toString(idResto));
+                    String restoData = _restaurant.selectResto(idResto);
+                    SendMessage(restoData);
                     break;
 //            Logic fitur reservation
                 case "DATARESTAURANT":

@@ -109,6 +109,28 @@ public class User extends MyConnection {
         return id;
     }
 
+    public String selectUser(int idUser) {
+        String data = "";
+        try {
+            this.statement = (Statement) connect.createStatement();
+            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
+                    + " where id = ?");
+            sql.setInt(1, idUser);
+
+            result = sql.executeQuery();
+            if (this.result.next()) {
+                data = result.getInt("id") + ";-;"
+                        + result.getString("username") + ";-;"
+                        + result.getString("password") + ";-;"
+                        + result.getString("role") + ";-;"
+                        + result.getString("name");
+            }
+        } catch (Exception e) {
+            System.out.println("Error User selectUser, Error: " + e.getMessage());
+        }
+        return data;
+    }
+
     public boolean CheckLogin(String username, String password) {
         try {
             this.statement = (Statement) connect.createStatement();
