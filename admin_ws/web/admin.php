@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
 
 <head>
@@ -14,14 +9,29 @@ and open the template in the editor.
 
 <body>
     <div>
-        <form action=<?php echo $_SERVER['DOCUMENT_ROOT'] . '/DistributedProgramming/Project UAS/project_disprog/Server_WS/web/'; ?> method="POST">
+        <form action="../../Server_WS/web/index.php" method="POST">
             <label for="username">Username :</label>
             <input type="text" name="username" id="username"><br>
             <label for="password">Password :</label>
-            <input type="text" name="password" id="password"><br>
+            <input type="password" name="password" id="password"><br>
             <button type="submit">LOGIN</button>
+            <?php if (isset($_GET['error'])) {
+                switch ($_GET['error']) {
+                    case 1: ?>
+                        <p class="error"> <?php echo "Username and Password is REQUIRED."; ?> </p>
+                    <?php break;
+                    case 2: ?>
+                        <p class="error"> <?php echo "Username is REQUIRED."; ?> </p>
+                    <?php break;
+                    case 3: ?>
+                        <p class="error"> <?php echo "Password is REQUIRED."; ?> </p>
+                    <?php break;
+                    case 4: ?>
+                        <p class="error"> <?php echo "Incorrect Username or Password is inputted."; ?> </p>
+                        <?php break; ?>
+            <?php }
+            } ?>
         </form>
-        <a href=>To Server_WS</a>
     </div>
 </body>
 
