@@ -161,7 +161,11 @@ public class LoginForm extends javax.swing.JFrame {
                     this.dispose();
                 } // kalau role restaurant
                 else if (word.equals("restaurant")) {
-                    new RestaurantDashboard(words[1], words[2]).setVisible(true);
+                    msgToServer.writeBytes("RESTAURANT_ID//" + txtUsername.getText() + ";-;" + txtPassword.getText() + "\n");
+                    String idResto = "";
+                    idResto = msgFromServer.readLine();
+
+                    new RestaurantDashboard(words[1], words[2], idResto).setVisible(true);
                     this.dispose();
                 }
             } // kalau tidak ada username yang sama

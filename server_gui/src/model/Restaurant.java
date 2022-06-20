@@ -211,6 +211,24 @@ public class Restaurant extends MyConnection {
         return status;
     }
 
+    public int selectIdResto(String username, String password){
+        int id = 0;
+        try {
+            this.statement = (Statement) connect.createStatement();
+            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users as u inner join restaurants as r on u.id = r.user_id where role = ? and username = ? and password = ?;");
+            sql.setString(1, "restaurant");
+            sql.setString(2, username);
+            sql.setString(3, password);
+
+            result = sql.executeQuery();
+            if (this.result.next()) {
+                id = result.getInt("r.id");
+            }
+        } catch (Exception e) {
+            System.out.println("Error User selectIdUser, Error: " + e.getMessage());
+        }
+        return id;
+    }
     public Restaurant getSelectedRestaurant(int restaurant_id) { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
         try {

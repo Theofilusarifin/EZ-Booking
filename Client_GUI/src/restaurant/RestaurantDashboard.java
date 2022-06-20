@@ -9,10 +9,12 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         initComponents();
     }
 
-    public RestaurantDashboard(String owner, String id) {
+    public RestaurantDashboard(String owner, String idOwner, String idResto) {
         initComponents();
         lblOwner.setText(owner);
-        kode = id;
+        System.out.println("Owner Id = " + idOwner);
+        System.out.println("Restaurant Id = " + idResto);
+
     }
 
     @SuppressWarnings("unchecked")

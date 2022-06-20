@@ -113,11 +113,20 @@ public class HandleSocket extends Thread {
                     messages = message.split(";-;");
 
                     int idUser = _user.selectIdUser(messages[4], messages[6], messages[3]);
-                    
+
                     String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2], idUser);
                     SendMessage(statusRR + ";-;" + messages[0]);
                     break;
 
+//            Logic ngambil id restaurant
+                case "RESTAURANT_ID":
+                    message = value;
+
+                    messages = message.split(";-;");
+
+                    int idResto = _restaurant.selectIdResto(messages[0], messages[1]);
+                    SendMessage(Integer.toString(idResto));
+                    break;
 //            Logic fitur reservation
                 case "DATARESTAURANT":
 //                Inisiasi class restaurant untuk dapat array data restaurant
