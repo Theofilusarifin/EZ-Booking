@@ -55,6 +55,9 @@ public class HandleSocket extends Thread {
             User _user = new User();
             Restaurant _restaurant = new Restaurant();
 
+            User userNow = new User();
+            Restaurant restaurantNow = new Restaurant();
+
             ArrayList<Object> collection = new ArrayList<Object>();
             switch (command) {
 //            Logic Fitur Login
@@ -117,7 +120,7 @@ public class HandleSocket extends Thread {
                     String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2], idUser);
                     SendMessage(statusRR + ";-;" + messages[0]);
                     break;
-                    
+
 //            Logic ngambil restaurant
                 case "USER":
                     message = value;
@@ -125,18 +128,29 @@ public class HandleSocket extends Thread {
                     messages = message.split(";-;");
 
                     int idU = _user.selectIdUser(messages[0], "customer", messages[1]);
+
+                    userNow = _user.getSelectedUser(idU);
+
                     String userData = _user.selectUser(idU);
+
                     SendMessage(userData);
                     break;
-                    
+
 //            Logic ngambil restaurant
                 case "RESTAURANT":
                     message = value;
 
                     messages = message.split(";-;");
 
+                    int idUsers = _user.selectIdUser(messages[0], "restaurant", messages[1]);
+
                     int idResto = _restaurant.selectIdResto(messages[0], messages[1]);
+
+                    userNow = _user.getSelectedUser(idUsers);
+                    restaurantNow = _restaurant.getSelectedRestaurant(idResto);
+
                     String restoData = _restaurant.selectResto(idResto);
+
                     SendMessage(restoData);
                     break;
 //            Logic fitur reservation

@@ -3,6 +3,8 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class User extends MyConnection {
 
@@ -10,6 +12,7 @@ public class User extends MyConnection {
     protected Statement statement;
     protected ResultSet result;
 
+    private int id;
     private String name;
     private String username;
     private String password;
@@ -17,6 +20,14 @@ public class User extends MyConnection {
     // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Properties">
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -69,8 +80,17 @@ public class User extends MyConnection {
         this.role = role;
         getConnection();
     }
-    // </editor-fold>
 
+    public User(int id, String name, String username, String password, String role) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        getConnection();
+    }
+
+    // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
         try {
@@ -217,6 +237,29 @@ public class User extends MyConnection {
             System.out.println("Error User Register, Error: " + e.getMessage());
         }
         return status;
+    }
+
+    public User getSelectedUser(int restaurant_id) { //Ambil data restaurant untuk combobox di form reservation
+        ArrayList<Object> collections = new ArrayList<Object>();
+        try {
+            this.stat = (Statement) connect.createStatement();
+            this.result = this.stat.executeQuery("SELECT * FROM restaurants where id = " + restaurant_id + ";");
+
+            while (this.result.next()) {
+                User user = new User(
+                        this.result.getInt("id"),
+                        this.result.getString("name"),
+                        this.result.getString("username"),
+                        this.result.getString("password"),
+                        this.result.getString("role")
+                );
+                collections.add(user);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error di method getSelectedUser : " + ex);
+        }
+        User user = (User) collections.get(0);
+        return user;
     }
 // </editor-fold>
 }
