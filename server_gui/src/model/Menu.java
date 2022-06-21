@@ -105,7 +105,7 @@ public class Menu extends MyConnection {
                 collections.add(menu);
             }
         } catch (Exception ex) {
-            System.out.println("Error di method getDataMenu : " + ex);
+            System.out.println("Error di method getMenu : " + ex);
         }
         return collections;
     }

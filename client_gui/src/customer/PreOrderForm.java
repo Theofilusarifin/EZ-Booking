@@ -1,5 +1,6 @@
 package customer;
 
+import auth.LoginForm;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,7 +13,6 @@ import javax.swing.JOptionPane;
 
 public class PreOrderForm extends javax.swing.JFrame {
 
-    Socket s;
     BufferedReader in;
     DataOutputStream out;
     int restaurant_id;
@@ -27,13 +27,12 @@ public class PreOrderForm extends javax.swing.JFrame {
     int amount;
     boolean cbReady = false;
 
-    public PreOrderForm(Socket socket, int r_id, int b_id) {
+    public PreOrderForm(int r_id, int b_id) {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            s = socket;
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            out = new DataOutputStream(LoginForm.s.getOutputStream());
             restaurant_id = r_id;
             booking_id = b_id;
 

@@ -1,5 +1,6 @@
 package restaurant;
 
+import auth.LoginForm;
 import customer.PreOrderForm;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -12,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class MenuForm extends javax.swing.JFrame {
 
-    Socket s;
     BufferedReader in;
     DataOutputStream out;
     String[][] values;
@@ -21,13 +21,15 @@ public class MenuForm extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            s = new Socket("localhost", 6000);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            out = new DataOutputStream(LoginForm.s.getOutputStream());
+            System.out.println("hello");
 
 //            ambil menu dari server lalu jadikan array string
-            out.writeBytes("DATAMENU//1" + "\n");
+            out.writeBytes("DATAMENU// " + "\n");
+            System.out.println("hi");
             String response = in.readLine();
+            System.out.println("yooo");
             String[] responses = response.split(";");
 
 //            buat array 2d untuk menampung data dari responses
@@ -171,40 +173,8 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMenuActionPerformed
-        new AddMenuForm(s).setVisible(true);
+        new AddMenuForm().setVisible(true);
     }//GEN-LAST:event_btnAddMenuActionPerformed
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddMenu;

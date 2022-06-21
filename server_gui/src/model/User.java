@@ -91,6 +91,7 @@ public class User extends MyConnection {
     }
 
     // </editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
         try {
@@ -109,15 +110,15 @@ public class User extends MyConnection {
         }
     }
 
-    public int selectIdUser(String username, String role, String name) {
+    public int selectIdUser(String username, String role, String password) {
         int id = 0;
         try {
             this.statement = (Statement) connect.createStatement();
             PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
-                    + " where username = ? and role = ? and name = ?;");
+                    + " where username = ? and role = ? and password = ?;");
             sql.setString(1, username);
             sql.setString(2, role);
-            sql.setString(3, name);
+            sql.setString(3, password);
 
             result = sql.executeQuery();
             if (this.result.next()) {
@@ -239,11 +240,11 @@ public class User extends MyConnection {
         return status;
     }
 
-    public User getSelectedUser(int restaurant_id) { //Ambil data restaurant untuk combobox di form reservation
+    public User getSelectedUser(int user_id) { //Ambil data restaurant untuk combobox di form reservation
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
             this.stat = (Statement) connect.createStatement();
-            this.result = this.stat.executeQuery("SELECT * FROM restaurants where id = " + restaurant_id + ";");
+            this.result = this.stat.executeQuery("SELECT * FROM users where id = " + user_id + ";");
 
             while (this.result.next()) {
                 User user = new User(

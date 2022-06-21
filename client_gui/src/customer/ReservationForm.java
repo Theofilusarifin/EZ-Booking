@@ -1,5 +1,6 @@
 package customer;
 
+import auth.LoginForm;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -15,7 +16,6 @@ import javax.swing.JOptionPane;
 
 public class ReservationForm extends javax.swing.JFrame {
 
-    Socket s;
     BufferedReader in;
     DataOutputStream out;
     String message;
@@ -27,9 +27,8 @@ public class ReservationForm extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            s = new Socket("localhost", 6000);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            out = new DataOutputStream(LoginForm.s.getOutputStream());
 
             out.writeBytes("DATARESTAURANT//" + " " + "\n");
             String response = in.readLine();
@@ -293,7 +292,7 @@ public class ReservationForm extends javax.swing.JFrame {
 //                      Hasil dari server
                         int booking_id = Integer.parseInt(response);
                         this.setVisible(false);
-                        new PreOrderForm(s, restaurant_id, booking_id).setVisible(true); // Tampilkan Pre Order
+                        new PreOrderForm(restaurant_id, booking_id).setVisible(true); // Tampilkan Pre Order
                     }
 
                 } else if (preorder_availability.equals("False")) {

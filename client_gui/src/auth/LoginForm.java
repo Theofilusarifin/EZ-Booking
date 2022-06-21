@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
 
-    Socket s;
+    public static Socket s;
     BufferedReader msgFromServer;
     DataOutputStream msgToServer;
 

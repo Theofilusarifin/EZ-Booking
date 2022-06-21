@@ -25,6 +25,8 @@ public class HandleSocket extends Thread {
     private Socket client;
     private DataOutputStream out;
     private BufferedReader in;
+    User userNow = new User();
+    Restaurant restaurantNow = new Restaurant();
 
     public HandleSocket(Server parent, Socket client) {
         this.parent = parent;
@@ -54,9 +56,6 @@ public class HandleSocket extends Thread {
 
             User _user = new User();
             Restaurant _restaurant = new Restaurant();
-
-            User userNow = new User();
-            Restaurant restaurantNow = new Restaurant();
 
             ArrayList<Object> collection = new ArrayList<Object>();
             switch (command) {
@@ -148,6 +147,7 @@ public class HandleSocket extends Thread {
 
                     userNow = _user.getSelectedUser(idUsers);
                     restaurantNow = _restaurant.getSelectedRestaurant(idResto);
+                    System.out.println(restaurantNow.getId());
 
                     String restoData = _restaurant.selectResto(idResto);
 
@@ -243,9 +243,13 @@ public class HandleSocket extends Thread {
                     break;
 //                Logic PreOrder
                 case "DATAMENU":
-//                Inisiasi class menu untuk dapat array data untuk
-                    Menu menu = new Menu();
-                    collection = menu.getData(Integer.parseInt(value));
+                    int id_resto;
+                    if (!value.equals(" ")) {
+                        id_resto = Integer.valueOf(value);
+                    } else {
+                        id_resto = restaurantNow.getId();
+                    }
+                    collection = new Menu().getData(id_resto);
 //                String untuk response
                     response = "";
 //                Looping untuk kirim data sebagai string
@@ -311,7 +315,7 @@ public class HandleSocket extends Thread {
 //              Logic add menu
                 case "ADDMENU":
                     messages = value.split(";");
-                    menu = new Menu(messages[1], Double.parseDouble(messages[2]), Integer.parseInt(messages[0]));
+                    Menu menu = new Menu(messages[0], Double.parseDouble(messages[1]), _restaurant.getId());
                     menu.insert();
                     break;
 //            Logic lain dibawah sini

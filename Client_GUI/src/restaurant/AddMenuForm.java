@@ -1,5 +1,6 @@
 package restaurant;
 
+import auth.LoginForm;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,17 +12,15 @@ import javax.swing.JOptionPane;
 
 public class AddMenuForm extends javax.swing.JFrame {
     
-    Socket s;
     BufferedReader in;
     DataOutputStream out;
     
-    public AddMenuForm(Socket socket) {
+    public AddMenuForm() {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            s = socket;
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            out = new DataOutputStream(LoginForm.s.getOutputStream());
         } catch (IOException ex) {
             Logger.getLogger(AddMenuForm.class.getName()).log(Level.SEVERE, null, ex);
         }
