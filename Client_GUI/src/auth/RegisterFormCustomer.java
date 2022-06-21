@@ -11,18 +11,16 @@ import javax.swing.JOptionPane;
 
 public class RegisterFormCustomer extends javax.swing.JFrame {
 
-    Socket s;
     BufferedReader msgFromServer;
     DataOutputStream msgToServer;
 
-    public RegisterFormCustomer(Socket clientSocket) {
+    public RegisterFormCustomer() {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            s = clientSocket;
             //buat penerima dan pengirim dari socket
-            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            msgToServer = new DataOutputStream(s.getOutputStream());
+            msgFromServer = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            msgToServer = new DataOutputStream(LoginForm.s.getOutputStream());
         } catch (Exception ex) {
             System.out.println("FormRegisterCustomer Constructor, Error: " + ex.getMessage());
         }
@@ -178,7 +176,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void lblBackToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLoginMouseClicked
-        new LoginForm(s).setVisible(true);
+        new LoginForm(LoginForm.s).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
 

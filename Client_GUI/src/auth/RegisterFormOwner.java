@@ -18,32 +18,29 @@ import javax.swing.JOptionPane;
  */
 public class RegisterFormOwner extends javax.swing.JFrame {
 
-    Socket s;
     BufferedReader msgFromServer;
     DataOutputStream msgToServer;
     String ownerData;
 
-    public RegisterFormOwner(Socket clientSocket) {
+    public RegisterFormOwner() {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            s = clientSocket;
             //buat penerima dan pengirim dari socket
-            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            msgToServer = new DataOutputStream(s.getOutputStream());
+            msgFromServer = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            msgToServer = new DataOutputStream(LoginForm.s.getOutputStream());
         } catch (Exception ex) {
             System.out.println("FormRegisterRestaurant Constructor1, Error: " + ex.getMessage());
         }
     }
 
-    public RegisterFormOwner(Socket clientSocket, String data) {
+    public RegisterFormOwner(String data) {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            s = clientSocket;
             //buat penerima dan pengirim dari socket
-            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            msgToServer = new DataOutputStream(s.getOutputStream());
+            msgFromServer = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            msgToServer = new DataOutputStream(LoginForm.s.getOutputStream());
 
             String[] messages = null;
             // data = <nama> <username> <password> <role>
@@ -205,7 +202,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
                 }// kalau tidak ketemu username yang sama
                 else if (cmd.equals("FALSE")) {
                     ownerData = txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n";
-                    new RegisterFormRestaurant(s, ownerData).setVisible(true);
+                    new RegisterFormRestaurant(ownerData).setVisible(true);
                     this.dispose();
                 }
             } else {
@@ -218,7 +215,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterRestaurantActionPerformed
 
     private void lblBackToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLoginMouseClicked
-        new LoginForm(s).setVisible(true);
+        new LoginForm(LoginForm.s).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
 

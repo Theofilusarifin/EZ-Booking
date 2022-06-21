@@ -3,6 +3,7 @@ package restaurant;
 //import restaurant.DisplayBookings;
 import auth.LoginForm;
 import java.net.Socket;
+import javax.swing.JFrame;
 
 public class RestaurantDashboard extends javax.swing.JFrame {
     String kode = "";
@@ -185,7 +186,9 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBookingMouseClicked
 
     private void lblMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenu1MouseClicked
-        new MenuForm().setVisible(true);
+        MenuForm form = new MenuForm();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_lblMenu1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -315,7 +315,7 @@ public class HandleSocket extends Thread {
 //              Logic add menu
                 case "ADDMENU":
                     messages = value.split(";");
-                    Menu menu = new Menu(messages[0], Double.parseDouble(messages[1]), _restaurant.getId());
+                    Menu menu = new Menu(messages[0], Double.parseDouble(messages[1]), restaurantNow.getId());
                     menu.insert();
                     break;
 //            Logic lain dibawah sini

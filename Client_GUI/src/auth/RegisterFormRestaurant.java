@@ -29,14 +29,13 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    public RegisterFormRestaurant(Socket clientSocket, String _ownerData) {
+    public RegisterFormRestaurant(String _ownerData) {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            s = clientSocket;
             //buat penerima dan pengirim dari socket
-            msgFromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            msgToServer = new DataOutputStream(s.getOutputStream());
+            msgFromServer = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            msgToServer = new DataOutputStream(LoginForm.s.getOutputStream());
 
             // tangkap data owner yang dikirim dari registrasi owner
             ownerData = _ownerData;
@@ -162,9 +161,9 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
                     .addComponent(lblAddress)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegisterRestaurant)
@@ -219,12 +218,12 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterRestaurantActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        new RegisterFormOwner(s, ownerData).setVisible(true);
+        new RegisterFormOwner(ownerData).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void lblBackToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLoginMouseClicked
-        new LoginForm(s).setVisible(true);
+        new LoginForm(LoginForm.s).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
 

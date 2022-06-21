@@ -49,10 +49,7 @@
                       <Component id="txtUsername" min="-2" pref="320" max="-2" attributes="0"/>
                       <Component id="txtPassword" min="-2" pref="320" max="-2" attributes="0"/>
                       <Component id="txtRePassword" min="-2" pref="320" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblRegister" min="-2" pref="134" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblRegister" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnRegister" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
               </Group>

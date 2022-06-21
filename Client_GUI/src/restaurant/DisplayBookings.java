@@ -1,5 +1,6 @@
 package restaurant;
 
+import auth.LoginForm;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -25,9 +26,8 @@ public class DisplayBookings extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            s = new Socket("localhost", 6000);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out = new DataOutputStream(s.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
+            out = new DataOutputStream(LoginForm.s.getOutputStream());
             
             out.writeBytes("DISPLAYBOOKINGS//2" + " " + "\n");
             String response = in.readLine();

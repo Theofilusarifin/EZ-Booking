@@ -189,10 +189,10 @@ public class LoginForm extends javax.swing.JFrame {
         options[1] = "restaurant";
         int response = JOptionPane.showOptionDialog(this, "Register as?", "Choose Role", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
         if (response == 0) {
-            new RegisterFormCustomer(s).setVisible(true);
+            new RegisterFormCustomer().setVisible(true);
             this.dispose();
         } else if (response == 1) {
-            new RegisterFormOwner(s).setVisible(true);
+            new RegisterFormOwner().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_lblRegisterMouseClicked

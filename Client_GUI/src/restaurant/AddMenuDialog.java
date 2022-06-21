@@ -5,19 +5,21 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class AddMenuForm extends javax.swing.JFrame {
-    
+public class AddMenuDialog extends javax.swing.JDialog {
+
+    MenuForm form;
     BufferedReader in;
     DataOutputStream out;
-    
-    public AddMenuForm() {
+
+    public AddMenuDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         try {
             initComponents();
+            form = (MenuForm) parent;
             this.setLocationRelativeTo(null);
             in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
             out = new DataOutputStream(LoginForm.s.getOutputStream());
@@ -25,7 +27,7 @@ public class AddMenuForm extends javax.swing.JFrame {
             Logger.getLogger(AddMenuForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,12 +39,7 @@ public class AddMenuForm extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Price");
@@ -87,7 +84,7 @@ public class AddMenuForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(lblLogin)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +101,7 @@ public class AddMenuForm extends javax.swing.JFrame {
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,14 +121,11 @@ public class AddMenuForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Menu " + txtName.getText() + " successfully added", "Success", JOptionPane.INFORMATION_MESSAGE);
             txtName.setText("");
             txtPrice.setText("");
+            form.refreshTable();
         } catch (Exception e) {
             System.out.println("Error di tambah menu. Error: " + e);
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
