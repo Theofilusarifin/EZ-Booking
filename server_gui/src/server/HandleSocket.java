@@ -18,6 +18,7 @@ import model.Menu;
 import model.Preorder;
 import model.Restaurant;
 import model.User;
+import model.Chat;
 
 public class HandleSocket extends Thread {
 
@@ -317,6 +318,17 @@ public class HandleSocket extends Thread {
                     messages = value.split(";");
                     Menu menu = new Menu(messages[0], Double.parseDouble(messages[1]), restaurantNow.getId());
                     menu.insert();
+                    break;
+//              Logic add menu
+                case "CHAT":
+                    messages = value.split(";");
+                    
+                    SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[1]);
+
+
+                    Chat chat = new Chat(messages[0], date, userNow.getId(), Integer.parseInt(messages[2]));
+                    chat.insert();
                     break;
 //            Logic lain dibawah sini
             }
