@@ -25,6 +25,11 @@ public class ChatForm extends javax.swing.JFrame {
         btnCall.setBackground(new java.awt.Color(255, 255, 204));
         btnCall.setForeground(new java.awt.Color(51, 51, 51));
         btnCall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/call.png"))); // NOI18N
+        btnCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCallActionPerformed(evt);
+            }
+        });
 
         txtAreaChat.setColumns(20);
         txtAreaChat.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -34,6 +39,11 @@ public class ChatForm extends javax.swing.JFrame {
         btnSend.setBackground(new java.awt.Color(255, 255, 204));
         btnSend.setForeground(new java.awt.Color(51, 51, 51));
         btnSend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/send.png"))); // NOI18N
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         txtMessage.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
@@ -74,6 +84,14 @@ public class ChatForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallActionPerformed
+        new AudioCallForm().setVisible(true);
+    }//GEN-LAST:event_btnCallActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSendActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

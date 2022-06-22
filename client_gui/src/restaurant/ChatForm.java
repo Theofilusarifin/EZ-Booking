@@ -1,7 +1,14 @@
 package restaurant;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+
 public class ChatForm extends javax.swing.JFrame {
 
+    BufferedReader in;
+    DataOutputStream out;
+    String message;
+    
     public ChatForm() {
         initComponents();
     }
@@ -36,6 +43,11 @@ public class ChatForm extends javax.swing.JFrame {
         btnCall.setBackground(new java.awt.Color(255, 255, 204));
         btnCall.setForeground(new java.awt.Color(51, 51, 51));
         btnCall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/call.png"))); // NOI18N
+        btnCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +85,10 @@ public class ChatForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallActionPerformed
+       new AudioCallForm().setVisible(true);
+    }//GEN-LAST:event_btnCallActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

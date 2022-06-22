@@ -186,8 +186,8 @@ public class HandleSocket extends Thread {
                     Date startHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[0]);
                     Date endHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[1]);
                     int tablesCount = Integer.valueOf(messages[2]);
-                    int user_id = Integer.valueOf(messages[3]);
-                    int restaurant_id = Integer.valueOf(messages[4]);
+                    int restaurant_id = Integer.valueOf(messages[3]);
+                    int user_id = userNow.getId();
 
 //                    Inisiasi restaurant yang dipilih
                     Restaurant res = new Restaurant();

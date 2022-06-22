@@ -223,8 +223,6 @@ public class ReservationForm extends javax.swing.JFrame {
             }
 //        Semua udah di select
 
-//        User ID
-            int user_id = 1;
 //        Restaurant ID
             int restaurant_id = Integer.parseInt(ids.get(cbRestaurant.getSelectedIndex()));
 //        startHour
@@ -269,7 +267,6 @@ public class ReservationForm extends javax.swing.JFrame {
                     + startHour + ";"
                     + endHour + ";"
                     + String.valueOf(tableCount) + ";"
-                    + String.valueOf(user_id) + ";"
                     + String.valueOf(restaurant_id) + ";"
                     + "\n");
 

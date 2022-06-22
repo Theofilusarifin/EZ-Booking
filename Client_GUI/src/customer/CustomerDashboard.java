@@ -32,6 +32,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
         lblContact.setForeground(new java.awt.Color(255, 255, 255));
         lblContact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblContact.setText("Contact");
+        lblContact.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblContactMouseClicked(evt);
+            }
+        });
 
         lblReservation.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblReservation.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +129,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private void lblReservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReservationMouseClicked
         new ReservationForm().setVisible(true);
     }//GEN-LAST:event_lblReservationMouseClicked
+
+    private void lblContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContactMouseClicked
+        new ChatForm().setVisible(true);
+    }//GEN-LAST:event_lblContactMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
