@@ -64,46 +64,59 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         btnRegisterRestaurant = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblBackToLogin = new javax.swing.JLabel();
+        txtOpenMinute = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtOpenHour = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCloseHour = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCloseMinute = new javax.swing.JTextField();
+        lblPhone1 = new javax.swing.JLabel();
+        txtTablesCount = new javax.swing.JTextField();
+        lblPhone2 = new javax.swing.JLabel();
+        txtPeoplePerTable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblResgisterRest.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblResgisterRest.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblResgisterRest.setText("Register Restaurant Data");
 
-        lblName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblName.setText("Restaurant Name");
 
-        lblAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblAddress.setText("Address");
 
-        txtRestaurantName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtRestaurantName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         txtAreaAddress.setColumns(20);
-        txtAreaAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAreaAddress.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtAreaAddress.setRows(5);
         jScrollPane1.setViewportView(txtAreaAddress);
 
-        lblPhone.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblPhone.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPhone.setText("Phone Number");
 
-        txtPhone.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtPhone.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnRegisterRestaurant.setText("Register");
+        btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnRegisterRestaurant.setText("REGISTER");
         btnRegisterRestaurant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterRestaurantActionPerformed(evt);
             }
         });
 
-        btnBack.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblBackToLogin.setText("Back To Login");
         lblBackToLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -113,46 +126,93 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
             }
         });
 
+        txtOpenMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setText(":");
+
+        txtOpenHour.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Open Hour");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setText("Close Hour");
+
+        txtCloseHour.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setText(":");
+
+        txtCloseMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        lblPhone1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPhone1.setText("Tables Count");
+
+        txtTablesCount.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        lblPhone2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPhone2.setText("Peoples per Table");
+
+        txtPeoplePerTable.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblResgisterRest)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(149, 149, 149))
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(126, 126, 126)
-                        .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 77, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAddress)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPhone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblBackToLogin)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBack)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnRegisterRestaurant)))
-                        .addGap(77, 77, 77))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhone)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(lblBackToLogin)
+                            .addComponent(lblAddress)
+                            .addComponent(lblName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtRestaurantName)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnRegisterRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtCloseHour, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtCloseMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtOpenHour, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtOpenMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtTablesCount, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPeoplePerTable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
+                        .addGap(50, 50, 50))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhone1)
+                            .addComponent(lblPhone2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(32, 32, 32)
                 .addComponent(lblResgisterRest)
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,11 +224,31 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhone))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegisterRestaurant)
-                    .addComponent(btnBack)
-                    .addComponent(lblBackToLogin))
+                    .addComponent(jLabel1)
+                    .addComponent(txtOpenHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtOpenMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtCloseHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtCloseMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPhone1)
+                    .addComponent(txtTablesCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPhone2)
+                    .addComponent(txtPeoplePerTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegisterRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
 
@@ -265,14 +345,26 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterRestaurant;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBackToLogin;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblPhone1;
+    private javax.swing.JLabel lblPhone2;
     private javax.swing.JLabel lblResgisterRest;
     private javax.swing.JTextArea txtAreaAddress;
+    private javax.swing.JTextField txtCloseHour;
+    private javax.swing.JTextField txtCloseMinute;
+    private javax.swing.JTextField txtOpenHour;
+    private javax.swing.JTextField txtOpenMinute;
+    private javax.swing.JTextField txtPeoplePerTable;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtRestaurantName;
+    private javax.swing.JTextField txtTablesCount;
     // End of variables declaration//GEN-END:variables
 }
