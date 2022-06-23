@@ -48,6 +48,40 @@ public class ChatForm extends javax.swing.JFrame {
         }
     }
 
+    public void refreshChat() {
+        try {
+//        Pastikan Restaurant tidak kosong
+            if (cbCustomer.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Please choose a customer", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            txtAreaChat.setText("");
+
+//        User ID
+            int user_id = Integer.parseInt(ids.get(cbCustomer.getSelectedIndex()));
+
+            out.writeBytes("GETCHAT//" + user_id + "\n");
+
+            String result = in.readLine();
+
+            if (!result.equals("")) {
+                String[] responses = result.split(";--;");
+
+                for (int i = 0; i < responses.length; i++) {
+                    String[] response = responses[i].split(";-;");
+                    txtAreaChat.append(response[1] + "\n");
+                    txtAreaChat.append(response[2] + ": " + response[0] + "\n");
+                    txtAreaChat.append("\n");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "There is no chat available", "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -92,11 +126,16 @@ public class ChatForm extends javax.swing.JFrame {
         });
 
         cbCustomer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCustomerActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setText("Customer");
 
-        btnRefresh1.setText("Resfresh");
+        btnRefresh1.setText("Refresh");
         btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefresh1ActionPerformed(evt);
@@ -174,15 +213,21 @@ public class ChatForm extends javax.swing.JFrame {
             String date = strFormatter.format(currrent_time);
             message = txtMessage.getText();
 
-            out.writeBytes("CHAT//" + customer_id + ";" + date + ";" + message);
+            out.writeBytes("CHAT//" + customer_id + ";" + date + ";" + message + "\n");
+            
+            refreshChat();
         } catch (IOException ex) {
             Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
-        // TODO add your handling code here:
+        refreshChat();
     }//GEN-LAST:event_btnRefresh1ActionPerformed
+
+    private void cbCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCustomerActionPerformed
+        refreshChat();
+    }//GEN-LAST:event_cbCustomerActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

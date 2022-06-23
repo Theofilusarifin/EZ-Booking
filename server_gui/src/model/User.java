@@ -91,7 +91,6 @@ public class User extends MyConnection {
     }
 
     // </editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
         try {
@@ -240,7 +239,7 @@ public class User extends MyConnection {
         return status;
     }
 
-    public User getSelectedUser(int user_id) { //Ambil data restaurant untuk combobox di form reservation
+    public User getSelectedUser(int user_id) {
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
             this.stat = (Statement) connect.createStatement();
@@ -261,6 +260,28 @@ public class User extends MyConnection {
         }
         User user = (User) collections.get(0);
         return user;
+    }
+
+    public ArrayList<Object> getCustomer() { //Ambil data customer
+        ArrayList<Object> collections = new ArrayList<Object>();
+        try {
+            this.stat = (Statement) connect.createStatement();
+            this.result = this.stat.executeQuery("SELECT * FROM users where role='customer';");
+
+            while (this.result.next()) {
+                User user = new User(
+                        result.getInt("id"),
+                        result.getString("name"),
+                        result.getString("username"),
+                        result.getString("password"),
+                        result.getString("role")
+                );
+                collections.add(user);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error di method getCustomer : " + ex);
+        }
+        return collections;
     }
 // </editor-fold>
 }

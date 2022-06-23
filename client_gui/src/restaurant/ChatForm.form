@@ -155,6 +155,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCustomerActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -169,7 +172,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnRefresh1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Resfresh"/>
+        <Property name="text" type="java.lang.String" value="Refresh"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefresh1ActionPerformed"/>

@@ -293,6 +293,7 @@ public class Restaurant extends MyConnection {
                         this.result.getString("name"),
                         this.result.getInt("peoplePerTable")
                 );
+                restaurant.setUser_id(this.result.getInt("user_id"));
                 collections.add(restaurant);
             }
         } catch (Exception ex) {

@@ -19,6 +19,7 @@ public class ChatForm extends javax.swing.JFrame {
     String message;
     ArrayList<String> ids;
     ArrayList<String> names;
+    ArrayList<String> user_ids;
 
     public ChatForm() {
         try {
@@ -31,6 +32,7 @@ public class ChatForm extends javax.swing.JFrame {
             String[] responses = response.split(";");
             ids = new ArrayList<String>();
             names = new ArrayList<String>();
+            user_ids = new ArrayList<String>();
 
             for (int i = 0; i < responses.length; i++) {
 //                Tambahkan id ke arraylist
@@ -38,8 +40,44 @@ public class ChatForm extends javax.swing.JFrame {
 //                Tambahkan name ke arraylist
                 String _name = responses[i].split("&")[1];
                 names.add(_name);
+//                Tambahkan user_id ke arraylist
+                user_ids.add(responses[i].split("&")[2]);
 //                Tambahkan name ke combobox
                 cbRestaurant.addItem(_name);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void refreshChat() {
+        try {
+//        Pastikan Restaurant tidak kosong
+            if (cbRestaurant.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Please choose a restaurant", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            txtAreaChat.setText("");
+
+//        User ID
+            int user_id = Integer.parseInt(user_ids.get(cbRestaurant.getSelectedIndex()));
+
+            out.writeBytes("GETCHAT//" + user_id + "\n");
+
+            String result = in.readLine();
+
+            if (!result.equals("")) {
+                String[] responses = result.split(";--;");
+
+                for (int i = 0; i < responses.length; i++) {
+                    String[] response = responses[i].split(";-;");
+                    txtAreaChat.append(response[1] + "\n");
+                    txtAreaChat.append(response[2] + ": " + response[0] + "\n");
+                    txtAreaChat.append("\n");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "There is no chat available", "Info", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
             Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,11 +125,16 @@ public class ChatForm extends javax.swing.JFrame {
         txtMessage.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         cbRestaurant.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbRestaurant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRestaurantActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setText("Restaurant");
 
-        btnRefresh.setText("Resfresh");
+        btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -164,24 +207,30 @@ public class ChatForm extends javax.swing.JFrame {
                 return;
             }
 
-//        Restaurant ID
-            int restaurant_id = Integer.parseInt(ids.get(cbRestaurant.getSelectedIndex()));
+//        User ID
+            int user_id = Integer.parseInt(user_ids.get(cbRestaurant.getSelectedIndex()));
 
 //        startHour
             Date currrent_time = new Date();
             SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String date = strFormatter.format(currrent_time);
             message = txtMessage.getText();
-            
-            out.writeBytes("CHAT//" + restaurant_id + ";" + date + ";" + message);
+
+            out.writeBytes("CHAT//" + user_id + ";" + date + ";" + message + "\n");
+
+            refreshChat();
         } catch (IOException ex) {
             Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
+        refreshChat();
     }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void cbRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRestaurantActionPerformed
+        refreshChat();
+    }//GEN-LAST:event_cbRestaurantActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -169,16 +169,17 @@ public class HandleSocket extends Thread {
                         int id = restaurant.getId();
                         String name = restaurant.getName();
                         int peoplePerTable = restaurant.getPeoplePerTable();
+                        int user_id = restaurant.getUser_id();
 //                    Tambahkan data
                         response = response
                                 + String.valueOf(id) + "&"
                                 + name + "&"
-                                + String.valueOf(peoplePerTable) + ";";
+                                + String.valueOf(peoplePerTable) + "&"
+                                + String.valueOf(user_id) + ";";
                     }
 //                Kirim seluruh data ke client
                     SendMessage(response);
                     break;
-
                 case "RESERVATION":
                     messages = value.split(";");
 //                    String untuk response
@@ -322,13 +323,65 @@ public class HandleSocket extends Thread {
 //              Logic add menu
                 case "CHAT":
                     messages = value.split(";");
-                    
+
                     SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(messages[1]);
 
-
-                    Chat chat = new Chat(messages[0], date, userNow.getId(), Integer.parseInt(messages[2]));
+                    Chat chat = new Chat(messages[2], date, userNow.getId(), Integer.parseInt(messages[0]));
                     chat.insert();
+                    break;
+//                Logic get chat
+                case "GETCHAT":
+                    message = value;
+                    chat = new Chat();
+                    User user = new User();
+
+                    collection = chat.getChat(userNow.getId(), Integer.valueOf(message));
+
+//                String untuk response
+                    response = "";
+//                Looping untuk kirim data sebagai string
+                    for (Object object : collection) {
+//                    Type casting object ke chat
+                        Chat _chat = (Chat) object;
+                        User fromUser = user.getSelectedUser(_chat.getFrom());
+                        User toUser = user.getSelectedUser(_chat.getTo());
+//                    Inisiasi data yang dikirim
+                        strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String _message = _chat.getMessage();
+                        String _date = strFormatter.format(_chat.getDate());
+                        String _from = fromUser.getName();
+                        String _to = toUser.getName();
+//                    Tambahkan data
+                        response = response
+                                + _message + ";-;"
+                                + _date + ";-;"
+                                + _from + ";-;"
+                                + _to + ";--;";
+                    }
+                    SendMessage(response);
+                    break;
+//                Logic ambil data customer
+                case "DATACUSTOMER":
+//                Inisiasi class restaurant untuk dapat array data restaurant
+                    user = new User();
+                    collection = user.getCustomer();
+//                String untuk response
+                    response = "";
+//                Looping untuk kirim data sebagai string
+                    for (Object object : collection) {
+//                    Type casting object ke restaurant
+                        User cust = (User) object;
+//                    Inisiasi data yang dikirim
+                        int id = cust.getId();
+                        String username = cust.getUsername();
+//                    Tambahkan data
+                        response = response
+                                + String.valueOf(id) + "&"
+                                + username + ";";
+                    }
+//                Kirim seluruh data ke client
+                    SendMessage(response);
                     break;
 //            Logic lain dibawah sini
             }

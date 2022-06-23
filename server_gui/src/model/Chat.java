@@ -1,4 +1,3 @@
-
 package model;
 
 import java.sql.PreparedStatement;
@@ -7,8 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Chat extends MyConnection{
-    
+public class Chat extends MyConnection {
+
     // <editor-fold defaultstate="collapsed" desc="Fields">
     private int id;
     private String message;
@@ -18,7 +17,7 @@ public class Chat extends MyConnection{
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Properties">
-        public String getMessage() {
+    public String getMessage() {
         return message;
     }
 
@@ -45,7 +44,7 @@ public class Chat extends MyConnection{
     public int getTo() {
         return to;
     }
-    
+
     public void setTo(int to) {
         this.to = to;
     }
@@ -55,7 +54,7 @@ public class Chat extends MyConnection{
     public Chat() {
         getConnection();
     }
-    
+
     public Chat(int id, String message, Date date, int from, int to) {
         this.id = id;
         this.message = message;
@@ -64,8 +63,7 @@ public class Chat extends MyConnection{
         this.to = to;
         getConnection();
     }
-    
-        
+
     public Chat(String message, Date date, int from, int to) {
         this.message = message;
         this.date = date;
@@ -80,7 +78,7 @@ public class Chat extends MyConnection{
         try {
             if (!connect.isClosed()) {
                 stat = (Statement) connect.createStatement();
-                PreparedStatement sql = (PreparedStatement) connect.prepareStatement("insert into chats(message, date, from, to) values (?,?,?,?)");
+                PreparedStatement sql = (PreparedStatement) connect.prepareStatement("insert into chats values (null,?,?,?,?)");
 
                 sql.setString(1, this.getMessage());
 
@@ -88,7 +86,6 @@ public class Chat extends MyConnection{
                 SimpleDateFormat strFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String startDate = strFormatter.format(this.getDate());
                 sql.setString(2, startDate);
-
 
                 sql.setInt(3, this.getFrom());
                 sql.setInt(4, this.getTo());
@@ -101,6 +98,29 @@ public class Chat extends MyConnection{
         } catch (Exception e) {
             System.out.println("Error di chat insert, Error: " + e);
         }
+    }
+
+    public ArrayList<Object> getChat(int id1, int id2) {
+        ArrayList<Object> collections = new ArrayList<Object>();
+        try {
+            this.stat = (Statement) connect.createStatement();
+            this.result = this.stat.executeQuery("SELECT * FROM chats c where (c.from="
+                    + id1 + " and c.to=" + id2 + ") or (c.from=" + id2 + " and c.to=" + id1 + ");");
+
+            while (this.result.next()) {
+                Chat chat = new Chat(
+                        this.result.getInt("id"),
+                        this.result.getString("message"),
+                        this.result.getTimestamp("date"),
+                        this.result.getInt("from"),
+                        this.result.getInt("to"));
+                collections.add(chat);
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Error di method getChat : " + ex);
+        }
+        return collections;
     }
     // </editor-fold>
 }
