@@ -46,54 +46,55 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setSize(new java.awt.Dimension(580, 400));
+        setPreferredSize(new java.awt.Dimension(430, 520));
+        setSize(new java.awt.Dimension(450, 520));
         getContentPane().setLayout(null);
 
         lblRegister.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblRegister.setText("REGISTER");
         getContentPane().add(lblRegister);
-        lblRegister.setBounds(160, 30, 134, 32);
+        lblRegister.setBounds(160, 20, 134, 32);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 80, 51, 24);
+        jLabel1.setBounds(50, 70, 51, 24);
 
         lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username");
         getContentPane().add(lblUsername);
-        lblUsername.setBounds(70, 170, 90, 24);
+        lblUsername.setBounds(50, 150, 90, 24);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(70, 260, 86, 24);
+        lblPassword.setBounds(50, 230, 100, 24);
 
         lblRePassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblRePassword.setForeground(new java.awt.Color(255, 255, 255));
         lblRePassword.setText("Re-type Password");
         getContentPane().add(lblRePassword);
-        lblRePassword.setBounds(70, 350, 160, 24);
+        lblRePassword.setBounds(50, 320, 160, 24);
 
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(70, 110, 330, 30);
+        txtName.setBounds(50, 100, 330, 30);
 
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(70, 200, 330, 30);
+        txtUsername.setBounds(50, 180, 330, 30);
 
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(70, 290, 330, 30);
+        txtPassword.setBounds(50, 260, 330, 30);
 
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(70, 380, 330, 30);
+        txtRePassword.setBounds(50, 350, 330, 30);
 
         btnRegister.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegister.setText("REGISTER");
@@ -103,7 +104,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegister);
-        btnRegister.setBounds(160, 470, 150, 38);
+        btnRegister.setBounds(230, 420, 150, 38);
 
         lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,12 +116,13 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBackToLogin);
-        lblBackToLogin.setBounds(190, 510, 100, 34);
+        lblBackToLogin.setBounds(50, 420, 100, 34);
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
+        lblBackground.setPreferredSize(new java.awt.Dimension(430, 520));
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(10, 10, 450, 550);
+        lblBackground.setBounds(0, 0, 450, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

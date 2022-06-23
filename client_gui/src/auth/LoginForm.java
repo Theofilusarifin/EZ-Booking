@@ -65,21 +65,21 @@ public class LoginForm extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(null);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(80, 270, 310, 30);
+        txtPassword.setBounds(70, 260, 310, 30);
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(80, 180, 310, 30);
+        txtUsername.setBounds(70, 170, 310, 30);
 
         lblLogin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("LOGIN");
         getContentPane().add(lblLogin);
-        lblLogin.setBounds(190, 30, 80, 30);
+        lblLogin.setBounds(180, 20, 80, 30);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(80, 240, 90, 20);
+        lblPassword.setBounds(70, 230, 90, 20);
 
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -88,13 +88,13 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(160, 380, 140, 30);
+        btnLogin.setBounds(150, 370, 140, 30);
 
         lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username");
         getContentPane().add(lblUsername);
-        lblUsername.setBounds(80, 150, 90, 20);
+        lblUsername.setBounds(70, 140, 90, 20);
 
         lblRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblRegister.setText("Register Here");
@@ -105,24 +105,24 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblRegister);
-        lblRegister.setBounds(270, 430, 80, 14);
+        lblRegister.setBounds(260, 420, 80, 14);
 
         lblAccount.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblAccount.setForeground(new java.awt.Color(255, 255, 255));
         lblAccount.setText("Don't have an account yet?");
         getContentPane().add(lblAccount);
-        lblAccount.setBounds(120, 430, 160, 16);
+        lblAccount.setBounds(110, 420, 160, 16);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/separator.png"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(160, 70, 140, 10);
+        jLabel4.setBounds(150, 60, 140, 10);
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(10, 10, 450, 490);
+        lblBackground.setBounds(0, 0, 450, 490);
 
-        setSize(new java.awt.Dimension(470, 509));
+        setSize(new java.awt.Dimension(450, 489));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
