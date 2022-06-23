@@ -21,6 +21,11 @@ public class LoginService {
         userList = user.select();
     }
 
+    @WebMethod(operationName = "hello")
+    public String hello(@WebParam(name = "name") String txt) {
+        return "Hello " + txt + " !";
+    }
+
     @WebMethod(operationName = "checkLogin")
     public String checkLogin(@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
         if (username.equals("admin") && password.equals("admin")) {
