@@ -6,16 +6,23 @@ package com.ezbooking.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Meliyana
  */
-public class User extends MyConnection{
+public class User extends MyConnection {
+
     //<editor-fold defaultstate="collapsed" desc="Fields">
     protected Statement statement;
     protected ResultSet result;
 
+    private int id;
     private String name;
     private String username;
     private String password;
@@ -23,6 +30,14 @@ public class User extends MyConnection{
     // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Properties">
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -95,56 +110,19 @@ public class User extends MyConnection{
         }
     }
 
-    public boolean CheckLogin(String username, String password) {
+    public ArrayList<String> select() {
+        ArrayList<String> data = new ArrayList<>();
         try {
-            this.statement = (Statement) connect.createStatement();
-            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
-                    + " where username = ? and password = ? and role != ?;");
-            sql.setString(1, username);
-            sql.setString(2, password);
-            sql.setString(3, "admin");
-            result = sql.executeQuery();
-            if (this.result.next()) {
-                return true;
+            stat = (Statement) connect.createStatement();
+            result = stat.executeQuery("select * from users");
+            while (result.next()) {
+                User us = new User(result.getString("username"), result.getString("password"), result.getString("role"), result.getString("name"));
+                data.add(us.getUsername() + ";-;" + us.getPassword() + ";-;" + us.getRole() + ";-;" + us.getName());
             }
-        } catch (Exception e) {
-            System.out.println("Error User CheckLogin, Error: " + e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
-    }
-
-    public String CheckRole(String username, String password) {
-        String role = "";
-        try {
-            this.statement = (Statement) connect.createStatement();
-            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
-                    + " where username = ? and password = ?;");
-            sql.setString(1, username);
-            sql.setString(2, password);
-            result = sql.executeQuery();
-            if (this.result.next()) {
-                role = result.getString("role") + ";-;" + result.getString("name") + ";-;" + result.getInt("id");
-            }
-        } catch (Exception e) {
-            System.out.println("Error User CheckLogin, Error: " + e.getMessage());
-        }
-        return role;
-    }
-
-    public boolean CheckSameUsername(String username) {
-        try {
-            this.statement = (Statement) connect.createStatement();
-            PreparedStatement sql = (PreparedStatement) connect.prepareStatement("select * from users"
-                    + " where username = ?;");
-            sql.setString(1, username);
-            result = sql.executeQuery();
-            if (this.result.next()) {
-                return true;
-            }
-        } catch (Exception e) {
-            System.out.println("Error User CheckSameUsername, Error: " + e.getMessage());
-        }
-        return false;
+        return data;
     }
 
 // </editor-fold>

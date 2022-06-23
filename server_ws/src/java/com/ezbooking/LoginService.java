@@ -9,27 +9,25 @@ import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-/**
- *
- * @author Meliyana
- */
+
 @WebService(serviceName = "LoginService")
 public class LoginService {
 
     User user;
-    ArrayList<String> listOfUser;
+    ArrayList<String> userList;
 
     public LoginService() {
         user = new User();
+        userList = user.select();
     }
 
-   
-    /**
-     * Web service operation
-     */
     @WebMethod(operationName = "checkLogin")
     public String checkLogin(@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
-        String result = "";
-        return result;
+        if (username.equals("admin") && password.equals("admin")) {
+            return "true-admin";
+        } else if (username.equals("user") && password.equals("user")) {
+            return "true-user";
+        }
+        return "false";
     }
 }
