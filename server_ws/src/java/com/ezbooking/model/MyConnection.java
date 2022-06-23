@@ -26,7 +26,7 @@ class MyConnection {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connect = DriverManager.getConnection("jdbc:mysql://localhost/ezbooking", "root", "");
         } catch (Exception e) {
-            System.out.println("Error Get Connection : " + e);
+            System.out.println("Error getConnection : " + e);
         }
         return connect;
     }
