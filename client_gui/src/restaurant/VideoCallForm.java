@@ -16,8 +16,9 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     Thread t;
     VideoCallSystem avcs = new VideoCallSystem();
+    boolean running = true;
 
-    public VideoCallForm() {
+    public VideoCallForm() {    
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Video Call");
@@ -48,7 +49,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
                 b = receiveUDP();
                 toSpeaker(b);
 
-                while (true) {
+                while (running) {
                     br = cam.getImage();
                     ic = new ImageIcon(br);
                     out.writeObject(ic);
@@ -97,34 +98,63 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     private void initComponents() {
 
         clientVideo = new javax.swing.JLabel();
+        btnAudioCall = new javax.swing.JButton();
+        lblLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         clientVideo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btnAudioCall.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAudioCall.setText("End Video Call");
+        btnAudioCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAudioCallActionPerformed(evt);
+            }
+        });
+
+        lblLogin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogin.setText("Video Call with Customer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(clientVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(clientVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(lblLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(clientVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(lblLogin)
+                .addGap(18, 18, 18)
+                .addComponent(clientVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
+        running = false;
+        this.dispose();
+    }//GEN-LAST:event_btnAudioCallActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -159,6 +189,8 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAudioCall;
     public static javax.swing.JLabel clientVideo;
+    private javax.swing.JLabel lblLogin;
     // End of variables declaration//GEN-END:variables
 }
