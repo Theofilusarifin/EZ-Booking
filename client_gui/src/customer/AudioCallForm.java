@@ -43,7 +43,10 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Calling Restaurant");
 
+        btnAudioCall.setBackground(new java.awt.Color(180, 0, 51));
         btnAudioCall.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAudioCall.setForeground(new java.awt.Color(255, 255, 255));
+        btnAudioCall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/endcall.png"))); // NOI18N
         btnAudioCall.setText("End Call");
         btnAudioCall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,21 +61,21 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(lblLogin)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(lblLogin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(btnAudioCall)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(lblLogin)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
