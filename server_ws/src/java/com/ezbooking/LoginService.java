@@ -4,7 +4,7 @@
  */
 package com.ezbooking;
 
-import com.ezbooking.model.User;
+import model.User;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -13,26 +13,33 @@ import javax.jws.WebParam;
 @WebService(serviceName = "LoginService")
 public class LoginService {
 
-    User user;
-    ArrayList<String> userList;
+
+    private User user;
+    private ArrayList<String> userList;
 
     public LoginService() {
         user = new User();
         userList = user.select();
     }
 
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
-
     @WebMethod(operationName = "checkLogin")
     public String checkLogin(@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
-        if (username.equals("admin") && password.equals("admin")) {
-            return "true-admin";
-        } else if (username.equals("user") && password.equals("user")) {
-            return "true-user";
+        for (int i = 0; i < userList.size(); i++) {//miftah-pwd;ahmad-pwd
+            String[] eachUser = userList.get(i).split(";-;");//i=0 -> miftah-pwd || i=1 -> ahmad-pwd
+            String uname = eachUser[0];
+            String pass = eachUser[1];
+            if (username.equals(uname) && password.equals(pass)) {
+                return "true";
+            }
         }
         return "false";
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "testFunction")
+    public String testFunction(@WebParam(name = "var1") String var1, @WebParam(name = "var2") String var2) {
+        return "return";
     }
 }

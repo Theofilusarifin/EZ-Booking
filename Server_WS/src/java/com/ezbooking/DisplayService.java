@@ -4,7 +4,7 @@
  */
 package com.ezbooking;
 
-import com.ezbooking.model.Restaurant;
+import model.Restaurant;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
