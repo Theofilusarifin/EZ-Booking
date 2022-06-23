@@ -218,7 +218,7 @@ public class PreOrderForm extends javax.swing.JFrame {
                 int dialogResult = JOptionPane.showConfirmDialog(this, responses[1], "Preorder Successful", dialogButton);
 //                    Apabila user memilih no (Tidak ingin melakukan pre order lagi)
                 if (dialogResult == 1) {
-                    this.setVisible(false);
+                    this.dispose();
                 }
             }
         } catch (IOException ex) {

@@ -1,6 +1,7 @@
 package customer;
 
 import java.net.Socket;
+import javax.swing.JFrame;
 
 public class CustomerDashboard extends javax.swing.JFrame {
 
@@ -127,11 +128,15 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblReservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReservationMouseClicked
-        new ReservationForm().setVisible(true);
+        ReservationForm form = new ReservationForm();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_lblReservationMouseClicked
 
     private void lblContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContactMouseClicked
-        new ChatForm().setVisible(true);
+        ChatForm form = new ChatForm();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_lblContactMouseClicked
 
 

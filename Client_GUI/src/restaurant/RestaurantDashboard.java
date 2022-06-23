@@ -6,6 +6,7 @@ import java.net.Socket;
 import javax.swing.JFrame;
 
 public class RestaurantDashboard extends javax.swing.JFrame {
+
     String kode = "";
 
     public RestaurantDashboard() {
@@ -196,7 +197,9 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookingMouseClicked
-        new DisplayBookings().setVisible(true);
+        DisplayBookings form = new DisplayBookings();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_lblBookingMouseClicked
 
     private void lblMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenu1MouseClicked
@@ -206,7 +209,9 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMenu1MouseClicked
 
     private void lblContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContactMouseClicked
-        new ChatForm().setVisible(true);
+        ChatForm form = new ChatForm();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_lblContactMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

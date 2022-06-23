@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class ChatForm extends javax.swing.JFrame {
@@ -193,7 +194,9 @@ public class ChatForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallActionPerformed
-        new AudioCallForm().setVisible(true);
+        AudioCallForm form = new AudioCallForm();
+        form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnCallActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -214,7 +217,7 @@ public class ChatForm extends javax.swing.JFrame {
             message = txtMessage.getText();
 
             out.writeBytes("CHAT//" + customer_id + ";" + date + ";" + message + "\n");
-            
+
             refreshChat();
         } catch (IOException ex) {
             Logger.getLogger(ChatForm.class.getName()).log(Level.SEVERE, null, ex);

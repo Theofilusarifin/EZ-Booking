@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class ReservationForm extends javax.swing.JFrame {
@@ -288,8 +289,10 @@ public class ReservationForm extends javax.swing.JFrame {
                         response = in.readLine();
 //                      Hasil dari server
                         int booking_id = Integer.parseInt(response);
-                        this.setVisible(false);
-                        new PreOrderForm(restaurant_id, booking_id).setVisible(true); // Tampilkan Pre Order
+                        PreOrderForm form = new PreOrderForm(restaurant_id, booking_id);
+                        form.setVisible(true);
+                        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        this.dispose();
                     }
 
                 } else if (preorder_availability.equals("False")) {
