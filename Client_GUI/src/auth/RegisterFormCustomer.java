@@ -16,6 +16,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
 
     public RegisterFormCustomer() {
         initComponents();
+        this.setBackground(new Color(0, 0, 0, 0));
         this.setLocationRelativeTo(null);
         try {
             //buat penerima dan pengirim dari socket
@@ -41,32 +42,58 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         txtRePassword = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         lblBackToLogin = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(new java.awt.Dimension(580, 400));
+        getContentPane().setLayout(null);
 
         lblRegister.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblRegister.setText("REGISTER");
+        getContentPane().add(lblRegister);
+        lblRegister.setBounds(160, 30, 134, 32);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 80, 51, 24);
 
         lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username");
+        getContentPane().add(lblUsername);
+        lblUsername.setBounds(70, 170, 90, 24);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password");
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(70, 260, 86, 24);
 
         lblRePassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblRePassword.setForeground(new java.awt.Color(255, 255, 255));
         lblRePassword.setText("Re-type Password");
+        getContentPane().add(lblRePassword);
+        lblRePassword.setBounds(70, 350, 160, 24);
 
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtName);
+        txtName.setBounds(70, 110, 330, 30);
 
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtUsername);
+        txtUsername.setBounds(70, 200, 330, 30);
 
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(70, 290, 330, 30);
 
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtRePassword);
+        txtRePassword.setBounds(70, 380, 330, 30);
 
         btnRegister.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegister.setText("REGISTER");
@@ -75,6 +102,8 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegister);
+        btnRegister.setBounds(160, 470, 150, 38);
 
         lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,66 +114,13 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
                 lblBackToLoginMouseClicked(evt);
             }
         });
+        getContentPane().add(lblBackToLogin);
+        lblBackToLogin.setBounds(190, 510, 100, 34);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblPassword)
-                        .addComponent(lblUsername)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(38, 38, 38)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBackToLogin)
-                            .addComponent(lblRePassword))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                        .addComponent(txtUsername)
-                        .addComponent(txtName)
-                        .addComponent(txtRePassword))
-                    .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(lblRegister)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRePassword)
-                    .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
-        );
+        lblBackground.setForeground(new java.awt.Color(255, 255, 255));
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(10, 10, 450, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,6 +195,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblBackToLogin;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRePassword;
     private javax.swing.JLabel lblRegister;
