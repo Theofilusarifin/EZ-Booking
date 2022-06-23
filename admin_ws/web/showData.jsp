@@ -1,9 +1,3 @@
-<%-- 
-    Document   : showData
-    Created on : Jun 21, 2022, 12:16:36 AM
-    Author     : MSI-PC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

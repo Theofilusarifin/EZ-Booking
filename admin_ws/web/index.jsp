@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Jun 19, 2022, 10:45:27 PM
-    Author     : Meliyana
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
