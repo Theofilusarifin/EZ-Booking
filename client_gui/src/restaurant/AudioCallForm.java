@@ -8,9 +8,11 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
-public class AudioCallForm extends javax.swing.JFrame implements Runnable{
+public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 
     Thread t;
+    boolean running = true;
+
     public AudioCallForm() {
         initComponents();
         try {
@@ -19,7 +21,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable{
                 t.start();
             }
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -27,31 +29,65 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLogin = new javax.swing.JLabel();
+        btnAudioCall = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblLogin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogin.setText("Calling Customer");
+
+        btnAudioCall.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAudioCall.setText("End Call");
+        btnAudioCall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAudioCallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblLogin)
+                        .addGap(71, 71, 71))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblLogin)
+                .addGap(18, 18, 18)
+                .addComponent(btnAudioCall, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
+        running = false;
+        this.dispose();
+        
+    }//GEN-LAST:event_btnAudioCallActionPerformed
+
     @Override
     public void run() {
         byte b[] = null;
-        while (true) {
+        while (running) {
             b = receiveUDP();
             toSpeaker(b);
         }
     }
-    
+
     public static byte[] receiveUDP() {
         try {
             DatagramSocket sock = new DatagramSocket(5000);
@@ -64,7 +100,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable{
             return null;
         }
     }
-    
+
     public static void toSpeaker(byte soundbytes[]) {
         try {
             DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, getAudioFormat());
@@ -75,10 +111,10 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable{
             sourceDataLine.drain();
             sourceDataLine.close();
         } catch (Exception e) {
-            
+
         }
     }
-    
+
     public static AudioFormat getAudioFormat() {
         return new AudioFormat(44100.0f, 16, 1, true, false);
     }
@@ -116,5 +152,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAudioCall;
+    private javax.swing.JLabel lblLogin;
     // End of variables declaration//GEN-END:variables
 }
