@@ -25,7 +25,6 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblAbout = new javax.swing.JLabel();
         lblBooking = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -39,11 +38,6 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblAbout.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblAbout.setForeground(new java.awt.Color(255, 255, 255));
-        lblAbout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAbout.setText("About");
 
         lblBooking.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblBooking.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,7 +86,6 @@ public class RestaurantDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                     .addComponent(lblBooking, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                     .addComponent(lblContact, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                 .addContainerGap())
@@ -115,9 +108,7 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(lblAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(265, 265, 265)
                 .addComponent(lblBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +208,6 @@ public class RestaurantDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAbout;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBooking;
     private javax.swing.JLabel lblContact;
