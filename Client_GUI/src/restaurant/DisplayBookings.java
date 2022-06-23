@@ -29,7 +29,7 @@ public class DisplayBookings extends javax.swing.JFrame {
             in = new BufferedReader(new InputStreamReader(LoginForm.s.getInputStream()));
             out = new DataOutputStream(LoginForm.s.getOutputStream());
             
-            out.writeBytes("DISPLAYBOOKINGS//2" + " " + "\n");
+            out.writeBytes("DISPLAYBOOKINGS//" + " " + "\n");
             String response = in.readLine();
             String[] responses = response.split(";");
             

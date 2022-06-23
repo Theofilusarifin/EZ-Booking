@@ -290,7 +290,7 @@ public class HandleSocket extends Thread {
                 case "DISPLAYBOOKINGS":
 //                Inisiasi class booking untuk dapat array data untuk
                     Bookings book = new Bookings();
-                    message = value;
+                    message = String.valueOf(restaurantNow.getId());
                     collection = book.display(message);
 //                String untuk response
                     response = "";
