@@ -1,7 +1,7 @@
 <%-- 
-    Document   : loginAdmin
-    Created on : Jun 19, 2022, 8:27:37 PM
-    Author     : MSI-PC
+    Document   : Login
+    Created on : Jun 19, 2022, 10:41:50 PM
+    Author     : Meliyana
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>EZBOOKING</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <h1>Hello World!</h1>
