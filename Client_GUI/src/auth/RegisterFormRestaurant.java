@@ -97,7 +97,7 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         txtCloseMinute.setBackground(new java.awt.Color(242, 242, 242));
         txtCloseMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegisterRestaurant.setText("REGISTER");
         btnRegisterRestaurant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         lblPhone1.setForeground(new java.awt.Color(255, 255, 255));
         lblPhone1.setText("Tables Count");
 
-        btnBack.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +196,7 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtRestaurantName)
                             .addComponent(jScrollPane1)
@@ -222,13 +222,7 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
                                             .addComponent(jLabel6)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(txtOpenMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 114, Short.MAX_VALUE)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(btnRegisterRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(104, 104, 104)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(50, 50, 50))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -243,9 +237,16 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
                 .addComponent(lblBackToLogin)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblResgisterRest)
-                .addGap(152, 152, 152))
+                .addContainerGap(153, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblResgisterRest)
+                        .addGap(152, 152, 152))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnRegisterRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(161, 161, 161))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
