@@ -74,12 +74,13 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         lblUsername = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         lblRePassword = new javax.swing.JLabel();
+        lblBackToLogin1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(440, 580));
-        setSize(new java.awt.Dimension(440, 550));
+        setPreferredSize(new java.awt.Dimension(460, 580));
+        setSize(new java.awt.Dimension(460, 550));
         getContentPane().setLayout(null);
 
         lblResgisterRest.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -88,17 +89,20 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         getContentPane().add(lblResgisterRest);
         lblResgisterRest.setBounds(100, 30, 250, 32);
 
+        txtName.setBackground(new java.awt.Color(242, 242, 242));
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(40, 120, 360, 30);
+        txtName.setBounds(50, 120, 350, 30);
 
+        txtPassword.setBackground(new java.awt.Color(242, 242, 242));
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(40, 280, 360, 30);
+        txtPassword.setBounds(50, 280, 350, 30);
 
+        txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(40, 360, 360, 30);
+        txtRePassword.setBounds(50, 360, 350, 30);
 
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegisterRestaurant.setText("NEXT");
@@ -108,51 +112,64 @@ public class RegisterFormOwner extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegisterRestaurant);
-        btnRegisterRestaurant.setBounds(270, 460, 130, 38);
+        btnRegisterRestaurant.setBounds(170, 420, 130, 38);
 
+        txtUsername.setBackground(new java.awt.Color(242, 242, 242));
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(40, 200, 360, 30);
+        txtUsername.setBounds(50, 200, 350, 30);
 
         lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblBackToLogin.setText("Back To Login");
-        lblBackToLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBackToLogin.setText("Already have an account?");
+        lblBackToLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblBackToLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBackToLoginMouseClicked(evt);
             }
         });
         getContentPane().add(lblBackToLogin);
-        lblBackToLogin.setBounds(40, 460, 100, 30);
+        lblBackToLogin.setBounds(120, 480, 170, 30);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 90, 51, 24);
+        jLabel1.setBounds(50, 90, 51, 24);
 
         lblUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username");
         getContentPane().add(lblUsername);
-        lblUsername.setBounds(40, 170, 90, 24);
+        lblUsername.setBounds(50, 170, 90, 24);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(40, 250, 110, 24);
+        lblPassword.setBounds(50, 250, 110, 24);
 
         lblRePassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblRePassword.setForeground(new java.awt.Color(255, 255, 255));
         lblRePassword.setText("Re-type Password");
         getContentPane().add(lblRePassword);
-        lblRePassword.setBounds(40, 330, 160, 24);
+        lblRePassword.setBounds(50, 330, 160, 24);
+
+        lblBackToLogin1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblBackToLogin1.setForeground(new java.awt.Color(255, 255, 255));
+        lblBackToLogin1.setText("Login");
+        lblBackToLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBackToLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackToLogin1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblBackToLogin1);
+        lblBackToLogin1.setBounds(300, 480, 40, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 440, 550);
+        jLabel2.setBounds(0, 0, 470, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,6 +212,10 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
 
+    private void lblBackToLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLogin1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblBackToLogin1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -235,6 +256,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblBackToLogin;
+    private javax.swing.JLabel lblBackToLogin1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRePassword;
     private javax.swing.JLabel lblResgisterRest;

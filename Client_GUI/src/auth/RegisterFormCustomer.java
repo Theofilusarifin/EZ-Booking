@@ -42,12 +42,13 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         txtRePassword = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         lblBackToLogin = new javax.swing.JLabel();
+        lblBackToLogin1 = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(430, 520));
-        setSize(new java.awt.Dimension(450, 520));
+        setPreferredSize(new java.awt.Dimension(460, 550));
+        setSize(new java.awt.Dimension(460, 520));
         getContentPane().setLayout(null);
 
         lblRegister.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -108,11 +109,11 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegister);
-        btnRegister.setBounds(240, 420, 140, 30);
+        btnRegister.setBounds(150, 410, 140, 40);
 
-        lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblBackToLogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblBackToLogin.setText("Back To Login");
+        lblBackToLogin.setText("Login");
         lblBackToLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBackToLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,13 +121,25 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBackToLogin);
-        lblBackToLogin.setBounds(50, 420, 100, 34);
+        lblBackToLogin.setBounds(290, 470, 40, 30);
+
+        lblBackToLogin1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblBackToLogin1.setForeground(new java.awt.Color(255, 255, 255));
+        lblBackToLogin1.setText("Already have an account?");
+        lblBackToLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblBackToLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackToLogin1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblBackToLogin1);
+        lblBackToLogin1.setBounds(110, 470, 170, 30);
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         lblBackground.setPreferredSize(new java.awt.Dimension(430, 520));
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 450, 520);
+        lblBackground.setBounds(0, 0, 460, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,6 +178,11 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblBackToLoginMouseClicked
 
+    private void lblBackToLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackToLogin1MouseClicked
+        new LoginForm(LoginForm.s).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblBackToLogin1MouseClicked
+
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -201,6 +219,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblBackToLogin;
+    private javax.swing.JLabel lblBackToLogin1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRePassword;
