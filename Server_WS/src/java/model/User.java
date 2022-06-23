@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.ezbooking.model;
+package model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -83,11 +83,11 @@ public class User extends MyConnection {
         getConnection();
     }
 
-    public User(String name, String username, String password, String role) {
-        this.name = name;
+    public User(String username, String password, String role, String name) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.name = name;
         getConnection();
     }
     // </editor-fold>
@@ -114,7 +114,7 @@ public class User extends MyConnection {
         ArrayList<String> data = new ArrayList<>();
         try {
             stat = (Statement) connect.createStatement();
-            result = stat.executeQuery("select * from users");
+            result = stat.executeQuery("select * from users where role = 'admin'");
             while (result.next()) {
                 User us = new User(result.getString("username"), result.getString("password"), result.getString("role"), result.getString("name"));
                 data.add(us.getUsername() + ";-;" + us.getPassword() + ";-;" + us.getRole() + ";-;" + us.getName());
