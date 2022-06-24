@@ -16,8 +16,6 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 //    Define variable
     Thread t = null;
     boolean running = true;
-    boolean speaking = true;
-    boolean listening = false;
     TargetDataLine targetDataLine;
 
     public AudioCallForm() {
