@@ -1,3 +1,11 @@
+GazWez🔥
+160420046 Theofilus Arifin
+160420082 Henri Jayanata Kusuma
+160720002 Jabesh Nehemiah Wijaya
+160720034 Reynard Nathanael
+160820002 Meliyana
+160820016 Valencia
+
 [RESOLVE FILE JAR]
 File jar yang digunakan pada project ini berada di folder jar files.
 
