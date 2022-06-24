@@ -51,18 +51,25 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
         byte b[] = null;
         while (true) {
             try {
+//                Inisiasi socket untuk mengirim video
                 Socket s = new Socket("127.0.0.1", 7800);
                 ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+                
                 ImageIcon ic;
                 BufferedImage br;
+//                Inisiasi webcam
                 Webcam cam = Webcam.getDefault();
+//                Buka webcam
                 cam.open();
-
+                
+//                Terima voice
                 b = receiveUDP();
                 toSpeaker(b);
 
                 while (running) {
+//                    Ambil gambar
                     br = cam.getImage();
+//                    Pasang gambar
                     ic = new ImageIcon(br);
                     out.writeObject(ic);
                     out.flush();

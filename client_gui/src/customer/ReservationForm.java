@@ -82,8 +82,10 @@ public class ReservationForm extends javax.swing.JFrame {
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Reservation");
 
+        btnLetsgo.setBackground(new java.awt.Color(244, 203, 14));
         btnLetsgo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnLetsgo.setText("LET'S GO");
+        btnLetsgo.setBorderPainted(false);
         btnLetsgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLetsgoActionPerformed(evt);
