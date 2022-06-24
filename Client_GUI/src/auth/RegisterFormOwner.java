@@ -92,17 +92,17 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         txtName.setBackground(new java.awt.Color(242, 242, 242));
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(50, 120, 350, 28);
+        txtName.setBounds(50, 120, 350, 32);
 
         txtPassword.setBackground(new java.awt.Color(242, 242, 242));
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(50, 280, 350, 28);
+        txtPassword.setBounds(50, 280, 350, 32);
 
         txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(50, 360, 350, 28);
+        txtRePassword.setBounds(50, 360, 350, 32);
 
         btnRegisterRestaurant.setBackground(new java.awt.Color(244, 203, 14));
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -120,7 +120,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         txtUsername.setBackground(new java.awt.Color(242, 242, 242));
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(50, 200, 350, 28);
+        txtUsername.setBounds(50, 200, 350, 32);
 
         lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
