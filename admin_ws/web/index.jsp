@@ -13,12 +13,23 @@
         <title>Login Page</title>
         <script src="/js/jquery-3.6.0.min.js"></script>
         <style type="text/css">
+            
+            .logo{
+                font-family: 'Vanessia Demo';
+                font-weight: bold;
+                font-size:80px;
+                margin-top:50px;
+                letter-spacing: 2px;
+                color:#021A4A;
+                text-align:center;
+            }
+            
             div{
                 margin:12px;
             }
+            
             .container{
-                left:38%;
-                margin-top:12%;
+                margin-top:20px;
                 display:flex;
                 justify-content: center;
                 align-items: center;
@@ -57,8 +68,38 @@
             }
         </style>
     </head>
+    <%
+//        if ("POST".equalsIgnoreCase(request.getMethod()) && request.getParameter("submit") != null) {
+//            String uname = request.getParameter("username");
+//            String pass = request.getParameter("password");
+//            String ret;
+//
+//            com.ezbooking.LoginService_Service service;
+//            com.ezbooking.LoginService port;
+//            service = new com.ezbooking.LoginService_Service();
+//            port = service.getLoginServicePort();
+//            
+//            ret = port.checkLogin(uname, pass);
+//            
+//            if (ret.equals("true")) {
+//                out.println("Login Successful");
+//            } else if (ret.equals("false")) {
+//                out.println("Username or Password is wrong");
+//            }
+//            if (uname.equals("") && pass.equals("")) {
+//
+//            } else {
+//                if (uname.equals("admin") && pass.equals("password")) {
+//                    response.sendRedirect("index.jsp");
+//                } else {
+//                    out.println("Username or Password is wrong");
+//                }
+//            }
+//        }
+%>
     <body>
-        <form action="<%=request.getContextPath()%>/loginprocess.jsp" method="post">  
+        <form action="Login.jsp" method="post">  
+            <div class="logo"> ezbooking </div>
             <div class="container">
                 <div class="card">
                 <div class="group">
@@ -75,4 +116,11 @@
             </div>                                       
         </form>
     </body>
+    <%String message = (String) request.getAttribute("alertMsg");%>
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {
+            var msg = "<%=message%>";
+            alert(msg);
+        })
+    </script>
 </html>
