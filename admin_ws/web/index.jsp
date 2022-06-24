@@ -55,8 +55,19 @@
                 color:white;
 
             }
-
-            p,h1,h2,h3,h4,h5,h6,label,.mybutton {
+            .mybutton{
+                font-family: 'Poppins', sans-serif;
+                font-weight: normal;
+                margin:12px;
+                width:100px; 
+                background-color:#F4CB0E; 
+                border:0; 
+                border-radius:50px;
+                color:#021A4A;
+                font-weight: bold;
+                
+            }
+            p,h1,h2,h3,h4,h5,h6,label{
                 font-family: 'Poppins', sans-serif;
                 font-weight: normal;
                 margin:12px;
@@ -109,7 +120,7 @@
                             <div> <input type="text" name="username"></div>
                             <div> <label class="font-inner"> Password </label></div>
                             <div> <input type="password" name="password"></div>
-                            <div> <button class="mybutton" style="width:100px;" type="submit" onclick="message()">LOGIN</button>  </div>           
+                            <div> <button class="mybutton" type="submit" onclick="message()">LOGIN</button>  </div>           
                         </form>
                     </div>
                 </div>
