@@ -38,11 +38,11 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         lblRePassword = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        txtRePassword = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         lblBackToLogin = new javax.swing.JLabel();
         lblBackToLogin1 = new javax.swing.JLabel();
+        txtRePassword = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,27 +79,17 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         lblRePassword.setForeground(new java.awt.Color(255, 255, 255));
         lblRePassword.setText("Re-type Password");
         getContentPane().add(lblRePassword);
-        lblRePassword.setBounds(50, 320, 160, 24);
+        lblRePassword.setBounds(50, 310, 160, 24);
 
         txtName.setBackground(new java.awt.Color(242, 242, 242));
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(50, 100, 330, 28);
+        txtName.setBounds(50, 100, 330, 30);
 
         txtUsername.setBackground(new java.awt.Color(242, 242, 242));
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(50, 180, 330, 28);
-
-        txtPassword.setBackground(new java.awt.Color(242, 242, 242));
-        txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        getContentPane().add(txtPassword);
-        txtPassword.setBounds(50, 260, 330, 28);
-
-        txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
-        txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(50, 350, 330, 28);
+        txtUsername.setBounds(50, 180, 330, 30);
 
         btnRegister.setBackground(new java.awt.Color(244, 203, 14));
         btnRegister.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -138,6 +128,16 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         getContentPane().add(lblBackToLogin1);
         lblBackToLogin1.setBounds(110, 470, 170, 30);
 
+        txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
+        txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtRePassword);
+        txtRePassword.setBounds(50, 340, 330, 30);
+
+        txtPassword.setBackground(new java.awt.Color(242, 242, 242));
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(50, 260, 330, 30);
+
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         lblBackground.setPreferredSize(new java.awt.Dimension(430, 520));
@@ -153,14 +153,14 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "You must fill your name");
             } else if (txtUsername.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "You must fill your username");
-            } else if (txtPassword.getText().equals("")) {
+            } else if (txtRePassword.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "You must fill your password");
             } else if (txtRePassword.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "You must fill your password");
             } else {
-                if (txtPassword.getText().equals(txtRePassword.getText())) {
+                if (txtRePassword.getText().equals(txtRePassword.getText())) {
                     // kirim Request Data (REGISTER <username> <password> <role>)
-                    msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;customer" + "\n");
+                    msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtRePassword.getText() + ";-;customer" + "\n");
 
                     String result;
                     result = msgFromServer.readLine();
@@ -239,8 +239,8 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegister;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtRePassword;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtRePassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,6 +46,7 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         lblBooking.setForeground(new java.awt.Color(255, 255, 255));
         lblBooking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBooking.setText("Booking(s) Data");
+        lblBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBooking.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBookingMouseClicked(evt);
@@ -66,6 +67,7 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         lblMenu1.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenu1.setText("Menu");
+        lblMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMenu1MouseClicked(evt);
@@ -76,6 +78,7 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         lblContact.setForeground(new java.awt.Color(255, 255, 255));
         lblContact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblContact.setText("Contact");
+        lblContact.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblContactMouseClicked(evt);
