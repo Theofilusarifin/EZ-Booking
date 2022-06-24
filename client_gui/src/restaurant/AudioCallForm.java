@@ -7,11 +7,14 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.TargetDataLine;
 
 public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 
     Thread t;
     boolean running = true;
+    SourceDataLine sourceDataLine;
+
 
     public AudioCallForm() {
         initComponents();
@@ -108,6 +111,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
         running = false;
+        sourceDataLine.stop();
         t.stop();
         this.dispose();
 
@@ -125,7 +129,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public static byte[] receiveUDP() {
+    public byte[] receiveUDP() {
         try {
 //            Inisiasi datagramsocket
             DatagramSocket sock = new DatagramSocket(5000);
@@ -140,21 +144,22 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public static void toSpeaker(byte soundbytes[]) {
+    public void toSpeaker(byte soundbytes[]) {
         try {
             DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, getAudioFormat());
-            SourceDataLine sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+            sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
             sourceDataLine.open(getAudioFormat());
             sourceDataLine.start();
             sourceDataLine.write(soundbytes, 0, soundbytes.length);
             sourceDataLine.drain();
             sourceDataLine.close();
+
         } catch (Exception e) {
 
         }
     }
 
-    public static AudioFormat getAudioFormat() {
+    public AudioFormat getAudioFormat() {
         return new AudioFormat(44100.0f, 16, 1, true, false);
     }
 

@@ -18,6 +18,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     Thread t;
     boolean running = true;
+    TargetDataLine targetDataLine;
 
     public VideoCallForm() {
         initComponents();
@@ -51,7 +52,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
 //                    Data line untuk voice
                     DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, getAudioFormat());
-                    TargetDataLine targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
+                    targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
                     targetDataLine.open(getAudioFormat());
                     targetDataLine.start();
                     
@@ -79,7 +80,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
         return new AudioFormat(44100.0f, 16, 1, true, false);
     }
 
-    public static void sendUDP(byte soundpacket[]) {
+    public void sendUDP(byte soundpacket[]) {
         try {
             DatagramSocket sock = new DatagramSocket();
             sock.send(new DatagramPacket(soundpacket, soundpacket.length, InetAddress.getByName("localhost"), 5000));
@@ -172,6 +173,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
         running = false;
+        targetDataLine.close();
         t.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed

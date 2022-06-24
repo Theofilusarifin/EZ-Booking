@@ -3,8 +3,6 @@ package customer;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
@@ -112,9 +110,9 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
         running = false;
+        targetDataLine.close();
 //        Stop supaya ga nunggu terus
         t.stop();
-        targetDataLine.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
     @Override
@@ -123,7 +121,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
         while (running) {
             if (AudioSystem.isLineSupported(Port.Info.MICROPHONE)) {
                 try {
-                    //                    Ambil dataline dari microphone
+//                    Ambil dataline dari microphone
                     DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, getAudioFormat());
                     targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
 //                    Open dataline
@@ -140,18 +138,19 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
                         sendUDP(tempBuffer);
                     }
                 } catch (Exception e) {
+                    e.getMessage();
                     t.stop();
                 }
             }
         }
     }
 
-    public static AudioFormat getAudioFormat() {
+    public AudioFormat getAudioFormat() {
 //        Format audio
         return new AudioFormat(44100.0f, 16, 1, true, false);
     }
 
-    public static void sendUDP(byte soundpacket[]) {
+    public void sendUDP(byte soundpacket[]) {
         try {
 //            Inisiasi datagramsocket
             DatagramSocket sock = new DatagramSocket();

@@ -17,6 +17,8 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     Thread t;
     VideoCallSystem vcs;
     boolean running = true;
+    SourceDataLine sourceDataLine;
+    Webcam cam;
     
     public class VideoCallSystem extends Thread {
 
@@ -58,7 +60,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
                 ImageIcon ic;
                 BufferedImage br;
 //                Inisiasi webcam
-                Webcam cam = Webcam.getDefault();
+                cam = Webcam.getDefault();
 //                Buka webcam
                 cam.open();
                 
@@ -81,7 +83,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
         }
     }
     
-    public static byte[] receiveUDP() {
+    public byte[] receiveUDP() {
         try {
             DatagramSocket sock = new DatagramSocket(5000);
             byte soundpacket[] = new byte[10000];
@@ -94,10 +96,10 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public static void toSpeaker(byte soundbytes[]) {
+    public void toSpeaker(byte soundbytes[]) {
         try {
             DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, getAudioFormat());
-            SourceDataLine sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+            sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
             sourceDataLine.open(getAudioFormat());
             sourceDataLine.start();
             sourceDataLine.write(soundbytes, 0, soundbytes.length);
@@ -108,7 +110,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public static AudioFormat getAudioFormat() {
+    public AudioFormat getAudioFormat() {
         return new AudioFormat(44100.0f, 16, 1, true, false);
     }
 
@@ -194,9 +196,11 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
+        sourceDataLine.stop();
+        cam.close();
+        vcs.stop();
         running = false;
         t.stop();
-        vcs.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
 
