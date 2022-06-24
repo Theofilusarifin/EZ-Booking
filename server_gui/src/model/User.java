@@ -91,6 +91,7 @@ public class User extends MyConnection {
     }
 
     // </editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Methods">
     public void insert(String username, String password) {
         try {
