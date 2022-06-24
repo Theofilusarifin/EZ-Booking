@@ -2,10 +2,10 @@
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
     <service name="LoginService">
-      <implementation-class>com.ezbooking.LoginService</implementation-class>
+      <implementation-class>com.ezbooking.method.LoginService</implementation-class>
     </service>
     <service name="DisplayService">
-      <implementation-class>com.ezbooking.DisplayService</implementation-class>
+      <implementation-class>com.ezbooking.method.DisplayService</implementation-class>
     </service>
   </services>
   <clients/>

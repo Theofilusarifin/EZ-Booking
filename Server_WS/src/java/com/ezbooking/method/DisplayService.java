@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.ezbooking;
+package com.ezbooking.method;
 
-import model.Restaurant;
+import com.ezbooking.model.Restaurant;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
