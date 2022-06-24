@@ -22,7 +22,7 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
-    height:47px;
+    height:52px;
     box-shadow: 0 16px 31px -17px rgba(0, 50, 80, 0.5);
     background-color: #021A4A;
 }
@@ -35,7 +35,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 50px;
     text-decoration: none;
 }
 

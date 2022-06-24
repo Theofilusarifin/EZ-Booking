@@ -55,8 +55,19 @@
                 color:white;
 
             }
-
-            p,h1,h2,h3,h4,h5,h6,label,.mybutton {
+            .mybutton{
+                font-family: 'Poppins', sans-serif;
+                font-weight: normal;
+                margin:12px;
+                width:100px; 
+                background-color:#F4CB0E; 
+                border:0; 
+                border-radius:50px;
+                color:#021A4A;
+                font-weight: bold;
+                
+            }
+            p,h1,h2,h3,h4,h5,h6,label{
                 font-family: 'Poppins', sans-serif;
                 font-weight: normal;
                 margin:12px;
@@ -68,37 +79,8 @@
             }
         </style>
     </head>
-    <%
-//        if ("POST".equalsIgnoreCase(request.getMethod()) && request.getParameter("submit") != null) {
-//            String uname = request.getParameter("username");
-//            String pass = request.getParameter("password");
-//            String ret;
-//
-//            com.ezbooking.LoginService_Service service;
-//            com.ezbooking.LoginService port;
-//            service = new com.ezbooking.LoginService_Service();
-//            port = service.getLoginServicePort();
-//            
-//            ret = port.checkLogin(uname, pass);
-//            
-//            if (ret.equals("true")) {
-//                out.println("Login Successful");
-//            } else if (ret.equals("false")) {
-//                out.println("Username or Password is wrong");
-//            }
-//            if (uname.equals("") && pass.equals("")) {
-//
-//            } else {
-//                if (uname.equals("admin") && pass.equals("password")) {
-//                    response.sendRedirect("index.jsp");
-//                } else {
-//                    out.println("Username or Password is wrong");
-//                }
-//            }
-//        }
-%>
     <body>
-        <form action="<%=request.getContextPath()%>/showData.jsp" method="post">  
+        <form action="<%=request.getContextPath()%>/loginprocess.jsp" method="post">  
             <div class="logo"> ezbooking </div>
             <div class="container">
                 <div class="card">
@@ -109,7 +91,7 @@
                             <div> <input type="text" name="username"></div>
                             <div> <label class="font-inner"> Password </label></div>
                             <div> <input type="password" name="password"></div>
-                            <div> <button class="mybutton" style="width:100px;" type="submit" onclick="message()">LOGIN</button>  </div>           
+                            <div> <button class="mybutton" type="submit" onclick="message()">LOGIN</button>  </div>           
                         </form>
                     </div>
                 </div>
