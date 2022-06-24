@@ -330,12 +330,41 @@ public class HandleSocket extends Thread {
                         String start = strFormatter.format(books.getStartHour());
                         String end = strFormatter.format(books.getEndHour());
                         int table = books.getTablesCount();
+                        int bookingID = books.getId();
 //                    Tambahkan data
                         response = response
                                 + nama + "&"
                                 + start + "&"
                                 + end + "&"
-                                + String.valueOf(table) + ";";
+                                + String.valueOf(table) + "&"
+                                + String.valueOf(bookingID) + ";";
+                    }
+//                Kirim seluruh data ke client
+                    SendMessage(response);
+                    break;
+                case "DISPLAYPREORDER":
+//                Inisiasi class booking untuk dapat array data untuk
+                    Preorder p = new Preorder();
+                    message = String.valueOf(restaurantNow.getId());
+                    collection = p.display(message);
+//                String untuk response
+                    response = "";
+//                Looping untuk kirim data sebagai string
+                    for (Object object : collection) {
+//                    Type casting object ke bookings
+                        Preorder pre = (Preorder) object;
+//                    Inisiasi data yang dikirim
+                        int id = pre.getBooking_id();
+                        String menu = pre.getMenu();
+                        int jumlah = pre.getAmount();
+                        double total = pre.getSubtotal();
+//                    Tambahkan data
+                        response = response
+                                + String.valueOf(id) + "&"
+                                + menu + "&"
+                                + String.valueOf(jumlah) + "&"
+                                + String.valueOf(total) + ";";
+                        
                     }
 //                Kirim seluruh data ke client
                     SendMessage(response);
