@@ -4,6 +4,6 @@
     <system systemId="http://localhost:8080/server_ws/LoginService?xsd=1" uri="wsdl/localhost_8080/server_ws/LoginService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/Server_WS/DisplayService?wsdl" uri="wsdl/localhost_8080/Server_WS/DisplayService.wsdl"/>
     <system systemId="http://localhost:8080/Server_WS/DisplayService?xsd=1" uri="wsdl/localhost_8080/Server_WS/DisplayService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/Server_WS/LoginService?wsdl" uri="wsdl/localhost_8080/server_ws/LoginService.wsdl"/>
-    <system systemId="http://localhost:8080/Server_WS/LoginService?xsd=1" uri="wsdl/localhost_8080/server_ws/LoginService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Server_WS/LoginService?wsdl" uri="wsdl/localhost_8080/Server_WS/LoginService.wsdl"/>
+    <system systemId="http://localhost:8080/Server_WS/LoginService?xsd=1" uri="wsdl/localhost_8080/Server_WS/LoginService.xsd_1.xsd"/>
 </catalog>
