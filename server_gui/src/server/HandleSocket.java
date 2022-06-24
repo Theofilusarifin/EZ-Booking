@@ -90,8 +90,14 @@ public class HandleSocket extends Thread {
 //            Logic egister User
                 case "REGISTER":
                     message = value;
+                    System.out.println(message);
 
                     messages = message.split(";-;");
+
+                    System.out.println(messages[0]);
+                    System.out.println(messages[1]);
+                    System.out.println(messages[2]);
+                    System.out.println(messages[3]);
 
                     String status = _user.Register(messages[0], messages[1], messages[2], messages[3]);
                     SendMessage(status + ";-;" + messages[0]);
@@ -112,6 +118,7 @@ public class HandleSocket extends Thread {
 //            Logic Register Restaurant
                 case "REGISTER_RESTAURANT":
                     message = value;
+                    System.out.println(message);
 
                     messages = message.split(";-;");
 
@@ -129,9 +136,11 @@ public class HandleSocket extends Thread {
 
                     int idUser = _user.selectIdUser(messages[8], messages[10], messages[9]);
 
+                    System.out.println(idUser);
                     String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2],
                             messages[3], messages[4], messages[5], messages[6], idUser);
-//                    SendMessage(statusRR + ";-;" + messages[0]);
+                    System.out.println(statusRR);
+                    SendMessage(statusRR + ";-;" + messages[0]);
                     break;
 
 //            Logic ngambil restaurant
@@ -167,6 +176,7 @@ public class HandleSocket extends Thread {
 
                     SendMessage(restoData);
                     break;
+
 //            Logic fitur reservation
                 case "DATARESTAURANT":
 //                Inisiasi class restaurant untuk dapat array data restaurant
@@ -193,6 +203,7 @@ public class HandleSocket extends Thread {
 //                Kirim seluruh data ke client
                     SendMessage(response);
                     break;
+
                 case "RESERVATION":
                     messages = value.split(";");
 //                    String untuk response
@@ -249,6 +260,7 @@ public class HandleSocket extends Thread {
                     response = "True;True;Reservasi berhasil dilakukan. Restaurant ini menyediakan jasa Pre Order, apakah anda ingin melakukan Pre Order?";
                     SendMessage(response);
                     break;
+
                 case "GETBOOKINGINDEX":
                     Bookings b = new Bookings();
 //                    Ambil booking terakhir
@@ -284,6 +296,7 @@ public class HandleSocket extends Thread {
 //                Kirim seluruh data ke client
                     SendMessage(response);
                     break;
+
                 case "PREORDER":
                     messages = value.split(";");
 //                    String untuk response
@@ -399,6 +412,7 @@ public class HandleSocket extends Thread {
 //            Logic lain dibawah sini
             }
         } catch (ParseException ex) {
+            System.out.println("masuk exception");
             Logger.getLogger(HandleSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
