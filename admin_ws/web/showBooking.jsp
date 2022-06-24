@@ -22,7 +22,7 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
-    height:47px;
+    height:48px;
     box-shadow: 0 16px 31px -17px rgba(0, 50, 80, 0.5);
     background-color: #021A4A;
 }
@@ -35,7 +35,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 18px 16px;
     text-decoration: none;
 }
 
@@ -66,8 +66,9 @@ li a:hover:not(.active) {
                         margin-left:auto;
                         display:flex;
                         justify-content:center;
-                        align-items:center;
+                        align-items:flex-start;
                         min-height:100vh;
+                        margin-top:100px;
                 }
 
                 .table {

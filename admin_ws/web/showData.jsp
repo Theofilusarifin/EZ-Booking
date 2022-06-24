@@ -66,19 +66,20 @@ li a:hover:not(.active) {
                         margin-left:auto;
                         display:flex;
                         justify-content:center;
-                        align-items:center;
+                        align-items:flex-start;
                         min-height:100vh;
+                        margin-top:100px;
                 }
 
                 .table {
                         width:100%;
-                        border:1px solid #F4CB0E;;
+                        border:1px solid #F4CB0E;
                 }
 
                 .table-header {
                         display:flex;
                         width:100%;
-                        background:#F4CB0E;;
+                        background:#F4CB0E;
                 }
 
                 .table-row {
