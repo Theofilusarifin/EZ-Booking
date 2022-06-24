@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Login Page</title>
+        <title>ezbooking | Login</title>
         <script src="/js/jquery-3.6.0.min.js"></script>
         <style type="text/css">
 
@@ -41,7 +41,7 @@
             .card{
                 background-color:#021A4A;
                 width:400px;
-                height:280px;
+                height:340px;
                 border-radius: 16px;
                 text-align:center;
                 box-shadow: 0 16px 31px -17px rgba(0, 50, 97, 0.8);
@@ -58,14 +58,14 @@
             .mybutton{
                 font-family: 'Poppins', sans-serif;
                 font-weight: normal;
-                margin:12px;
-                width:100px; 
+                margin: 12px;
+                width: 100px; 
                 background-color:#F4CB0E; 
                 border:0; 
-                border-radius:50px;
+                border-radius: 10px;
                 color:#021A4A;
                 font-weight: bold;
-                
+                padding: 10px;
             }
             p,h1,h2,h3,h4,h5,h6,label{
                 font-family: 'Poppins', sans-serif;
@@ -88,9 +88,9 @@
                         <h1>LOGIN</h1>
                         <form>
                             <div> <label class="font-inner"> Username </label></div>
-                            <div> <input type="text" name="username"></div>
+                            <div> <input type="text" name="username" style="padding: 10px;"></div>
                             <div> <label class="font-inner"> Password </label></div>
-                            <div> <input type="password" name="password"></div>
+                            <div> <input type="password" name="password" style="padding: 10px;"></div>
                             <div> <button class="mybutton" type="submit" onclick="message()">LOGIN</button>  </div>           
                         </form>
                     </div>
