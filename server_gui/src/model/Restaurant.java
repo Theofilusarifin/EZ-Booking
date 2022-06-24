@@ -201,8 +201,7 @@ public class Restaurant extends MyConnection {
                     sqlInsert.setString(5, closeHour);
                     sqlInsert.setString(6, tablesCount);
                     sqlInsert.setString(7, peoplePerTable);
-                    sqlInsert.setString(8, phoneNumber);
-                    sqlInsert.setInt(9, user_id);
+                    sqlInsert.setInt(8, user_id);
 
                     sqlInsert.executeUpdate();
                     sqlInsert.close();
@@ -212,7 +211,7 @@ public class Restaurant extends MyConnection {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error User Register, Error: " + e.getMessage());
+            System.out.println("Error User RegisterRestaurant, Error: " + e.getMessage());
         }
         return status;
     }
