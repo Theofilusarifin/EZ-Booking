@@ -110,7 +110,7 @@ public class User extends MyConnection {
         }
     }
 
-    public int selectIdUser(String username, String role, String password) {
+    public int selectIdUser(String username, String password, String role) {
         int id = 0;
         try {
             this.statement = (Statement) connect.createStatement();
