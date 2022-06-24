@@ -227,7 +227,7 @@ public class ReservationForm extends javax.swing.JFrame {
                 return;
             }
 
-            if (!txtHour.getText().matches("-?\\d+(\\.\\d+)?") && !txtMinute.getText().matches("-?\\d+(\\.\\d+)?")) {
+            if (!txtMinute.getText().matches("-?\\d+(\\.\\d+)?")) {
                 JOptionPane.showMessageDialog(this, "Please fill in the time section with numbers", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }

@@ -13,7 +13,6 @@ public class Preorder extends MyConnection{
     private int menu_id;
     private int amount;
     private double subtotal;
-    private String menu;
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Properties">
@@ -48,14 +47,6 @@ public class Preorder extends MyConnection{
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-    
-    public String getMenu() {
-        return menu;
-    }
-
-    public void setMenu(String menu) {
-        this.menu = menu;
-    }
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Constructors">
@@ -66,14 +57,6 @@ public class Preorder extends MyConnection{
     public Preorder(int booking_id, int menu_id, int amount, double subtotal) {
         this.booking_id = booking_id;
         this.menu_id = menu_id;
-        this.amount = amount;
-        this.subtotal = subtotal;
-        getConnection();
-    }
-    
-    public Preorder(int booking_id, String menu, int amount, double subtotal) {
-        this.booking_id = booking_id;
-        this.menu = menu;
         this.amount = amount;
         this.subtotal = subtotal;
         getConnection();
@@ -99,29 +82,6 @@ public class Preorder extends MyConnection{
         } catch (Exception e) {
             System.out.println("Error di preorder insert, Error: " + e);
         }
-    }
-    
-    public ArrayList<Object> display(String kode) { //menampilkan data bookings untuk restaurant
-        ArrayList<Object> collections = new ArrayList<Object>();
-        try {
-            this.stat = (Statement) connect.createStatement();
-            this.result = this.stat.executeQuery("SELECT p.booking_id, m.name, p.amount, p.subtotal "
-                    + "FROM preorders p inner join menus m on p.menu_id = m.id "
-                    + "WHERE m.restaurant_id=" + kode + ";");
-
-            while (this.result.next()) {
-                Preorder book = new Preorder(
-                        this.result.getInt("p.booking_id"),
-                        this.result.getString("m.name"),
-                        this.result.getInt("p.amount"),
-                        this.result.getDouble("p.subtotal")
-                );
-                collections.add(book);
-            }
-        } catch (Exception ex) {
-            System.out.println("Error di display : " + ex);
-        }
-        return collections;
     }
     // </editor-fold>
 }
