@@ -52,7 +52,7 @@ li a:hover:not(.active) {
                 }
 
                 body {
-                        font-family:'Source Sans Pro', sans-serif;
+                        font-family:'Poppins', sans-serif;
                         margin:0;
                 }
 
@@ -72,13 +72,13 @@ li a:hover:not(.active) {
 
                 .table {
                         width:100%;
-                        border:1px solid black;
+                        border:1px solid #F4CB0E;;
                 }
 
                 .table-header {
                         display:flex;
                         width:100%;
-                        background:#000;
+                        background:#F4CB0E;;
                 }
 
                 .table-row {
@@ -106,7 +106,7 @@ li a:hover:not(.active) {
   
     <div class="container">
         <div class='table'>                  
-            <div class='table-header'>");
+            <div class='table-header'>
                 <div class='header__item'id='name'>ID</div>
                 <div class='header__item'id='name'>Name</div>
                 <div class='header__item'id='name'>Address</div>
@@ -116,7 +116,7 @@ li a:hover:not(.active) {
                 <div class='header__item' id='name'>Tables Count</div>
                 <div class='header__item' id='name'>People per Table</div>
                 <div class='header__item' id='name'>Owner</div>                
-                <div class='header__item' id='name''>Show Bookings</div>
+                <div class='header__item' id='name'>Show Bookings</div>
 
             </div>
             <div class='table-content'>
