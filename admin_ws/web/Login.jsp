@@ -1,3 +1,4 @@
+<%@page import="com.ezbooking.LoginService_Service"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : Login
@@ -101,6 +102,7 @@
         </style>
     </head>
     <body>
+<<<<<<< Updated upstream
 <!--        <div class="container">
             <div class="card">
                 <div class="group">
@@ -159,6 +161,13 @@
             </div>
     </div>
 
+=======
+        <form action="<%=request.getContextPath()%>/loginprocess.jsp" method="post">  
+            Username:<input type="text" name="username"><br>  
+            Password:<input type="password" name="password"><br>
+            <button type="submit">Submit</button>
+        </form>
+>>>>>>> Stashed changes
     </body>
 </html>
 

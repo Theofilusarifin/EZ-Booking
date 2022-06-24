@@ -38,31 +38,31 @@ public class LoginServlet extends HttpServlet {
         loginBean.setUsername(username);
         loginBean.setPassword(password);
 
-        try {
-            if (loginDao.checkLogin1(loginBean).equals("true")) {
-//            request.setAttribute("alertMsg", "Login Successfull");
+//        try {
+//            if (loginDao.checkLogin1(loginBean).equals("true")) {
+////            request.setAttribute("alertMsg", "Login Successfull");
+////
+////            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+////            rd.include(request, response);
 //
-//            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-//            rd.include(request, response);
-
-                response.sendRedirect("index.jsp");
-            } else if (loginDao.checkLogin1(loginBean).equals("false")) {
-//            request.setAttribute("alertMsg", "Username or Password is incorrect");
+//                response.sendRedirect("index.jsp");
+//            } else if (loginDao.checkLogin1(loginBean).equals("false")) {
+////            request.setAttribute("alertMsg", "Username or Password is incorrect");
+////
+////            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+////            rd.include(request, response);
 //
-//            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-//            rd.include(request, response);
-
-                response.sendRedirect("login.jsp");
-            } else {
-
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        if (loginDao.checkLogin(loginBean).equals("true")) {
-//            response.sendRedirect("index.jsp");
-//        } else if (loginDao.checkLogin(loginBean).equals("false")) {
-//            response.sendRedirect("login.jsp");
+//                response.sendRedirect("login.jsp");
+//            } else {
+//
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+        if (loginDao.checkLogin(loginBean).equals("true")) {
+            response.sendRedirect("index.jsp");
+        } else if (loginDao.checkLogin(loginBean).equals("false")) {
+            response.sendRedirect("login.jsp");
+        }
     }
 }
