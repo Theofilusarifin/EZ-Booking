@@ -91,11 +91,12 @@ public class Bookings extends MyConnection {
         getConnection();
     }
 
-    public Bookings(String _user, Date _start, Date _end, int _tables) {
+    public Bookings(String _user, Date _start, Date _end, int _tables, int _id) {
         this.customerName = _user;
         this.startHour = _start;
         this.endHour = _end;
         this.tablesCount = _tables;
+        this.id = _id;
         getConnection();
     }
     // </editor-fold>
@@ -133,7 +134,7 @@ public class Bookings extends MyConnection {
         ArrayList<Object> collections = new ArrayList<Object>();
         try {
             this.stat = (Statement) connect.createStatement();
-            this.result = this.stat.executeQuery("SELECT u.name, b.startHour, b.endHour, b.tablesCount "
+            this.result = this.stat.executeQuery("SELECT b.id, u.name, b.startHour, b.endHour, b.tablesCount "
                     + "FROM bookings b inner join users u on b.user_id = u.id "
                     + "WHERE b.restaurant_id=" + kode + ";");
 
@@ -142,7 +143,8 @@ public class Bookings extends MyConnection {
                         this.result.getString("name"),
                         this.result.getTimestamp("startHour"),
                         this.result.getTimestamp("endHour"),
-                        this.result.getInt("tablesCount")
+                        this.result.getInt("tablesCount"),
+                        this.result.getInt("id")
                 );
                 collections.add(book);
             }
