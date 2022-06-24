@@ -37,28 +37,35 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     @Override
     public void run() {
         while (running) {
-            Mixer.Info minfo[] = AudioSystem.getMixerInfo();
-
+//          Check micrphone supported atau ga
             if (AudioSystem.isLineSupported(Port.Info.MICROPHONE)) {
                 try {
+//                    Inisiasi socket untuk terima video
                     ServerSocket server = new ServerSocket(7800);
                     System.out.println("Wait...");
                     Socket s = server.accept();
                     System.out.println("Connect...");
+                    
                     ObjectInputStream in = new ObjectInputStream(s.getInputStream());
                     ImageIcon ic;
 
+//                    Data line untuk voice
                     DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, getAudioFormat());
                     TargetDataLine targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
                     targetDataLine.open(getAudioFormat());
                     targetDataLine.start();
+                    
                     byte tempBuffer[] = new byte[10000];
                     
                     while (true) {
+//                        Ambil video melalui socket
                         ic = (ImageIcon) in.readObject();
+//                        Pasang video
                         clientVideo.setIcon(ic);
 
+//                      Baca suara
                         targetDataLine.read(tempBuffer, 0, tempBuffer.length);
+//                        Kirim bytes suara
                         sendUDP(tempBuffer);
                     }
                 } catch (Exception ex) {

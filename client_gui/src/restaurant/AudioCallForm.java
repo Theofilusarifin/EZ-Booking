@@ -6,9 +6,7 @@ import java.net.InetAddress;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.Port;
 import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.TargetDataLine;
 
 public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 

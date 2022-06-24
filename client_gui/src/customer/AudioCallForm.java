@@ -8,12 +8,8 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Port;
-import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
-import static restaurant.AudioCallForm.receiveUDP;
-import static restaurant.AudioCallForm.toSpeaker;
 
 public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 
@@ -22,6 +18,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
     boolean running = true;
     boolean speaking = true;
     boolean listening = false;
+    TargetDataLine targetDataLine;
 
     public AudioCallForm() {
         initComponents();
@@ -119,6 +116,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
         running = false;
 //        Stop supaya ga nunggu terus
         t.stop();
+        targetDataLine.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
     @Override
@@ -129,7 +127,7 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
                 try {
                     //                    Ambil dataline dari microphone
                     DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, getAudioFormat());
-                    TargetDataLine targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
+                    targetDataLine = (TargetDataLine) AudioSystem.getLine(dataLineInfo);
 //                    Open dataline
                     targetDataLine.open(getAudioFormat());
 //                    Start
