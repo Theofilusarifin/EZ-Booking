@@ -4,81 +4,36 @@
     Author     : Meliyana
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--        <link rel="stylesheet" href="style.css">-->
-
-        <style type="text/css">    
-                @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
-
-                *, *:before, *:after {
-                        box-sizing:border-box;
-                }
-
-                body {
-                        font-family:'Source Sans Pro', sans-serif;
-                        margin:0;
-                }
-
-                h1,h2,h3,h4,h5,h6 {
-                        margin:0;
-                }
-
-                .container {
-                        max-width: 1000px;  
-                        margin-right:auto;
-                        margin-left:auto;
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        min-height:100vh;
-                }
-
-                .table {
-                        width:100%;
-                        border:1px solid black;
-                }
-
-                .table-header {
-                        display:flex;
-                        width:100%;
-                        background:grey;
-                }
-
-                .table-row {
-                        display:flex;
-                        width:100%;
-                }
-
-                .table-data, .header__item {
-                        flex: 1 1 20%;
-                        text-align:center;
-                }
-
-                .header__item {
-                        text-transform:uppercase;
-                }
-            
-
-/*            .container{
-                position:relative;
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Login Page</title>
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <style type="text/css">
+            div{
+                margin:12px;
+            }
+            .container{
                 left:38%;
-                margin-top:8%;
+                margin-top:12%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                
             }
             body{
-                background-color:#FFEB97;
+                background-color:#FFFFFF;
             }
             .card{
                 background-color:#021A4A;
                 width:400px;
-                height:400px;
-                border-radius: 15px;
+                height:280px;
+                border-radius: 16px;
                 text-align:center;
-                position:absolute;
+                box-shadow: 0 16px 31px -17px rgba(0, 50, 97, 0.8);
             }
             
             h1{
@@ -93,71 +48,67 @@
             p,h1,h2,h3,h4,h5,h6,label,.mybutton {
                 font-family: 'Poppins', sans-serif;
                 font-weight: normal;
+                margin:12px;
             }
             
             .group{
-                margin-top:80px;
-            }*/
+                 justify-content: center;
+                 align-items: center;
+            }
         </style>
     </head>
+    <%
+//        if ("POST".equalsIgnoreCase(request.getMethod()) && request.getParameter("submit") != null) {
+//            String uname = request.getParameter("username");
+//            String pass = request.getParameter("password");
+//            String ret;
+//
+//            com.ezbooking.LoginService_Service service;
+//            com.ezbooking.LoginService port;
+//            service = new com.ezbooking.LoginService_Service();
+//            port = service.getLoginServicePort();
+//            
+//            ret = port.checkLogin(uname, pass);
+//            
+//            if (ret.equals("true")) {
+//                out.println("Login Successful");
+//            } else if (ret.equals("false")) {
+//                out.println("Username or Password is wrong");
+//            }
+//            if (uname.equals("") && pass.equals("")) {
+//
+//            } else {
+//                if (uname.equals("admin") && pass.equals("password")) {
+//                    response.sendRedirect("index.jsp");
+//                } else {
+//                    out.println("Username or Password is wrong");
+//                }
+//            }
+//        }
+%>
     <body>
-<!--        <div class="container">
-            <div class="card">
+        <form action="Login.jsp" method="post">  
+            <div class="container">
+                <div class="card">
                 <div class="group">
                     <h1>LOGIN</h1>
                     <form>
-                        <label class="font-inner"> Username </label><br>
-                        <input type="text"><br><br>
-
-                        <label class="font-inner"> Password </label><br>
-                        <input type="text"><br><br>
-
-                        <button class="mybutton" style="width:100px;">LOGIN</button>
+                        <div> <label class="font-inner"> Username </label></div>
+                        <div> <input type="text" name="username"></div>
+                        <div> <label class="font-inner"> Password </label></div>
+                        <div> <input type="password" name="password"></div>
+                        <div> <button id="btnSubmit" class="mybutton" style="width:100px;" type="submit">LOGIN</button>  </div>           
                     </form>
-                </div>
-            </div>
-                               
-        </div>-->
-
-
-
-<div class="container">
-
-            <div class="table">
-                    <div class="table-header">
-                            <div class="header__item" ><a id="name">Name</a></div>
-                            <div class="header__item"><a id="wins">Address</a></div>
-                            <div class="header__item"><a id="draws">Phone Number</a></div>
-                            <div class="header__item"><a id="losses">Open Hour</a></div>
-                            <div class="header__item"><a id="total">Close Our</a></div>
-                            <div class="header__item"><a id="total">Table Count</a></div>
-                            <div class="header__item"><a id="total">People Per Table</div>
                     </div>
-                    <div class="table-content">	
-                            <div class="table-row">		
-                                    <div class="table-data">Tom</div>
-                                    <div class="table-data">2</div>
-                                    <div class="table-data">0</div>
-                                    <div class="table-data">1</div>
-                                    <div class="table-data">5</div>
-                            </div>
-                            <div class="table-row">
-                                    <div class="table-data">Dick</div>
-                                    <div class="table-data">1</div>
-                                    <div class="table-data">1</div>
-                                    <div class="table-data">2</div>
-                                    <div class="table-data">3</div>
-                            </div>
-                            <div class="table-row">
-                                    <div class="table-data">Harry</div>
-                                    <div class="table-data">0</div>
-                                    <div class="table-data">2</div>
-                                    <div class="table-data">2</div>
-                                    <div class="table-data">2</div>
-                            </div>
-                    </div>	
-            </div>
-    </div>
-
+                </div>
+            </div>                                       
+        </form>
     </body>
+    <%String message = (String) request.getAttribute("alertMsg");%>
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {
+            var msg = "<%=message%>";
+            alert(msg);
+        })
+    </script>
 </html>
