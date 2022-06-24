@@ -20,18 +20,14 @@
                 String username = user.getUsername();
                 String password = user.getPassword();
 
-                com.ezbooking.LoginService_Service service = new com.ezbooking.LoginService_Service();
-                com.ezbooking.LoginService port = service.getLoginServicePort();
+                com.ezbooking.method.LoginService_Service service = new com.ezbooking.method.LoginService_Service();
+                com.ezbooking.method.LoginService port = service.getLoginServicePort();
                 java.lang.String data = port.checkLogin(username, password);
-
-                out.println(data);
-                out.println(username);
-                out.println(password);
 
                 if (data.equals("true")) {
                     response.sendRedirect("showData.jsp");
                 } else if (data.equals("false")) {
-                    response.sendRedirect("login.jsp");
+                    response.sendRedirect("index.jsp");
                 }
             } catch (Exception e) {
                 System.out.println(e);

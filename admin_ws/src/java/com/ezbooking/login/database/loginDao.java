@@ -17,15 +17,15 @@ import java.util.logging.Logger;
 
 public class LoginDao {
 
-    com.ezbooking.LoginService_Service service;
-    com.ezbooking.LoginService port;
+    com.ezbooking.method.LoginService_Service service;
+    com.ezbooking.method.LoginService port;
 
     Statement stat;
     ResultSet result;
 
     //buat pake WebService
     public String checkLogin(LoginBean loginBean) {
-        service = new com.ezbooking.LoginService_Service();
+        service = new com.ezbooking.method.LoginService_Service();
         port = service.getLoginServicePort();
         return port.checkLogin(loginBean.getUsername(), loginBean.getPassword());
     }

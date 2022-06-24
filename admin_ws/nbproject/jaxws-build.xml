@@ -28,7 +28,7 @@
     </target>
     <target name="wsimport-client-LoginService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/LoginService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LoginService" destdir="${build.generated.dir}/jax-wsCache/LoginService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/server_ws/LoginService?wsdl" xnocompile="true" xendorsed="true" package="com.ezbooking">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LoginService" destdir="${build.generated.dir}/jax-wsCache/LoginService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Server_WS/LoginService?wsdl" xnocompile="true" xendorsed="true">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/LoginService"/>
         </wsimport>
@@ -39,7 +39,7 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-LoginService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/ezbooking"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/ezbooking/method"/>
         <delete dir="${build.generated.dir}/jax-wsCache/LoginService"/>
     </target>
     <target name="wsimport-client-DisplayService" depends="wsimport-init">
