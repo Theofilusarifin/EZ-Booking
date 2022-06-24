@@ -15,11 +15,23 @@ import javax.swing.ImageIcon;
 public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     Thread t;
-    VideoCallSystem avcs = new VideoCallSystem();
+    VideoCallSystem vcs;
     boolean running = true;
+    
+    public class VideoCallSystem extends Thread {
 
+        public void run() {
+            byte b[] = null;
+            while (running) {
+                b = receiveUDP();
+                toSpeaker(b);
+            }
+        }
+    }
+    
     public VideoCallForm() {    
         initComponents();
+        vcs = new VideoCallSystem();
         this.setLocationRelativeTo(null);
         this.setTitle("Video Call");
         try {
@@ -28,7 +40,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
                 t.start();
             }
 
-            avcs.start();
+            vcs.start();
         } catch (Exception e) {
 
         }
@@ -176,6 +188,8 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
         running = false;
+        t.stop();
+        vcs.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
 

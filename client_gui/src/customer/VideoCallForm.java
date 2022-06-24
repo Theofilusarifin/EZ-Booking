@@ -165,6 +165,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
         running = false;
+        t.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
 
