@@ -11,7 +11,7 @@ import javax.xml.namespace.QName;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the com.ezbooking.method package. 
- * &lt;p&gt;An ObjectFactory allows you to programatically 
+ * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -69,12 +69,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Display }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Display }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Display }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "display")
     public JAXBElement<Display> createDisplay(Display value) {
@@ -82,12 +78,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayBook }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayBook }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DisplayBook }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "displayBook")
     public JAXBElement<DisplayBook> createDisplayBook(DisplayBook value) {
@@ -95,12 +87,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayBookResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayBookResponse }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DisplayBookResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "displayBookResponse")
     public JAXBElement<DisplayBookResponse> createDisplayBookResponse(DisplayBookResponse value) {
@@ -108,12 +96,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayResponse }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DisplayResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "displayResponse")
     public JAXBElement<DisplayResponse> createDisplayResponse(DisplayResponse value) {

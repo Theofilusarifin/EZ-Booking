@@ -11,7 +11,7 @@ import javax.xml.namespace.QName;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the com.ezbooking.method package. 
- * &lt;p&gt;An ObjectFactory allows you to programatically 
+ * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -51,12 +51,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLogin }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLogin }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CheckLogin }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "checkLogin")
     public JAXBElement<CheckLogin> createCheckLogin(CheckLogin value) {
@@ -64,12 +60,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLoginResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckLoginResponse }{@code >}}
      * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CheckLoginResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://method.ezbooking.com/", name = "checkLoginResponse")
     public JAXBElement<CheckLoginResponse> createCheckLoginResponse(CheckLoginResponse value) {
