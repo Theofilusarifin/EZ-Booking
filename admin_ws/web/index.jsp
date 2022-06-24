@@ -13,7 +13,7 @@
         <title>Login Page</title>
         <script src="/js/jquery-3.6.0.min.js"></script>
         <style type="text/css">
-            
+
             .logo{
                 font-family: 'Vanessia Demo';
                 font-weight: bold;
@@ -23,17 +23,17 @@
                 color:#021A4A;
                 text-align:center;
             }
-            
+
             div{
                 margin:12px;
             }
-            
+
             .container{
                 margin-top:20px;
                 display:flex;
                 justify-content: center;
                 align-items: center;
-                
+
             }
             body{
                 background-color:#FFFFFF;
@@ -46,7 +46,7 @@
                 text-align:center;
                 box-shadow: 0 16px 31px -17px rgba(0, 50, 97, 0.8);
             }
-            
+
             h1{
                 color:white;
                 right:300px;
@@ -55,16 +55,16 @@
                 color:white;
 
             }
-            
+
             p,h1,h2,h3,h4,h5,h6,label,.mybutton {
                 font-family: 'Poppins', sans-serif;
                 font-weight: normal;
                 margin:12px;
             }
-            
+
             .group{
-                 justify-content: center;
-                 align-items: center;
+                justify-content: center;
+                align-items: center;
             }
         </style>
     </head>
@@ -102,15 +102,15 @@
             <div class="logo"> ezbooking </div>
             <div class="container">
                 <div class="card">
-                <div class="group">
-                    <h1>LOGIN</h1>
-                    <form>
-                        <div> <label class="font-inner"> Username </label></div>
-                        <div> <input type="text" name="username"></div>
-                        <div> <label class="font-inner"> Password </label></div>
-                        <div> <input type="password" name="password"></div>
-                        <div> <button id="btnSubmit" class="mybutton" style="width:100px;" type="submit">LOGIN</button>  </div>           
-                    </form>
+                    <div class="group">
+                        <h1>LOGIN</h1>
+                        <form>
+                            <div> <label class="font-inner"> Username </label></div>
+                            <div> <input type="text" name="username"></div>
+                            <div> <label class="font-inner"> Password </label></div>
+                            <div> <input type="password" name="password"></div>
+                            <div> <button class="mybutton" style="width:100px;" type="submit" onclick="message()">LOGIN</button>  </div>           
+                        </form>
                     </div>
                 </div>
             </div>                                       
@@ -118,9 +118,11 @@
     </body>
     <%String message = (String) request.getAttribute("alertMsg");%>
     <script type="text/javascript">
-        $("#btnSubmit").click(function () {
+        function message(){
             var msg = "<%=message%>";
-            alert(msg);
-        })
+            if (isset(msg)) {
+                alert(msg);
+            }
+        }
     </script>
 </html>

@@ -27,12 +27,16 @@
                 if (data.equals("true")) {
                     response.sendRedirect("showData.jsp");
                 } else if (data.equals("false")) {
+                    request.setAttribute("alertMsg", "Username or Password is incorrect");
+
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    rd.include(request, response);
+                    
                     response.sendRedirect("index.jsp");
                 }
             } catch (Exception e) {
                 System.out.println(e);
             }
         %>
-
     </body>
 </html>
