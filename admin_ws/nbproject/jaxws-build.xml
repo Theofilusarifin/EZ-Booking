@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/ezbooking"/>
         <delete dir="${build.generated.dir}/jax-wsCache/LoginService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-LoginService"/>
+    <target name="wsimport-client-DisplayService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DisplayService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DisplayService" destdir="${build.generated.dir}/jax-wsCache/DisplayService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Server_WS/DisplayService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DisplayService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DisplayService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-DisplayService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/ezbooking/method"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/DisplayService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-LoginService, wsimport-client-DisplayService"/>
 </project>
