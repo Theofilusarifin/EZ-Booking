@@ -115,9 +115,10 @@ public class HandleSocket extends Thread {
 
                     messages = message.split(";-;");
 
-                    int idUser = _user.selectIdUser(messages[4], messages[6], messages[3]);
+                    int idUser = _user.selectIdUser(messages[8], messages[9], messages[10]);
 
-                    String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2], idUser);
+                    String statusRR = _restaurant.RegisterRestaurant(messages[0], messages[1], messages[2],
+                            messages[3], messages[4], messages[5], messages[6], idUser);
                     SendMessage(statusRR + ";-;" + messages[0]);
                     break;
 

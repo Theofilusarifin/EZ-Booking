@@ -175,7 +175,8 @@ public class Restaurant extends MyConnection {
         }
     }
 
-    public String RegisterRestaurant(String restaurantName, String address, String phoneNumber, int user_id) {
+    public String RegisterRestaurant(String restaurantName, String address, String phoneNumber,
+            String openHour, String closeHour, String tablesCount, String peoplePerTable, int user_id) {
         String status = "";
         try {
             if (!connect.isClosed()) {
@@ -192,11 +193,16 @@ public class Restaurant extends MyConnection {
                 }
 
                 if (count == 0) {
-                    PreparedStatement sqlInsert = (PreparedStatement) connect.prepareStatement("insert into restaurants(name, address, phoneNumber, user_id) values (?,?,?,?)");
+                    PreparedStatement sqlInsert = (PreparedStatement) connect.prepareStatement("insert into restaurants(name, address, phoneNumber, openHour, closeHour, tablesCount, peoplePerTable, user_id) values (?,?,?,?,?,?,?,?)");
                     sqlInsert.setString(1, restaurantName);
                     sqlInsert.setString(2, address);
                     sqlInsert.setString(3, phoneNumber);
-                    sqlInsert.setInt(4, user_id);
+                    sqlInsert.setString(4, openHour);
+                    sqlInsert.setString(5, closeHour);
+                    sqlInsert.setString(6, tablesCount);
+                    sqlInsert.setString(7, peoplePerTable);
+                    sqlInsert.setString(8, phoneNumber);
+                    sqlInsert.setInt(9, user_id);
 
                     sqlInsert.executeUpdate();
                     sqlInsert.close();

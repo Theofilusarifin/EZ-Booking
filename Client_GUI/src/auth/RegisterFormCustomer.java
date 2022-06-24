@@ -84,22 +84,22 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         txtName.setBackground(new java.awt.Color(242, 242, 242));
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(50, 100, 330, 30);
+        txtName.setBounds(50, 100, 330, 28);
 
         txtUsername.setBackground(new java.awt.Color(242, 242, 242));
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(50, 180, 330, 30);
+        txtUsername.setBounds(50, 180, 330, 28);
 
         txtPassword.setBackground(new java.awt.Color(242, 242, 242));
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(50, 260, 330, 30);
+        txtPassword.setBounds(50, 260, 330, 28);
 
         txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(50, 350, 330, 30);
+        txtRePassword.setBounds(50, 350, 330, 28);
 
         btnRegister.setBackground(new java.awt.Color(244, 203, 14));
         btnRegister.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

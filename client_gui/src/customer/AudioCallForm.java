@@ -117,7 +117,6 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnAudioCallActionPerformed
     @Override
     public void run() {
-        byte b[] = null;
         while (running) {
             if (AudioSystem.isLineSupported(Port.Info.MICROPHONE)) {
                 try {
@@ -131,12 +130,12 @@ public class AudioCallForm extends javax.swing.JFrame implements Runnable {
 //                    Deklarasi array byte untuk menampung datagram dari frekuensi
                     byte tempBuffer[] = new byte[50000];
 
-                    while (true) {
+//                    while (true) {
 //                        Membaca mic
                         targetDataLine.read(tempBuffer, 0, tempBuffer.length);
 //                        Kirim array byte
                         sendUDP(tempBuffer);
-                    }
+//                    }
                 } catch (Exception e) {
                     e.getMessage();
                     t.stop();
