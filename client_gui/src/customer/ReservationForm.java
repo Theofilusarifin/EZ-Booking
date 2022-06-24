@@ -90,6 +90,7 @@ public class ReservationForm extends javax.swing.JFrame {
             }
         });
 
+        cbTable.setBackground(new java.awt.Color(242, 242, 242));
         cbTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbTable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
@@ -101,15 +102,18 @@ public class ReservationForm extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Duration");
 
+        cbDuration.setBackground(new java.awt.Color(242, 242, 242));
         cbDuration.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbDuration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30 minutes", "1 hour", "1 hour 30 minutes", "2 hour", "2 hour 30 minutes", "3 hour", "4 hour" }));
 
+        txtMinute.setBackground(new java.awt.Color(242, 242, 242));
         txtMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText(":");
 
+        txtHour.setBackground(new java.awt.Color(242, 242, 242));
         txtHour.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -127,6 +131,7 @@ public class ReservationForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Restaurant");
 
+        cbRestaurant.setBackground(new java.awt.Color(242, 242, 242));
         cbRestaurant.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

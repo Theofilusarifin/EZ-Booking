@@ -135,21 +135,22 @@ public class RestaurantDashboard extends javax.swing.JFrame {
         );
 
         lblAddress.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setForeground(new java.awt.Color(2, 26, 74));
         lblAddress.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblAddress.setText("address");
 
         lblOwner.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblOwner.setForeground(new java.awt.Color(2, 26, 74));
         lblOwner.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblOwner.setText("Owner Name");
 
         lblRestaurantName1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblRestaurantName1.setForeground(new java.awt.Color(255, 255, 255));
+        lblRestaurantName1.setForeground(new java.awt.Color(2, 26, 74));
         lblRestaurantName1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblRestaurantName1.setText("Restaurant Name");
 
         lblTelp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblTelp.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelp.setForeground(new java.awt.Color(2, 26, 74));
         lblTelp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTelp.setText("telp");
 

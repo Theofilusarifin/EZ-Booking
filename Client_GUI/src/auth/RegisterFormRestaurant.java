@@ -97,8 +97,11 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         txtCloseMinute.setBackground(new java.awt.Color(242, 242, 242));
         txtCloseMinute.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
+        btnRegisterRestaurant.setBackground(new java.awt.Color(244, 203, 14));
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnRegisterRestaurant.setForeground(new java.awt.Color(2, 26, 74));
         btnRegisterRestaurant.setText("REGISTER");
+        btnRegisterRestaurant.setBorderPainted(false);
         btnRegisterRestaurant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterRestaurantActionPerformed(evt);
@@ -109,8 +112,11 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
         lblPhone1.setForeground(new java.awt.Color(255, 255, 255));
         lblPhone1.setText("Tables Count");
 
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(2, 26, 74));
         btnBack.setText("BACK");
+        btnBack.setBorderPainted(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

@@ -101,8 +101,11 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
         getContentPane().add(txtRePassword);
         txtRePassword.setBounds(50, 350, 330, 30);
 
+        btnRegister.setBackground(new java.awt.Color(244, 203, 14));
         btnRegister.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(2, 26, 74));
         btnRegister.setText("REGISTER");
+        btnRegister.setBorderPainted(false);
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -121,7 +124,7 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBackToLogin);
-        lblBackToLogin.setBounds(290, 470, 40, 30);
+        lblBackToLogin.setBounds(280, 470, 40, 30);
 
         lblBackToLogin1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin1.setForeground(new java.awt.Color(255, 255, 255));
