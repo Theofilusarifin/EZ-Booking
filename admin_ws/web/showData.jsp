@@ -64,7 +64,6 @@
     </head>
     <body>
     <div class="container">
-        <div class="container">
         <div class='table'>                  
             <div class='table-header'>");
                 <div class='header__item'><a id='name' class='filter__link' href='#'>ID</a></div>
@@ -75,7 +74,9 @@
                 <div class='header__item'><a id='name' class='filter__link' href='#'>Close Hour</a></div>
                 <div class='header__item'><a id='name' class='filter__link' href='#'>Tables Count</a></div>
                 <div class='header__item'><a id='name' class='filter__link' href='#'>People per Table</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Owner</a></div>
+                <div class='header__item'><a id='name' class='filter__link' href='#'>Owner</a></div>                
+                <div class='header__item'><a id='name' class='filter__link' href='#'>Show Bookings</a></div>
+
             </div>
             <div class='table-content'>
             <%
@@ -106,8 +107,13 @@
                         out.println("<div class='table-data'>"+close+"</div>");
                         out.println("<div class='table-data'>"+count+"</div>");
                         out.println("<div class='table-data'>"+table+"</div>");
-                        out.println("<div class='table-data'>"+owner+"</div>");
-
+                        out.println("<div class='table-data'>"+owner+"</div>"); 
+                        out.println("<div class='table-data'>");  
+                        out.println("<form method='POST' action='showBooking.jsp'>");
+                        out.println("<input type='text' name='kode' value='"+id+"' hidden>");
+                        out.println("<input type='submit' name='submit' value='Show'>");
+                        out.println("</form>");
+                        out.println("</div>");
                         out.println("</div>");
 
                     }

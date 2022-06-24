@@ -2,7 +2,23 @@
 
 <xs:element name="display" type="tns:display"/>
 
+<xs:element name="displayBook" type="tns:displayBook"/>
+
+<xs:element name="displayBookResponse" type="tns:displayBookResponse"/>
+
 <xs:element name="displayResponse" type="tns:displayResponse"/>
+
+<xs:complexType name="displayBook">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="displayBookResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="display">
 <xs:sequence/>

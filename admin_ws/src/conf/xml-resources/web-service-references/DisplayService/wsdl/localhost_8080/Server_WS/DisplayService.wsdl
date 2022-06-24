@@ -10,15 +10,34 @@
 <message name="displayResponse">
 <part name="parameters" element="tns:displayResponse"/>
 </message>
+<message name="displayBook">
+<part name="parameters" element="tns:displayBook"/>
+</message>
+<message name="displayBookResponse">
+<part name="parameters" element="tns:displayBookResponse"/>
+</message>
 <portType name="DisplayService">
 <operation name="display">
 <input wsam:Action="http://method.ezbooking.com/DisplayService/displayRequest" message="tns:display"/>
 <output wsam:Action="http://method.ezbooking.com/DisplayService/displayResponse" message="tns:displayResponse"/>
 </operation>
+<operation name="displayBook">
+<input wsam:Action="http://method.ezbooking.com/DisplayService/displayBookRequest" message="tns:displayBook"/>
+<output wsam:Action="http://method.ezbooking.com/DisplayService/displayBookResponse" message="tns:displayBookResponse"/>
+</operation>
 </portType>
 <binding name="DisplayServicePortBinding" type="tns:DisplayService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 <operation name="display">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="displayBook">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
