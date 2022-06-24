@@ -2,8 +2,8 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/server_ws/LoginService?wsdl" uri="src/conf/xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.wsdl"/>
     <system systemId="http://localhost:8080/server_ws/LoginService?xsd=1" uri="src/conf/xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/Server_WS/DisplayService?wsdl" uri="src/conf/xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.wsdl"/>
-    <system systemId="http://localhost:8080/Server_WS/DisplayService?xsd=1" uri="src/conf/xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/Server_WS/LoginService?wsdl" uri="src/conf/xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.wsdl"/>
     <system systemId="http://localhost:8080/Server_WS/LoginService?xsd=1" uri="src/conf/xml-resources/web-service-references/LoginService/wsdl/localhost_8080/server_ws/LoginService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Server_WS/DisplayService?wsdl" uri="src/conf/xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.wsdl"/>
+    <system systemId="http://localhost:8080/Server_WS/DisplayService?xsd=1" uri="src/conf/xml-resources/web-service-references/DisplayService/wsdl/localhost_8080/Server_WS/DisplayService.xsd_1.xsd"/>
 </catalog>
