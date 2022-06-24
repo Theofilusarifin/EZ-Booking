@@ -12,6 +12,41 @@
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
+            body {margin:0;}
+                
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height:47px;
+    box-shadow: 0 16px 31px -17px rgba(0, 50, 80, 0.5);
+    background-color: #021A4A;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #F4CB0E;
+    color:#021A4A;
+}
                 *, *:before, *:after {
                         box-sizing:border-box;
                 }
@@ -63,19 +98,25 @@
         </style>
     </head>
     <body>
+    <ul>
+    <li><a style="font-family: 'Vanessia Demo'; font-size:15px;">ezbooking</a></li>
+    <li><a href="#news" class="active">Restaurant Data</a></li>
+    <li><a href="showBooking.jsp">Booking Data</a></li>
+    <li style="float:right"><a class="active" href="#about">Logout</a></li></ul>
+  
     <div class="container">
         <div class='table'>                  
             <div class='table-header'>");
-                <div class='header__item'><a id='name' class='filter__link' href='#'>ID</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Name</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Address</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Phone Number</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Open Hour</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Close Hour</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Tables Count</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>People per Table</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Owner</a></div>                
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Show Bookings</a></div>
+                <div class='header__item'id='name'>ID</div>
+                <div class='header__item'id='name'>Name</div>
+                <div class='header__item'id='name'>Address</div>
+                <div class='header__item' id='name'>Phone Number</div>
+                <div class='header__item'id='name'>Open Hour</div>
+                <div class='header__item'id='name'>Close Hour</div>
+                <div class='header__item' id='name'>Tables Count</div>
+                <div class='header__item' id='name'>People per Table</div>
+                <div class='header__item' id='name'>Owner</div>                
+                <div class='header__item' id='name''>Show Bookings</div>
 
             </div>
             <div class='table-content'>

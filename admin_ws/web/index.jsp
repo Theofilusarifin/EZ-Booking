@@ -98,7 +98,7 @@
 //        }
 %>
     <body>
-        <form action="<%=request.getContextPath()%>/loginprocess.jsp" method="post">  
+        <form action="<%=request.getContextPath()%>/showData.jsp" method="post">  
             <div class="logo"> ezbooking </div>
             <div class="container">
                 <div class="card">
