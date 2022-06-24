@@ -16,12 +16,19 @@ public class DisplayService {
     ArrayList<String> restoList;
     
     @WebMethod(operationName = "display")
-    public String hello() {
+    public String display() {
         resto = new Restaurant();
         restoList = resto.displayResto();
         String collection = "";
+        String counter = "";
         for (int i = 0; i < restoList.size(); i++) {
-            collection += restoList.get(i);
+            if (i+1 != restoList.size()) {
+                counter = "/&/";
+            }
+            else {
+                counter = "";
+            }
+            collection += restoList.get(i)+counter;
         }
         return collection;
     }
