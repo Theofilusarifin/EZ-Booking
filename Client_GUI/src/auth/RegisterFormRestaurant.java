@@ -328,43 +328,70 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
 
     private void btnRegisterRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRestaurantActionPerformed
         try {
-            msgToServer.writeBytes("REGISTER//" + ownerData + "\n");
+            if (txtRestaurantName.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Name");
+            } else if (txtAreaAddress.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Address");
+            } else if (txtPhone.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant PhoneNumber");
+            } else if (txtOpenHour.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Open Hour");
+            } else if (txtOpenMinute.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Open Minute");
+            } else if (txtCloseHour.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Close Hour");
+            } else if (txtCloseMinute.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Close Minute");
+            } else if (txtTablesCount.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant Tables Count");
+            } else if (txtPeoplePerTable.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must fill your Restaurant People Per Table");
+            } else if (Integer.parseInt(txtOpenHour.getText()) > 23 || Integer.parseInt(txtOpenHour.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Hour value can only be from 0 up to 24");
+            } else if (Integer.parseInt(txtOpenMinute.getText()) > 59 || Integer.parseInt(txtOpenMinute.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Minute value can only be from 0 up to 59");
+            } else if (Integer.parseInt(txtCloseHour.getText()) > 23 || Integer.parseInt(txtCloseHour.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Hour value can only be from 0 up to 24");
+            } else if (Integer.parseInt(txtCloseMinute.getText()) > 59 || Integer.parseInt(txtCloseMinute.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Minute value can only be from 0 up to 59");
+            } else {
+                msgToServer.writeBytes("REGISTER//" + ownerData + "\n");
 
-            String result;
-            result = msgFromServer.readLine();
+                String result;
+                result = msgFromServer.readLine();
 
-            String[] messages = null;
-            messages = result.split(";-;");
+                String[] messages = null;
+                messages = result.split(";-;");
 
-            String status = "";
-            status = messages[0];
+                String status = "";
+                status = messages[0];
 
-            if (status.equals("RegSuccess")) {
-                msgToServer.writeBytes("REGISTER_RESTAURANT//"
-                        + txtRestaurantName.getText() + ";-;" + txtAreaAddress.getText() + ";-;" + txtPhone.getText() + ";-;"
-                        + txtOpenHour.getText() + ":" + txtOpenMinute.getText() + ":00" + ";-;" + txtCloseHour.getText() + ":" + txtCloseMinute.getText() + ":00" + ";-;"
-                        + txtTablesCount.getText() + ";-;" + txtPeoplePerTable.getText() + ";-;" + ownerData + "\n");
+                if (status.equals("RegSuccess")) {
+                    msgToServer.writeBytes("REGISTER_RESTAURANT//"
+                            + txtRestaurantName.getText() + ";-;" + txtAreaAddress.getText() + ";-;" + txtPhone.getText() + ";-;"
+                            + txtOpenHour.getText() + ":" + txtOpenMinute.getText() + ":00" + ";-;" + txtCloseHour.getText() + ":" + txtCloseMinute.getText() + ":00" + ";-;"
+                            + txtTablesCount.getText() + ";-;" + txtPeoplePerTable.getText() + ";-;" + ownerData + "\n");
 
-                String answer;
-                answer = msgFromServer.readLine();
+                    String answer;
+                    answer = msgFromServer.readLine();
 
-                String[] msgs = null;
-                msgs = answer.split(";-;");
+                    String[] msgs = null;
+                    msgs = answer.split(";-;");
 
-                String msg = "";
-                msg = msgs[0];
+                    String msg = "";
+                    msg = msgs[0];
 
-                if (msg.equals("RegSuccess")) {
-                    JOptionPane.showMessageDialog(this, "Congratulations!!!, Your Restaurant " + msgs[1] + " has been successfully registered.");
+                    if (msg.equals("RegSuccess")) {
+                        JOptionPane.showMessageDialog(this, "Congratulations!!!, Your Restaurant " + msgs[1] + " has been successfully registered.");
 
-                } else if (msg.equals("RegFailed")) {
-                    JOptionPane.showMessageDialog(this, "Sorry, your Registration Failed, Restaurant with name " + msgs[1] + " has been taken.");
+                    } else if (msg.equals("RegFailed")) {
+                        JOptionPane.showMessageDialog(this, "Sorry, your Registration Failed, Restaurant with name " + msgs[1] + " has been taken.");
+                    }
+
+                } else if (status.equals("RegFailed")) {
+                    JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
                 }
-
-            } else if (status.equals("RegFailed")) {
-                JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
             }
-
         } catch (IOException e) {
             System.out.println("RegisterForm btnRegister, Error; " + e);
             Logger.getLogger(RegisterFormRestaurant.class.getName()).log(Level.SEVERE, null, e);
