@@ -103,7 +103,7 @@ li a:hover:not(.active) {
     <li><a style="font-family: 'Vanessia Demo'; font-size:15px;">ezbooking</a></li>
     <li><a href="showData.jsp" >Restaurant Data</a></li>
     <li><a href="#showBooking" class="active">Booking Data</a></li>
-    <li style="float:right"><a class="active" href="#logout">Logout</a></li>
+    <li style="float:right"><a class="active" href="index.jsp">Logout</a></li>
     </ul>
         <div class="container">
         <div class='table'>                  
