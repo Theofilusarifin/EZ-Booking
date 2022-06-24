@@ -104,8 +104,11 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         getContentPane().add(txtRePassword);
         txtRePassword.setBounds(50, 360, 350, 30);
 
+        btnRegisterRestaurant.setBackground(new java.awt.Color(244, 203, 14));
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnRegisterRestaurant.setForeground(new java.awt.Color(2, 26, 74));
         btnRegisterRestaurant.setText("NEXT");
+        btnRegisterRestaurant.setBorderPainted(false);
         btnRegisterRestaurant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterRestaurantActionPerformed(evt);
@@ -165,7 +168,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblBackToLogin1);
-        lblBackToLogin1.setBounds(300, 480, 40, 30);
+        lblBackToLogin1.setBounds(290, 480, 40, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/backg.png"))); // NOI18N
         getContentPane().add(jLabel2);

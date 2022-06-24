@@ -76,7 +76,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Welcome to ezbooking!");
         getContentPane().add(lblLogin);
-        lblLogin.setBounds(90, 20, 270, 30);
+        lblLogin.setBounds(80, 40, 270, 30);
 
         lblPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,8 +84,11 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(lblPassword);
         lblPassword.setBounds(70, 250, 90, 20);
 
+        btnLogin.setBackground(new java.awt.Color(244, 203, 14));
         btnLogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(2, 26, 74));
         btnLogin.setText("LOGIN");
+        btnLogin.setBorderPainted(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -120,7 +123,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auth/images/separator.png"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 70, 390, 10);
+        jLabel4.setBounds(200, 70, 160, 10);
 
         lblLogin1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblLogin1.setForeground(new java.awt.Color(255, 255, 255));
