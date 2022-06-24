@@ -12,13 +12,47 @@
         <title>JSP Page</title>
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+body {margin:0;}
+                
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height:47px;
+    box-shadow: 0 16px 31px -17px rgba(0, 50, 80, 0.5);
+    background-color: #021A4A;
+}
 
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #F4CB0E;
+    color:#021A4A;
+}
                 *, *:before, *:after {
                         box-sizing:border-box;
                 }
 
                 body {
-                        font-family:'Source Sans Pro', sans-serif;
+                        font-family:'Poppins', sans-serif;
                         margin:0;
                 }
 
@@ -38,13 +72,13 @@
 
                 .table {
                         width:100%;
-                        border:1px solid black;
+                        border:1px solid #F4CB0E;
                 }
 
                 .table-header {
                         display:flex;
                         width:100%;
-                        background:#000;
+                        background:#F4CB0E;
                 }
 
                 .table-row {
@@ -64,13 +98,19 @@
         </style>
     </head>
     <body>
+    <ul>
+    <li><a style="font-family: 'Vanessia Demo'; font-size:15px;">ezbooking</a></li>
+    <li><a href="showData.jsp" >Restaurant Data</a></li>
+    <li><a href="#showBooking" class="active">Booking Data</a></li>
+    <li style="float:right"><a class="active" href="#logout">Logout</a></li>
+    </ul>
         <div class="container">
         <div class='table'>                  
-            <div class='table-header'>");
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Customer Name</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Start Hour</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>End Hour</a></div>
-                <div class='header__item'><a id='name' class='filter__link' href='#'>Tables Count</a></div>
+            <div class='table-header'>
+                <div class='header__item'id='name'> Customer Name</div>
+                <div class='header__item'id='name'> Start Hour</div>
+                <div class='header__item'id='name'> End Hour</div>
+                <div class='header__item'id='name'> Tables Count</div>
 
             </div>
             <div class='table-content'>

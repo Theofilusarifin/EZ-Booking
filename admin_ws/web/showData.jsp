@@ -12,7 +12,7 @@
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
-            body {margin:0;}
+body {margin:0;}
                 
 ul {
     list-style-type: none;
@@ -100,9 +100,10 @@ li a:hover:not(.active) {
     <body>
     <ul>
     <li><a style="font-family: 'Vanessia Demo'; font-size:15px;">ezbooking</a></li>
-    <li><a href="#news" class="active">Restaurant Data</a></li>
+    <li><a href="#showData" class="active">Restaurant Data</a></li>
     <li><a href="showBooking.jsp">Booking Data</a></li>
-    <li style="float:right"><a class="active" href="#about">Logout</a></li></ul>
+    <li style="float:right"><a class="active" href="#logout">Logout</a></li>
+    </ul>
   
     <div class="container">
         <div class='table'>                  
