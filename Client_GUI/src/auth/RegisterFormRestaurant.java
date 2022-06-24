@@ -328,22 +328,6 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
 
     private void btnRegisterRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRestaurantActionPerformed
         try {
-            if (txtRestaurantName.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-
-            } else if (txtAreaAddress.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-
-            } else if (txtPhone.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-
-            } else if (txtRestaurantName.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-
-            } else if (txtRestaurantName.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-
-            }
             msgToServer.writeBytes("REGISTER//" + ownerData + "\n");
 
             String result;
@@ -358,8 +342,7 @@ public class RegisterFormRestaurant extends javax.swing.JFrame {
             if (status.equals("RegSuccess")) {
                 msgToServer.writeBytes("REGISTER_RESTAURANT//"
                         + txtRestaurantName.getText() + ";-;" + txtAreaAddress.getText() + ";-;" + txtPhone.getText() + ";-;"
-                        + txtOpenHour.getText() + ":" + txtOpenMinute.getText() + ":00" + ";-;"
-                        + txtCloseHour.getText() + ":" + txtCloseMinute.getText() + ":00" + ";-;"
+                        + txtOpenHour.getText() + ":" + txtOpenMinute.getText() + ":00" + ";-;" + txtCloseHour.getText() + ":" + txtCloseMinute.getText() + ":00" + ";-;"
                         + txtTablesCount.getText() + ";-;" + txtPeoplePerTable.getText() + ";-;" + ownerData + "\n");
 
                 String answer;

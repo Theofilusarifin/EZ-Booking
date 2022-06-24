@@ -92,17 +92,17 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         txtName.setBackground(new java.awt.Color(242, 242, 242));
         txtName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtName);
-        txtName.setBounds(50, 120, 350, 28);
+        txtName.setBounds(50, 120, 350, 32);
 
         txtPassword.setBackground(new java.awt.Color(242, 242, 242));
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(50, 280, 350, 28);
+        txtPassword.setBounds(50, 280, 350, 32);
 
         txtRePassword.setBackground(new java.awt.Color(242, 242, 242));
         txtRePassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtRePassword);
-        txtRePassword.setBounds(50, 360, 350, 28);
+        txtRePassword.setBounds(50, 360, 350, 32);
 
         btnRegisterRestaurant.setBackground(new java.awt.Color(244, 203, 14));
         btnRegisterRestaurant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -120,7 +120,7 @@ public class RegisterFormOwner extends javax.swing.JFrame {
         txtUsername.setBackground(new java.awt.Color(242, 242, 242));
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(50, 200, 350, 28);
+        txtUsername.setBounds(50, 200, 350, 32);
 
         lblBackToLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,38 +179,30 @@ public class RegisterFormOwner extends javax.swing.JFrame {
 
     private void btnRegisterRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRestaurantActionPerformed
         try {
-            if (txtName.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-            } else if (txtUsername.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your username");
-            } else if (txtPassword.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your password");
-            } else {
-                if (txtPassword.getText().equals(txtRePassword.getText())) {
-                    // kirim Request Data (REGISTER <username> <password> <role>)
-                    msgToServer.writeBytes("CHECK_SAME_USERNAME//" + txtUsername.getText() + "\n");
+            if (txtPassword.getText().equals(txtRePassword.getText())) {
+                // kirim Request Data (REGISTER <username> <password> <role>)
+                msgToServer.writeBytes("CHECK_SAME_USERNAME//" + txtUsername.getText() + "\n");
 
-                    String result;
-                    result = msgFromServer.readLine();
+                String result;
+                result = msgFromServer.readLine();
 
-                    String[] messages = null;
-                    messages = result.split(";-;");
+                String[] messages = null;
+                messages = result.split(";-;");
 
-                    String cmd = "";
-                    cmd = messages[0];
+                String cmd = "";
+                cmd = messages[0];
 
-                    // kalau ketemu username sama
-                    if (cmd.equals("TRUE")) {
-                        JOptionPane.showMessageDialog(this, "Sorry " + txtName.getText() + ", Your username has been taken.");
-                    }// kalau tidak ketemu username yang sama
-                    else if (cmd.equals("FALSE")) {
-                        ownerData = txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n";
-                        new RegisterFormRestaurant(ownerData).setVisible(true);
-                        this.dispose();
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
+                // kalau ketemu username sama
+                if (cmd.equals("TRUE")) {
+                    JOptionPane.showMessageDialog(this, "Sorry " + txtName.getText() + ", Your username has been taken.");
+                }// kalau tidak ketemu username yang sama
+                else if (cmd.equals("FALSE")) {
+                    ownerData = txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;restaurant" + "\n";
+                    new RegisterFormRestaurant(ownerData).setVisible(true);
+                    this.dispose();
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
             }
         } catch (Exception e) {
             System.out.println("RegisterFormOwner btnRegister, Error; " + e);

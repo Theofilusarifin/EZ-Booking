@@ -149,34 +149,26 @@ public class RegisterFormCustomer extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         try {
-            if (txtName.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your name");
-            } else if (txtUsername.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your username");
-            } else if (txtPassword.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "You must fill your password");
-            } else {
-                if (txtPassword.getText().equals(txtRePassword.getText())) {
-                    // kirim Request Data (REGISTER <username> <password> <role>)
-                    msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;customer" + "\n");
+            if (txtPassword.getText().equals(txtRePassword.getText())) {
+                // kirim Request Data (REGISTER <username> <password> <role>)
+                msgToServer.writeBytes("REGISTER//" + txtName.getText() + ";-;" + txtUsername.getText() + ";-;" + txtPassword.getText() + ";-;customer" + "\n");
 
-                    String result;
-                    result = msgFromServer.readLine();
+                String result;
+                result = msgFromServer.readLine();
 
-                    String[] messages = null;
-                    messages = result.split(";-;");
+                String[] messages = null;
+                messages = result.split(";-;");
 
-                    String status = "";
-                    status = messages[0];
+                String status = "";
+                status = messages[0];
 
-                    if (status.equals("RegSuccess")) {
-                        JOptionPane.showMessageDialog(this, "Registration Successful, Welcome to ezbooking " + messages[1]);
-                    } else if (status.equals("RegFailed")) {
-                        JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
+                if (status.equals("RegSuccess")) {
+                    JOptionPane.showMessageDialog(this, "Registration Successful, Welcome to ezbooking " + messages[1]);
+                } else if (status.equals("RegFailed")) {
+                    JOptionPane.showMessageDialog(this, "Sorry " + messages[1] + ", Your Registration Failed, Your username has been taken.");
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Your passwords are not the same!!");
             }
         } catch (Exception e) {
             System.out.println("RegisterForm btnRegister, Error; " + e);
