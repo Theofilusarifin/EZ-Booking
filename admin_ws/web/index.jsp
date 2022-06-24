@@ -13,12 +13,23 @@
         <title>Login Page</title>
         <script src="/js/jquery-3.6.0.min.js"></script>
         <style type="text/css">
+            
+            .logo{
+                font-family: 'Vanessia Demo';
+                font-weight: bold;
+                font-size:80px;
+                margin-top:50px;
+                letter-spacing: 2px;
+                color:#021A4A;
+                text-align:center;
+            }
+            
             div{
                 margin:12px;
             }
+            
             .container{
-                left:38%;
-                margin-top:12%;
+                margin-top:20px;
                 display:flex;
                 justify-content: center;
                 align-items: center;
@@ -88,6 +99,7 @@
 %>
     <body>
         <form action="Login.jsp" method="post">  
+            <div class="logo"> ezbooking </div>
             <div class="container">
                 <div class="card">
                 <div class="group">
