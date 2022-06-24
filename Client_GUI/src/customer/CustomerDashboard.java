@@ -114,6 +114,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         );
 
         lblCustName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblCustName.setForeground(new java.awt.Color(2, 26, 74));
         lblCustName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCustName.setText("Cust Name");
 
