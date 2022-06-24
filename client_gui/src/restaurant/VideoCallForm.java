@@ -51,7 +51,7 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
 @Override
     public void run() {
         byte b[] = null;
-        while (true) {
+        while (running) {
             try {
 //                Inisiasi socket untuk mengirim video
                 Socket s = new Socket("127.0.0.1", 7800);
@@ -196,10 +196,10 @@ public class VideoCallForm extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAudioCallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioCallActionPerformed
+        running = false;
         sourceDataLine.stop();
         cam.close();
         vcs.stop();
-        running = false;
         t.stop();
         this.dispose();
     }//GEN-LAST:event_btnAudioCallActionPerformed
