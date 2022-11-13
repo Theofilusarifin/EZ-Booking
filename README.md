@@ -20,6 +20,7 @@ username : admin
     <li>
 password : password
    </li>
+   </ul>
 <li>
 Customer
 </li>
@@ -30,6 +31,7 @@ username : customer1
       <li>
 password : password
 </li>
+      </ul>
       
 <li>
 Restaurant
@@ -39,7 +41,7 @@ Restaurant
 username : restaurant1
 password : password
     </li>
-
+</ul>
 </ol>
 
 ## Workarounds
