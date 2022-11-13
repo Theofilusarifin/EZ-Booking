@@ -13,34 +13,32 @@ GazWez🔥
 <li>
 Admin
 </li>
+  <ul>
+  <li>
 username : admin
+    </li>
+    <li>
 password : password
-
+   </li>
 <li>
 Customer
 </li>
-  
+    <ul>
+  <li>
 username : customer1
+    </li>
+      <li>
 password : password
-
-username : customer2
-password : password
-
-username : customer3
-password : password
-
+</li>
+      
 <li>
 Restaurant
 </li>
-  
+      <ul>
+  <li>
 username : restaurant1
 password : password
-
-username : restaurant2
-password : password
-
-username : restaurant3
-password : password
+    </li>
 
 </ol>
 
