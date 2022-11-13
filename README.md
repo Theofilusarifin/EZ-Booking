@@ -1,11 +1,5 @@
 ## About This Project
-GazWez🔥
-160420046 Theofilus Arifin
-160420082 Henri Jayanata Kusuma
-160720002 Jabesh Nehemiah Wijaya
-160720034 Reynard Nathanael
-160820002 Meliyana
-160820016 Valencia
+EZ Booking is a Java Program for restaurants and customers to do a transaction (Buy and Sell food). This program is fully integrated with chat and video calls to provide the best communication platform between users. 
 
 ## Account
 <ol>
