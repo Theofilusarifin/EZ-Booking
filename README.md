@@ -39,6 +39,8 @@ Restaurant
       <ul>
   <li>
 username : restaurant1
+     </li>
+    <li>
 password : password
     </li>
 </ul>
