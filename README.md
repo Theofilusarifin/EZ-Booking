@@ -7,18 +7,19 @@ GazWez🔥
 160820002 Meliyana
 160820016 Valencia
 
-[RESOLVE FILE JAR]
-File jar yang digunakan pada project ini berada di folder jar files.
-
 ## Account
+<ol>
 
-1. Admin
-
+<li>
+Admin
+</li>
 username : admin
 password : password
 
-2. Customer
-
+<li>
+Customer
+</li>
+  
 username : customer1
 password : password
 
@@ -28,8 +29,10 @@ password : password
 username : customer3
 password : password
 
-3. Restaurant
-
+<li>
+Restaurant
+</li>
+  
 username : restaurant1
 password : password
 
@@ -39,16 +42,26 @@ password : password
 username : restaurant3
 password : password
 
+</ol>
+
 ## Workarounds
 
+<ul>
+  <li>
+File jar yang digunakan pada project ini berada di folder jar files.
+  </li>
+  <li>
 Klik button dengan icon audio/video pada CUSTOMER terlebih dahulu selanjutnya klik button dengan icon audio/video pada RESTAURANT untuk memulai panggilan
-<br>
+  </li>
+  <li>
 Klik button dengan icon audio/video pada CUSTOMER terlebih dahulu selanjutnya klik button dengan icon audio/video pada RESTAURANT untuk mengakhiri panggilan
+  </li>
+  
+</ul>
 
 ## Documentation
 <a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/g2BqVgzG/Disprog-2.png" alt="Disprog-2"/></a><br/><br/>
-<a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/hPs0jSNz/Disprog-3.png" alt="Disprog-3"/></a><br/><br/>
-<a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/vZmtxJdP/Disprog.png" alt="Disprog"/></a><br/><br/>
-
+<a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/xC8wsxHg/Disprog-3.png" alt="Disprog-3"/></a><br/><br/>
+<a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/s2TF4dBv/Disprog.png" alt="Disprog"/></a><br/><br/>
 
 
